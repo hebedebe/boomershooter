@@ -144,7 +144,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0,
 flip_faces = true
 
 [node name="Decal" type="Decal" parent="."]
-transform = Transform3D(-2.64454e-08, -0.604642, -0.0208187, -8.88178e-16, 0.0208187, -0.604642, 0.605, -2.64297e-08, -9.10015e-10, 5.50149, 0.285612, -0.111006)
+transform = Transform3D(-2.64454e-08, -0.604642, -0.0208187, -8.88178e-16, 0.0208187, -0.604642, 0.605, -2.64297e-08, -9.10015e-10, 5.50456, 0.37479, -0.111006)
 size = Vector3(1.43945, 0.455688, 2)
 texture_albedo = ExtResource("6_acjhr")
 texture_normal = ExtResource("7_xqrbn")
