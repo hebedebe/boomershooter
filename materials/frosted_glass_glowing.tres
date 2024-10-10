@@ -13,6 +13,7 @@ emission_energy_multiplier = 0.2
 emission_texture = ExtResource("1_4qypc")
 normal_enabled = true
 normal_texture = ExtResource("2_8t75p")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 0

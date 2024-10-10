@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
@@ -147,6 +147,44 @@ _data = {
 "RESET": SubResource("Animation_j8cx7"),
 "crouch": SubResource("Animation_5ec5e")
 }
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_keuh2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ei6dw"]
+sky_material = SubResource("ProceduralSkyMaterial_keuh2")
+
+[sub_resource type="Environment" id="Environment_y23vq"]
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_ei6dw")
+ambient_light_source = 1
+ambient_light_energy = 0.0
+reflected_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_intensity = 1.2
+glow_bloom = 0.17
+fog_mode = 1
+fog_density = 1.0
+fog_depth_curve = 4.75683
+fog_depth_begin = 1.0
+fog_depth_end = 20.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0921
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_67aq3"]
+dof_blur_near_enabled = true
+dof_blur_near_distance = 1.0
+dof_blur_amount = 0.05
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -380,6 +418,8 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+environment = SubResource("Environment_y23vq")
+attributes = SubResource("CameraAttributesPractical_67aq3")
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
