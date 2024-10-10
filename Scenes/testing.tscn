@@ -114,6 +114,33 @@ sides = 7
 smooth_faces = false
 material = ExtResource("3_mr046")
 
+[node name="OmniLight3D4" type="OmniLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50916, 1.30916, 0.0508556)
+light_color = Color(1, 1, 0.952941, 1)
+light_energy = 0.2
+light_volumetric_fog_energy = 2.131
+light_size = 0.005
+light_bake_mode = 1
+omni_range = 6.82822
+script = ExtResource("1_q7csr")
+noise = SubResource("NoiseTexture3D_mwonk")
+frequency = 2.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level/OmniLight3D4"]
+transform = Transform3D(1, 0, 0, 0, 0.775, 0, 0, 0, 1, 0, 0.206732, 0)
+material_override = ExtResource("2_h2dyt")
+radial_segments = 7
+rings = 5
+smooth_faces = false
+material = ExtResource("2_h2dyt")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level/OmniLight3D4"]
+transform = Transform3D(1.05525, 0, 0.20512, 0, 1.075, 0, -0.20512, 0, 1.05525, 0, 1.19808, 0)
+material_override = ExtResource("3_mr046")
+sides = 7
+smooth_faces = false
+material = ExtResource("3_mr046")
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60243, 1.30916, 9.05086)
 light_color = Color(1, 1, 0.952941, 1)
