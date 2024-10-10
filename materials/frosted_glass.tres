@@ -8,6 +8,7 @@
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.827451)
 albedo_texture = ExtResource("1_nr5sq")
+albedo_texture_force_srgb = true
 roughness_texture = ExtResource("3_wnvlk")
 normal_enabled = true
 normal_texture = ExtResource("2_73oxm")

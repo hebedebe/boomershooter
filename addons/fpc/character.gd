@@ -24,7 +24,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity : float = 0.1
 ## Invert the Y input for mouse and joystick
 @export var invert_mouse_y : bool = false # Possibly add an invert mouse X in the future
-## Wether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
+## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
 @export var immobile : bool = false
 ## The reticle file to import at runtime. By default are in res://addons/fpc/reticles/. Set to an empty string to remove.
 @export_file var default_reticle
