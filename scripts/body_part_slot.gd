@@ -1,6 +1,7 @@
 extends Node
 
 @export var part_type = ""
+@export var slot_name = ""
 
 func manage_body_part(player_attributes):
 	var body_part = get_child(0)

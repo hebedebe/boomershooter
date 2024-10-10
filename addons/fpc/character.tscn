@@ -425,36 +425,42 @@ script = ExtResource("2_pdks7")
 [node name="left_eye_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "eye"
+slot_name = "left eye"
 
 [node name="BasicArm" parent="PlayerAttributes/left_eye_slot" instance=ExtResource("4_yodar")]
 
 [node name="right_eye_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "eye"
+slot_name = "right eye"
 
 [node name="BasicArm" parent="PlayerAttributes/right_eye_slot" instance=ExtResource("4_yodar")]
 
 [node name="left_arm_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "arm"
+slot_name = "left_arm"
 
 [node name="BasicArm" parent="PlayerAttributes/left_arm_slot" instance=ExtResource("5_1g67u")]
 
 [node name="right_arm_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "arm"
+slot_name = "right arm"
 
 [node name="BasicArm" parent="PlayerAttributes/right_arm_slot" instance=ExtResource("5_1g67u")]
 
 [node name="left_leg_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "leg"
+slot_name = "left leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/left_leg_slot" instance=ExtResource("4_i2ob0")]
 
 [node name="right_leg_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
 part_type = "leg"
+slot_name = "right leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/right_leg_slot" instance=ExtResource("4_i2ob0")]
 
