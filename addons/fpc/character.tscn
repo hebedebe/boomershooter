@@ -1,11 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=32 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://scripts/player_attributes.gd" id="2_pdks7"]
+[ext_resource type="Texture2D" uid="uid://dsv4jm4vydflb" path="res://textures/orange.png" id="3_0viol"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Script" path="res://scripts/player_health_bar_manager.gd" id="4_scntg"]
 [ext_resource type="FontFile" uid="uid://dfm5b1iutt4eu" path="res://fonts/ByteBounce.ttf" id="5_8aqb1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dve7t"]
+albedo_texture = ExtResource("3_0viol")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -185,7 +189,6 @@ adjustment_enabled = true
 adjustment_contrast = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_67aq3"]
-dof_blur_near_enabled = true
 dof_blur_near_distance = 0.8
 dof_blur_amount = 0.05
 
@@ -417,6 +420,7 @@ script = ExtResource("2_pdks7")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_dve7t")
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
