@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=36 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://scripts/player_attributes.gd" id="2_pdks7"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="PackedScene" uid="uid://bw08w8xqd8iuw" path="res://body_parts/basic_leg.tscn" id="4_i2ob0"]
 [ext_resource type="Script" path="res://scripts/player_health_bar_manager.gd" id="4_scntg"]
+[ext_resource type="PackedScene" uid="uid://brqf40sqbguse" path="res://body_parts/basic_eye.tscn" id="4_yodar"]
+[ext_resource type="PackedScene" uid="uid://byitmlabhckqr" path="res://body_parts/basic_arm.tscn" id="5_1g67u"]
 [ext_resource type="FontFile" uid="uid://dfm5b1iutt4eu" path="res://fonts/ByteBounce.ttf" id="5_8aqb1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dve7t"]
@@ -422,23 +424,37 @@ script = ExtResource("2_pdks7")
 
 [node name="left_eye_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "eye"
+
+[node name="BasicArm" parent="PlayerAttributes/left_eye_slot" instance=ExtResource("4_yodar")]
 
 [node name="right_eye_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "eye"
+
+[node name="BasicArm" parent="PlayerAttributes/right_eye_slot" instance=ExtResource("4_yodar")]
 
 [node name="left_arm_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "arm"
+
+[node name="BasicArm" parent="PlayerAttributes/left_arm_slot" instance=ExtResource("5_1g67u")]
 
 [node name="right_arm_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "arm"
+
+[node name="BasicArm" parent="PlayerAttributes/right_arm_slot" instance=ExtResource("5_1g67u")]
 
 [node name="left_leg_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/left_leg_slot" instance=ExtResource("4_i2ob0")]
 
 [node name="right_leg_slot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
+part_type = "leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/right_leg_slot" instance=ExtResource("4_i2ob0")]
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byitmlabhckqr"]
+
+[ext_resource type="Script" path="res://scripts/body_part.gd" id="1_lcjf0"]
+[ext_resource type="Script" path="res://body_parts/basic_arm.gd" id="2_l3623"]
+
+[node name="BasicArm" type="Node"]
+script = ExtResource("1_lcjf0")
+part_type = "arm"
+
+[node name="Attributes" type="Node" parent="."]
+script = ExtResource("2_l3623")

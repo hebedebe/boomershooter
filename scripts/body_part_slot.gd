@@ -2,11 +2,11 @@ extends Node
 
 @export var part_type = ""
 
-func manage_body_part(player_controller : CharacterBody3D):
+func manage_body_part(player_attributes):
 	var body_part = get_child(0)
 	if body_part == null:
 		return
-	body_part.apply_attributes(player_controller)
+	body_part.apply_attributes(player_attributes)
 
 func verify_part_validity(part):
 	var body_part = get_child(0)
