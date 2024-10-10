@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw08w8xqd8iuw"]
+
+[ext_resource type="Script" path="res://body_parts/basic_leg.gd" id="1_e7tnw"]
+[ext_resource type="Script" path="res://scripts/body_part.gd" id="1_wp6mo"]
+
+[node name="BasicLeg" type="Node"]
+script = ExtResource("1_wp6mo")
+
+[node name="Attributes" type="Node" parent="."]
+script = ExtResource("1_e7tnw")
