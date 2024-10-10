@@ -477,6 +477,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="UserInterface"]
+visible = false
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 2
@@ -495,6 +496,7 @@ show_percentage = false
 script = ExtResource("4_scntg")
 
 [node name="Health" type="Label" parent="UserInterface"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
