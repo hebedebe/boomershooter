@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	
 	player_controller.jumping_enabled = not jump_velocity <= 0
 	
-	player_controller.handle_state(false)
+	player_controller.handle_state(true)
 
 func reset_attributes():
 	base_speed = 0
