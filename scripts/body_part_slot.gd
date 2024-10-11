@@ -3,11 +3,12 @@ extends Node
 @export var part_type = ""
 @export var slot_name = ""
 
-func manage_body_part(player_attributes):
-	var body_part = get_child(0)
-	if body_part == null:
-		return
-	body_part.apply_attributes(player_attributes)
+func manage_body_parts(player_attributes):
+	var body_parts = get_children()
+	for part in body_parts:
+		if part == null:
+			return
+		part.apply_attributes(player_attributes)
 
 func verify_part_validity(part):
 	var body_part = get_child(0)

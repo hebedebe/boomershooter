@@ -28,17 +28,19 @@ var ranged_accuracy : float = 180 # measured in degrees as fov
 func _process(delta: float) -> void:
 	reset_attributes()
 	
-	left_eye_slot.manage_body_part(self)
-	right_eye_slot.manage_body_part(self)
-	left_arm_slot.manage_body_part(self)
-	right_arm_slot.manage_body_part(self)
-	left_leg_slot.manage_body_part(self)
-	right_leg_slot.manage_body_part(self)
+	left_eye_slot.manage_body_parts(self)
+	right_eye_slot.manage_body_parts(self)
+	left_arm_slot.manage_body_parts(self)
+	right_arm_slot.manage_body_parts(self)
+	left_leg_slot.manage_body_parts(self)
+	right_leg_slot.manage_body_parts(self)
 	
 	player_controller.base_speed = base_speed
 	player_controller.sprint_speed = sprint_speed
 	player_controller.crouch_speed = crouch_speed
 	player_controller.jump_velocity = jump_velocity
+	
+	player_controller.jumping_enabled = not jump_velocity <= 0
 
 func reset_attributes():
 	base_speed = 0
