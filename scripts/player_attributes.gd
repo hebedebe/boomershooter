@@ -18,12 +18,12 @@ var ranged_accuracy : float = 180 # measured in degrees as fov
 @onready var player_controller = $".."
 
 # body part slots
-@onready var left_eye_slot = $left_eye_slot
-@onready var right_eye_slot = $right_eye_slot
-@onready var left_arm_slot = $left_arm_slot
-@onready var right_arm_slot = $right_arm_slot
-@onready var left_leg_slot = $left_leg_slot
-@onready var right_leg_slot = $right_leg_slot
+@onready var left_eye_slot = $LeftEyeSlot
+@onready var right_eye_slot = $RightEyeSlot
+@onready var left_arm_slot = $LeftArmSlot
+@onready var right_arm_slot = $RightArmSlot
+@onready var left_leg_slot = $LeftLegSlot
+@onready var right_leg_slot = $RightLegSlot
 
 func _process(delta: float) -> void:
 	reset_attributes()
