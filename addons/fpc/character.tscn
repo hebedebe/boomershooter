@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=32 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://scripts/player_attributes.gd" id="2_pdks7"]
@@ -7,10 +7,8 @@
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="PackedScene" uid="uid://bw08w8xqd8iuw" path="res://body_parts/basic_leg.tscn" id="4_i2ob0"]
-[ext_resource type="Script" path="res://scripts/player_health_bar_manager.gd" id="4_scntg"]
 [ext_resource type="PackedScene" uid="uid://brqf40sqbguse" path="res://body_parts/basic_eye.tscn" id="4_yodar"]
 [ext_resource type="PackedScene" uid="uid://byitmlabhckqr" path="res://body_parts/basic_arm.tscn" id="5_1g67u"]
-[ext_resource type="FontFile" uid="uid://dfm5b1iutt4eu" path="res://fonts/ByteBounce.ttf" id="5_8aqb1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dve7t"]
 albedo_texture = ExtResource("3_0viol")
@@ -397,15 +395,6 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5jax"]
-bg_color = Color(0, 0, 0, 1)
-shadow_color = Color(1, 1, 1, 1)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewxv3"]
-bg_color = Color(0.501961, 0, 0, 1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
@@ -521,47 +510,6 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
 layout_mode = 2
-
-[node name="HealthBar" type="ProgressBar" parent="UserInterface"]
-visible = false
-layout_direction = 2
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = -30.0
-offset_right = 229.0
-offset_bottom = -14.0
-grow_vertical = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_o5jax")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ewxv3")
-value = 15.0
-rounded = true
-show_percentage = false
-script = ExtResource("4_scntg")
-
-[node name="Health" type="Label" parent="UserInterface"]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = -35.0
-offset_right = 167.0
-offset_bottom = -12.0
-grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 4
-theme_override_fonts/font = ExtResource("5_8aqb1")
-theme_override_font_sizes/font_size = 16
-text = "100/100
-"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CrouchCeilingDetection" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
