@@ -9,3 +9,5 @@ part_type = "leg"
 
 [node name="Attributes" type="Node" parent="."]
 script = ExtResource("1_e7tnw")
+base_speed = 1.3
+sprint_speed = 2.4
