@@ -5,7 +5,7 @@
 
 [node name="BasicLeg" type="Node"]
 script = ExtResource("1_wp6mo")
-part_type = "leg"
+part_type = ["leg"]
 
 [node name="Attributes" type="Node" parent="."]
 script = ExtResource("1_e7tnw")

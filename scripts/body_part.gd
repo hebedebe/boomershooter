@@ -1,6 +1,6 @@
 extends Node
 
-@export var part_type = "" #leg, arm, eye, etc
+@export var part_type = [""] #leg, arm, eye, etc
 @export var is_minor = false # minor parts can be added into a slot with another part in it 
 #but require a base part
 

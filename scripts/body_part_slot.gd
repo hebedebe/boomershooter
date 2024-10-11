@@ -16,6 +16,6 @@ func verify_part_validity(part):
 		if part.is_minor:
 			return false
 		else:
-			return (part.part_type == part_type)
+			return (part_type in part.part_type)
 	else:
-		return (part.is_minor and part.part_type == part_type)
+		return (part.is_minor and part_type in part.part_type)

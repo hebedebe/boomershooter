@@ -5,7 +5,7 @@
 
 [node name="BasicEye" type="Node"]
 script = ExtResource("1_pgmse")
-part_type = "eye"
+part_type = ["eye"]
 
 [node name="Attributes" type="Node" parent="."]
 script = ExtResource("2_v3psu")

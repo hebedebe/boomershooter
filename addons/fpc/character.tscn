@@ -187,6 +187,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0921
 volumetric_fog_sky_affect = 0.0
 adjustment_enabled = true
+adjustment_brightness = 0.8
 adjustment_contrast = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_67aq3"]
@@ -416,6 +417,7 @@ part_type = "eye"
 slot_name = "left eye"
 
 [node name="BasicArm" parent="PlayerAttributes/LeftEyeSlot" instance=ExtResource("4_yodar")]
+part_type = [""]
 
 [node name="RightEyeSlot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
@@ -423,6 +425,7 @@ part_type = "eye"
 slot_name = "right eye"
 
 [node name="BasicArm" parent="PlayerAttributes/RightEyeSlot" instance=ExtResource("4_yodar")]
+part_type = [""]
 
 [node name="LeftArmSlot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
@@ -430,6 +433,7 @@ part_type = "arm"
 slot_name = "left_arm"
 
 [node name="BasicArm" parent="PlayerAttributes/LeftArmSlot" instance=ExtResource("5_1g67u")]
+part_type = [""]
 
 [node name="RightArmSlot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
@@ -437,6 +441,7 @@ part_type = "arm"
 slot_name = "right arm"
 
 [node name="BasicArm" parent="PlayerAttributes/RightArmSlot" instance=ExtResource("5_1g67u")]
+part_type = [""]
 
 [node name="LeftLegSlot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
@@ -444,6 +449,7 @@ part_type = "leg"
 slot_name = "left leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/LeftLegSlot" instance=ExtResource("4_i2ob0")]
+part_type = [""]
 
 [node name="RightLegSlot" type="Node" parent="PlayerAttributes"]
 script = ExtResource("3_tdpk7")
@@ -451,6 +457,7 @@ part_type = "leg"
 slot_name = "right leg"
 
 [node name="BasicLeg" parent="PlayerAttributes/RightLegSlot" instance=ExtResource("4_i2ob0")]
+part_type = [""]
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
