@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://e2f6yqyvnei7"
+path="res://.godot/imported/colt_low.obj-1b6411e834a192669b8ed6f7b720c9fd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/colt_low.obj-1b6411e834a192669b8ed6f7b720c9fd.mesh"]
+
+source_file="res://models/colt_low.obj"
+dest_files=["res://.godot/imported/colt_low.obj-1b6411e834a192669b8ed6f7b720c9fd.mesh", "res://.godot/imported/colt_low.obj-1b6411e834a192669b8ed6f7b720c9fd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

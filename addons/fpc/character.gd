@@ -6,6 +6,10 @@
 
 extends CharacterBody3D
 
+@onready var audio_player : AudioStreamPlayer3D = $PlayerAudio
+@export var footstep_sounds : Array[AudioStream] = []
+@export var stop_walking_sounds : Array[AudioStream] = []
+
 
 ## The settings for the character's movement and feel.
 @export_category("Character")
@@ -309,6 +313,7 @@ func enter_normal_state():
 	var prev_state = state
 	if prev_state == "crouching":
 		CROUCH_ANIMATION.play_backwards("crouch")
+		
 	state = "normal"
 	speed = base_speed
 

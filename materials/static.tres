@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://duil2sbafi7a0"]
+
+[ext_resource type="Shader" path="res://shaders/static.gdshader" id="1_jd6jb"]
+[ext_resource type="Material" uid="uid://bhxcprokw05en" path="res://materials/outline.tres" id="1_xqxl0"]
+[ext_resource type="Texture2D" uid="uid://3n1qdgwiew34" path="res://textures/redacted.png" id="2_ybnvx"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_xqxl0")
+shader = ExtResource("1_jd6jb")
+shader_parameter/scroll_speed = Vector2(3, -3)
+shader_parameter/static_intensity = 0.3
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/tex_scale = 0.5
+shader_parameter/albedo_tex = ExtResource("2_ybnvx")

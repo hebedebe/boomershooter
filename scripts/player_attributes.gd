@@ -25,7 +25,7 @@ var ranged_accuracy : float = 180 # measured in degrees as fov
 @onready var left_leg_slot = $LeftLegSlot
 @onready var right_leg_slot = $RightLegSlot
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	reset_attributes()
 	
 	left_eye_slot.manage_body_parts(self)
