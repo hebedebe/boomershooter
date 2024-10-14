@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ji3y6ifd7fp3"]
+
+[ext_resource type="Material" uid="uid://duil2sbafi7a0" path="res://materials/static.tres" id="1_68vko"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vivye"]
+radial_segments = 5
+rings = 3
+
+[node name="ImpactDecals" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_vivye")
+surface_material_override/0 = ExtResource("1_68vko")

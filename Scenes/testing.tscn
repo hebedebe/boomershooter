@@ -1,46 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c52udikda2mlb"]
+[gd_scene load_steps=5 format=3 uid="uid://c52udikda2mlb"]
 
+[ext_resource type="Environment" uid="uid://cxnstx4v3xqp1" path="res://environments/default_environment.tres" id="1_dihhk"]
 [ext_resource type="PackedScene" uid="uid://cmfuhbafj68o0" path="res://prefabs/ceiling_lamp.tscn" id="1_j3y4o"]
 [ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://materials/hospital_wall.tres" id="6_pt6ac"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://materials/hospital_floor.tres" id="7_df1gi"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="8_taqhe"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_keuh2"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-sky_energy_multiplier = 0.0
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_ei6dw"]
-sky_material = SubResource("ProceduralSkyMaterial_keuh2")
-
-[sub_resource type="Environment" id="Environment_3l0no"]
-background_energy_multiplier = 0.0
-sky = SubResource("Sky_ei6dw")
-ambient_light_source = 1
-ambient_light_energy = 0.0
-reflected_light_source = 1
-tonemap_mode = 3
-ssao_enabled = true
-sdfgi_use_occlusion = true
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_intensity = 1.2
-glow_bloom = 0.17
-fog_mode = 1
-fog_density = 1.0
-fog_depth_curve = 4.75683
-fog_depth_begin = 1.0
-fog_depth_end = 20.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0921
-volumetric_fog_sky_affect = 0.0
-adjustment_enabled = true
-adjustment_contrast = 1.2
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3l0no")
+environment = ExtResource("1_dihhk")
 
 [node name="Level" type="Node3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
@@ -150,6 +118,3 @@ use_collision = true
 flip_faces = true
 size = Vector3(5, 1, 1)
 material = ExtResource("6_pt6ac")
-
-[node name="Character" parent="." instance=ExtResource("8_taqhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.22233, -1.3545, 0.0520664)
