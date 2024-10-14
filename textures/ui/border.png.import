@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qy171x4uhdxf"
-path="res://.godot/imported/weapon1_1.png-2d268a1b82d0109120c6330f29f7399e.ctex"
+uid="uid://27x2i4l0loyp"
+path="res://.godot/imported/border.png-57ffe1f2ccb376572d8213dd45e88e8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/hand/knife/weapon1_1.png"
-dest_files=["res://.godot/imported/weapon1_1.png-2d268a1b82d0109120c6330f29f7399e.ctex"]
+source_file="res://textures/ui/border.png"
+dest_files=["res://.godot/imported/border.png-57ffe1f2ccb376572d8213dd45e88e8e.ctex"]
 
 [params]
 

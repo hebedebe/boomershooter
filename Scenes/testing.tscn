@@ -1,68 +1,78 @@
-[gd_scene load_steps=5 format=3 uid="uid://c52udikda2mlb"]
+[gd_scene load_steps=8 format=3 uid="uid://c52udikda2mlb"]
 
 [ext_resource type="Environment" uid="uid://cxnstx4v3xqp1" path="res://environments/default_environment.tres" id="1_dihhk"]
 [ext_resource type="PackedScene" uid="uid://cmfuhbafj68o0" path="res://prefabs/ceiling_lamp.tscn" id="1_j3y4o"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="5_fdask"]
 [ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://materials/hospital_wall.tres" id="6_pt6ac"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://materials/hospital_floor.tres" id="7_df1gi"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Curve" id="Curve_y31cg"]
+_data = [Vector2(0, 0), 0.0, 7.34596, 0, 0, Vector2(0.29316, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2rojy"]
+
+[node name="World" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = ExtResource("1_dihhk")
 
-[node name="Level" type="Node3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+[node name="Stage" type="Node3D" parent="."]
 
-[node name="CeilingLamp" parent="Level" instance=ExtResource("1_j3y4o")]
+[node name="CeilingLamp" parent="Stage" instance=ExtResource("1_j3y4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59221, 1.17824, 8.14577)
 
-[node name="CeilingLamp5" parent="Level" instance=ExtResource("1_j3y4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99135, -10.249, 9.05086)
+[node name="CeilingLamp5" parent="Stage" instance=ExtResource("1_j3y4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59221, -9.2241, 8.14577)
 light_energy = 0.557
 distance_fade_begin = 0.0
 omni_range = 15.508
 
-[node name="CeilingLamp4" parent="Level" instance=ExtResource("1_j3y4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64907, 1.30916, 9.32202)
+[node name="CeilingLamp4" parent="Stage" instance=ExtResource("1_j3y4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98416, 1.17824, 8.38982)
 
-[node name="CeilingLamp2" parent="Level" instance=ExtResource("1_j3y4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99135, 1.30916, 0.0508604)
+[node name="CeilingLamp2" parent="Stage" instance=ExtResource("1_j3y4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59221, 1.17824, 0.0457744)
 
-[node name="CeilingLamp3" parent="Level" instance=ExtResource("1_j3y4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00865, 1.30916, 0.0508604)
+[node name="CeilingLamp3" parent="Stage" instance=ExtResource("1_j3y4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20778, 1.17824, 0.0457744)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Level"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Stage"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 0.01, 0, 0, 0, 3, 4, -1.5, 9)
 flip_faces = true
 size = Vector3(3, 1, 3)
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 0.01, 0, 0, 0, 3, -6.5, -1.5, 9.32409)
 flip_faces = true
 size = Vector3(2, 1, 2)
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(1.86, 0, 0, 0, 0.0062, 0, 0, 0, 1.86, -6.51047, -1.52729, 9.31212)
 flip_faces = true
 size = Vector3(2, 7.30713, 2)
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 0.01, 0, 0, 0, 3, 4, -1.5, 0)
 flip_faces = true
 size = Vector3(1, 1, 3)
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 0.01, 0, 3, 0, -1.31134e-07, -2, -1.5, 9.17712)
 flip_faces = true
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 0.01, 0, 0, 0, 3, -2, -1.5, 0)
 material_override = ExtResource("6_pt6ac")
 use_collision = true
@@ -70,51 +80,64 @@ flip_faces = true
 size = Vector3(5, 1, 1)
 material = ExtResource("7_df1gi")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4, 0, 9)
 flip_faces = true
 size = Vector3(3, 1, 3)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.5, 0, 9.32409)
 flip_faces = true
 size = Vector3(2, 1, 2)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(1.86, 0, 0, 0, 1.86, 0, 0, 0, 1.86, -6.51047, -8.18646, 9.31212)
 flip_faces = true
 size = Vector3(2, 7.30713, 2)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(1.86, 0, 0, 0, 1.86, 0, 0, 0, 1.86, -5.58047, -13.1221, 9.31212)
 flip_faces = true
 size = Vector3(3, 2, 2)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(1.86, 0, 0, 0, 1.86, 0, 0, 0, 1.86, 5.57953, -12.3819, 9.31212)
 flip_faces = true
 size = Vector3(9, 2.7959, 8)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4, 0, 0)
 flip_faces = true
 size = Vector3(1, 1, 3)
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, -2, 0, 9.17712)
 flip_faces = true
 material = ExtResource("6_pt6ac")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Level/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Stage/CSGCombiner3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.99856, 0, 0)
 material_override = ExtResource("6_pt6ac")
 use_collision = true
 flip_faces = true
 size = Vector3(5, 1, 1)
 material = ExtResource("6_pt6ac")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("5_fdask")
+jump_velocity = -0.725
+acceleration_curve = SubResource("Curve_y31cg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_2rojy")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
