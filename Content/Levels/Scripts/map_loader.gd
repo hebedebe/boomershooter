@@ -3,9 +3,6 @@ extends Node3D
 @export var maps: Array[PackedScene] = []
 @onready var network: Node = $"../Network"
 
-func _ready() -> void:
-	spawn_random_map()
-
 func spawn_random_map():
 	load_map_from_packed_scene(maps.pick_random())
 

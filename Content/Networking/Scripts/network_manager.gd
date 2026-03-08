@@ -31,6 +31,8 @@ func start_host():
 	
 	_on_player_connected(multiplayer.get_unique_id())
 	
+	$"../Map".spawn_random_map()
+	
 	network_ui.visible = false;
 	
 func start_client():
@@ -47,9 +49,11 @@ func start_client():
 func _on_player_connected(id: int):
 	print("Player %s joined the game" % id)
 	
-	var player = player_scene.instantiate()
+	var player: Player = player_scene.instantiate()
 	player.name = str(id)
-	spawned_nodes.add_child(player, true)
+	player.username = local_username
+	replicate(player)
+	
 func _on_player_disconnected(id: int):
 	print("Player %s left the game" % id)
 	

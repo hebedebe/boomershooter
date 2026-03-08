@@ -59,7 +59,7 @@ size_flags_vertical = 4
 text = "Join Server"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=59691357]
-_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://ub6pxinpiewa")
+_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://b1xwdvlv4otyv")
 spawn_path = NodePath("../NetworkInstantiatedObjects")
 
 [node name="NetworkInstantiatedObjects" type="Node" parent="." unique_id=1823494445]

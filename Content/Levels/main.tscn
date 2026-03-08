@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bmbns44vimamd" path="res://Content/Networking/network.tscn" id="1_y1o6t"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Blank/blank.tscn" id="3_jxnjk"]
-[ext_resource type="PackedScene" uid="uid://ub6pxinpiewa" path="res://Content/Levels/Maps/Blank/sphere.tscn" id="4_ec0n0"]
+[ext_resource type="PackedScene" uid="uid://ub6pxinpiewa" path="res://Content/Levels/Maps/Sphere/sphere.tscn" id="4_ec0n0"]
+[ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
 
 [sub_resource type="GDScript" id="GDScript_jxnjk"]
 script/source = "extends Node3D
@@ -20,4 +21,4 @@ script = SubResource("GDScript_jxnjk")
 
 [node name="Map" type="Node3D" parent="." unique_id=285992084]
 script = ExtResource("2_runna")
-maps = Array[PackedScene]([ExtResource("3_jxnjk"), ExtResource("4_ec0n0")])
+maps = Array[PackedScene]([ExtResource("3_jxnjk"), ExtResource("4_ec0n0"), ExtResource("5_q6qep")])

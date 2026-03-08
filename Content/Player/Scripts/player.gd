@@ -17,6 +17,8 @@ extends CharacterBody3D
 var current_acceleration : float = 0
 var lock_mouse = true
 
+var username: String
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	if is_multiplayer_authority():
