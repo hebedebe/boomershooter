@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm7wkmcuwwpxn"
-path.s3tc="res://.godot/imported/project_icon.png-dde21f4089c4b26238f53597a56a8098.s3tc.ctex"
+uid="uid://ckucsek60itqg"
+path.s3tc="res://.godot/imported/purple_circuit.png-255e33518a1d566630dade31482ee982.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://project_icon.png"
-dest_files=["res://.godot/imported/project_icon.png-dde21f4089c4b26238f53597a56a8098.s3tc.ctex"]
+source_file="res://Art/Textures/Spatial/purple_circuit.png"
+dest_files=["res://.godot/imported/purple_circuit.png-255e33518a1d566630dade31482ee982.s3tc.ctex"]
 
 [params]
 

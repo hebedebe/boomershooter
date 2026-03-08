@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bmbns44vimamd"]
+
+[ext_resource type="Script" uid="uid://fde8yaqd1i5s" path="res://Content/Networking/Scripts/network_manager.gd" id="1_8vdkd"]
+
+[node name="Network" type="Node" unique_id=303830956]
+script = ExtResource("1_8vdkd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321245926]
+
+[node name="NetworkUI" type="Panel" parent="CanvasLayer" unique_id=1851565272]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NetworkUI" unique_id=757673031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 12.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UsernameInput" type="LineEdit" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=1098471546]
+layout_mode = 2
+placeholder_text = "Username..."
+
+[node name="IPInput" type="LineEdit" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=1540103816]
+layout_mode = 2
+text = "localhost"
+placeholder_text = "IP address..."
+
+[node name="PortInput" type="LineEdit" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=1445001467]
+layout_mode = 2
+text = "8080"
+placeholder_text = "Port..."
+
+[node name="StartServerButton" type="Button" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=831359447]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Start Server"
+
+[node name="JoinServerButton" type="Button" parent="CanvasLayer/NetworkUI/VBoxContainer" unique_id=1234523273]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Join Server"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=59691357]
+_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://ub6pxinpiewa")
+spawn_path = NodePath("../NetworkInstantiatedObjects")
+
+[node name="NetworkInstantiatedObjects" type="Node" parent="." unique_id=1823494445]
+
+[connection signal="text_changed" from="CanvasLayer/NetworkUI/VBoxContainer/UsernameInput" to="." method="_on_username_input_text_changed"]
+[connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/StartServerButton" to="." method="start_host"]
+[connection signal="pressed" from="CanvasLayer/NetworkUI/VBoxContainer/JoinServerButton" to="." method="start_client"]

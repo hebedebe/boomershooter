@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dj3ng3t0l6s1o"]
+
+[ext_resource type="PackedScene" uid="uid://bmbns44vimamd" path="res://Content/Networking/network.tscn" id="1_y1o6t"]
+[ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
+[ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Blank/blank.tscn" id="3_jxnjk"]
+[ext_resource type="PackedScene" uid="uid://ub6pxinpiewa" path="res://Content/Levels/Maps/Blank/sphere.tscn" id="4_ec0n0"]
+
+[sub_resource type="GDScript" id="GDScript_jxnjk"]
+script/source = "extends Node3D
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_pressed(\"quit\"):
+		get_tree().quit()
+"
+
+[node name="Main" type="Node3D" unique_id=440981399]
+script = SubResource("GDScript_jxnjk")
+
+[node name="Network" parent="." unique_id=303830956 instance=ExtResource("1_y1o6t")]
+
+[node name="Map" type="Node3D" parent="." unique_id=285992084]
+script = ExtResource("2_runna")
+maps = Array[PackedScene]([ExtResource("3_jxnjk"), ExtResource("4_ec0n0")])

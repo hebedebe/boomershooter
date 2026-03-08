@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ub6pxinpiewa"]
+
+[ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="1_bfnnm"]
+[ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="2_o0g21"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wnn6w"]
+panorama = ExtResource("1_bfnnm")
+
+[sub_resource type="Sky" id="Sky_3m3rv"]
+sky_material = SubResource("PanoramaSkyMaterial_wnn6w")
+
+[sub_resource type="Environment" id="Environment_wnn6w"]
+background_mode = 2
+sky = SubResource("Sky_3m3rv")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+
+[node name="World" type="Node3D" unique_id=886298498]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1801129146]
+environment = SubResource("Environment_wnn6w")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=902083271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.200432, 0)
+use_collision = true
+radius = 16.606571
+radial_segments = 36
+rings = 40
+material = ExtResource("2_o0g21")

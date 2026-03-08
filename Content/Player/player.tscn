@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://b5dbmv7xvb3sb"]
+
+[ext_resource type="Script" uid="uid://c5uceoeajm10t" path="res://Content/Player/Scripts/player.gd" id="1_thq5r"]
+[ext_resource type="Material" uid="uid://c88i2703y5rds" path="res://Art/Materials/Spatial/purple_circuit.tres" id="2_2fsga"]
+[ext_resource type="Script" uid="uid://bnvxnurqkrkf3" path="res://Content/Player/Scripts/player_camera.gd" id="2_kbsyd"]
+[ext_resource type="Curve" uid="uid://dp3d6lwex6ss2" path="res://Content/Player/player_acceleration_curve.tres" id="2_luk42"]
+[ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/Chromakey.gdshader" id="3_7d8p2"]
+[ext_resource type="Script" uid="uid://dr8bwgcw0q7wm" path="res://Content/Player/player_attack.gd" id="3_68xdw"]
+[ext_resource type="Texture2D" uid="uid://dyat1hdbschou" path="res://Art/Textures/UI/hand_default.png" id="3_rn1qw"]
+[ext_resource type="Script" uid="uid://dw5vsi4apwlw7" path="res://Content/Player/Scripts/player_input_synchronizer.gd" id="3_uei5y"]
+[ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
+[ext_resource type="VideoStream" uid="uid://b17tgkl0gb1tt" path="res://Art/Textures/UI/slash.ogv" id="8_2mypc"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:name")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_68xdw"]
+material = ExtResource("2_2fsga")
+radius = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px8o0"]
+radius = 0.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68xdw"]
+auto_exposure_enabled = true
+auto_exposure_scale = 0.01
+
+[sub_resource type="GDScript" id="GDScript_uei5y"]
+script/source = "extends CanvasLayer
+
+
+func _enter_tree() -> void:
+	visible = is_multiplayer_authority()
+"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rn1qw"]
+viewport_path = NodePath("HoldingViewport")
+
+[sub_resource type="GDScript" id="GDScript_rn1qw"]
+script/source = "extends TextureRect
+
+@onready var camera: PlayerCamera = $\"../../../Neck/Camera\"
+
+func _process(_delta: float) -> void:
+	var local_velocity = camera.get_local_velocity()
+	position = Vector2(local_velocity.x, local_velocity.z)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mypc"]
+shader = ExtResource("3_7d8p2")
+shader_parameter/transparent_color = Color(0, 0.5529412, 0, 1)
+shader_parameter/pickup_range = 0.374000017765
+shader_parameter/fade_amount = 0.40000000596048
+
+[sub_resource type="GDScript" id="GDScript_1q6fh"]
+script/source = "extends VideoStreamPlayer
+
+@onready var camera: PlayerCamera = $\"../../../Neck/Camera\"
+
+func _process(_delta: float) -> void:
+	var local_velocity = camera.get_local_velocity()
+	position = Vector2(local_velocity.x, local_velocity.z)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
+shader = ExtResource("3_7d8p2")
+shader_parameter/transparent_color = Color(1, 1, 1, 1)
+shader_parameter/pickup_range = 1.0
+shader_parameter/fade_amount = 0.5
+
+[sub_resource type="GDScript" id="GDScript_2mypc"]
+script/source = "extends Label
+
+
+func _enter_tree() -> void:
+	text = $\"../../..\".name
+"
+
+[node name="Player" type="CharacterBody3D" unique_id=523176458]
+script = ExtResource("1_thq5r")
+speed = 10.0
+jump_velocity = 3.0
+acceleration_curve = ExtResource("2_luk42")
+
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=874593681]
+replication_config = SubResource("SceneReplicationConfig_luk42")
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1684370196]
+replication_config = SubResource("SceneReplicationConfig_luk42")
+script = ExtResource("3_uei5y")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=472199481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_68xdw")
+
+[node name="PlayerCollider" type="CollisionShape3D" parent="." unique_id=342268889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_px8o0")
+
+[node name="Aura" type="OmniLight3D" parent="." unique_id=1991113423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.72156864, 0, 1, 1)
+light_volumetric_fog_energy = 0.06
+
+[node name="Neck" type="Node3D" parent="." unique_id=544283028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7956089, 0)
+
+[node name="Camera" type="Camera3D" parent="Neck" unique_id=501222964]
+cull_mask = 1047553
+attributes = SubResource("CameraAttributesPractical_68xdw")
+fov = 90.0
+script = ExtResource("2_kbsyd")
+tilt_strength = Vector2(0.1, 0.2)
+
+[node name="Attack" type="Node3D" parent="." unique_id=376902029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_68xdw")
+
+[node name="HoldingViewport" type="SubViewport" parent="." unique_id=1541248604]
+transparent_bg = true
+size = Vector2i(960, 540)
+
+[node name="HoldingCamera" type="Camera3D" parent="HoldingViewport" unique_id=1926854467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7956089, 0)
+cull_mask = 1047554
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1227405404]
+script = SubResource("GDScript_uei5y")
+
+[node name="Canvas" type="Control" parent="HUD" unique_id=155890052]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HoldingTexFromCam" type="TextureRect" parent="HUD/Canvas" unique_id=1744016205]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rn1qw")
+expand_mode = 1
+script = SubResource("GDScript_rn1qw")
+
+[node name="HoldingTex" type="TextureRect" parent="HUD/Canvas" unique_id=772857905]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rn1qw")
+expand_mode = 1
+flip_h = true
+script = SubResource("GDScript_rn1qw")
+
+[node name="Slash" type="VideoStreamPlayer" parent="HUD/Canvas" unique_id=253791783]
+material = SubResource("ShaderMaterial_2mypc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("8_2mypc")
+speed_scale = 2.0
+autoplay = true
+expand = true
+script = SubResource("GDScript_1q6fh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="HUD/Canvas" unique_id=1298493384]
+material = SubResource("ShaderMaterial_rn1qw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_x8iml")
+autoplay = true
+expand = true
+loop = true
+
+[node name="ID" type="Label" parent="HUD/Canvas" unique_id=747798068]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = SubResource("GDScript_2mypc")

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bv62xavghlpfv"]
+
+[ext_resource type="Texture2D" uid="uid://htqg5yp2xdva" path="res://Art/Textures/Spatial/Frosted Glass/frosted_glass_d.png" id="1_nr5sq"]
+[ext_resource type="Texture2D" uid="uid://cedp7vh7xtuhk" path="res://Art/Textures/Spatial/Frosted Glass/frosted_glass_n.png" id="2_73oxm"]
+[ext_resource type="Texture2D" uid="uid://gweqpjprla3d" path="res://Art/Textures/Spatial/Frosted Glass/frosted_glass_s.png" id="3_wnvlk"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.827451)
+albedo_texture = ExtResource("1_nr5sq")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("3_wnvlk")
+normal_enabled = true
+normal_texture = ExtResource("2_73oxm")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

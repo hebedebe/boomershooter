@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://duil2sbafi7a0"]
+
+[ext_resource type="Shader" uid="uid://qk77bd4kax3b" path="res://Art/Shaders/Spatial/static.gdshader" id="1_jd6jb"]
+[ext_resource type="Material" uid="uid://bhxcprokw05en" path="res://Art/Materials/Spatial/outline.tres" id="1_xqxl0"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_xqxl0")
+shader = ExtResource("1_jd6jb")
+shader_parameter/scroll_speed = Vector2(3, -3)
+shader_parameter/static_intensity = 0.35
+shader_parameter/color = Color(7.189531e-07, 0.2561691, 4.813075e-08, 1)
+shader_parameter/tex_scale = 3.0

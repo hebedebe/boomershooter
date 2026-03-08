@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c88i2703y5rds"]
+
+[ext_resource type="Texture2D" uid="uid://ckucsek60itqg" path="res://Art/Textures/Spatial/purple_circuit.png" id="1_xk342"]
+[ext_resource type="Texture2D" uid="uid://bh7wprapyvgk" path="res://Art/Textures/Spatial/Metal/metal_n.png" id="2_76ta1"]
+[ext_resource type="Texture2D" uid="uid://jlcr1u31ykja" path="res://Art/Textures/Spatial/Metal/metal_s.png" id="3_0e6n0"]
+
+[resource]
+specular_mode = 2
+disable_fog = true
+albedo_texture = ExtResource("1_xk342")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("3_0e6n0")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("1_xk342")
+normal_texture = ExtResource("2_76ta1")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_world_triplanar = true
+texture_filter = 0

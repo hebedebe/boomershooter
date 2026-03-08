@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm7wkmcuwwpxn"
-path.s3tc="res://.godot/imported/project_icon.png-dde21f4089c4b26238f53597a56a8098.s3tc.ctex"
+uid="uid://js4yesgqp7q5"
+path.s3tc="res://.godot/imported/hospital_floor_s.png-c635ff2c0e41ec4ad1246f77e7c7a5b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://project_icon.png"
-dest_files=["res://.godot/imported/project_icon.png-dde21f4089c4b26238f53597a56a8098.s3tc.ctex"]
+source_file="res://Art/Textures/Spatial/Hospital Floor/hospital_floor_s.png"
+dest_files=["res://.godot/imported/hospital_floor_s.png-c635ff2c0e41ec4ad1246f77e7c7a5b0.s3tc.ctex"]
 
 [params]
 
