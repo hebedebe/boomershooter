@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Blank/blank.tscn" id="3_jxnjk"]
 [ext_resource type="PackedScene" uid="uid://ub6pxinpiewa" path="res://Content/Levels/Maps/Sphere/sphere.tscn" id="4_ec0n0"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
+[ext_resource type="AudioStream" uid="uid://b18tblqkiua47" path="res://Art/Sounds/FX/Theme.mp3" id="6_516sn"]
 
 [sub_resource type="GDScript" id="GDScript_jxnjk"]
 script/source = "extends Node3D
@@ -22,3 +23,8 @@ script = SubResource("GDScript_jxnjk")
 [node name="Map" type="Node3D" parent="." unique_id=285992084]
 script = ExtResource("2_runna")
 maps = Array[PackedScene]([ExtResource("3_jxnjk"), ExtResource("4_ec0n0"), ExtResource("5_q6qep")])
+
+[node name="Theme" type="AudioStreamPlayer" parent="." unique_id=852464650]
+stream = ExtResource("6_516sn")
+autoplay = true
+parameters/looping = true

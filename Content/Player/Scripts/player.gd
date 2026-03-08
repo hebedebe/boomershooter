@@ -13,6 +13,8 @@ extends CharacterBody3D
 @export var mouse_sensitivity : float = 0.35
 
 @onready var neck = $Neck
+@onready var footsteps: AudioStreamPlayer3D = $Footsteps
+@onready var jump: AudioStreamPlayer3D = $Jump
 
 var network_manager: NetworkManager
 
@@ -40,6 +42,10 @@ func _input(event):
 		neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _process(_delta):
+	var should_footsteps_play = velocity.length_squared() > 10 and is_on_floor()
+	if should_footsteps_play != footsteps.playing:
+		footsteps.playing = should_footsteps_play
+	
 	if not is_multiplayer_authority(): return
 	
 	var target_mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -61,6 +67,7 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		jump.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

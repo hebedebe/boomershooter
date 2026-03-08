@@ -5,6 +5,7 @@ extends State
 @onready var camera: PlayerCamera = $"../../Neck/Camera"
 @onready var duration: Timer = $Duration
 @onready var attack_cooldown: Node = $"../AttackCooldown"
+@onready var attack: AudioStreamPlayer = $Attack
 
 func _ready() -> void:
 	duration.timeout.connect(cooldown)
@@ -13,6 +14,7 @@ func on_enter():
 	attack_tex.visible = true
 	rpc_id(1, "create_attack")
 	duration.start()
+	attack.play()
 
 @rpc("any_peer", "call_local")
 func create_attack():
