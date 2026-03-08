@@ -5,9 +5,9 @@ extends Node
 const MAX_CLIENTS: int = 2;
 
 #region UI nodes
-@onready var network_ui: Panel = $CanvasLayer/NetworkUI
-@onready var ip_input: LineEdit = $CanvasLayer/NetworkUI/VBoxContainer/IPInput
-@onready var port_input: LineEdit = $CanvasLayer/NetworkUI/VBoxContainer/PortInput
+@onready var network_ui: CanvasLayer = $NetworkUI
+@onready var ip_input: LineEdit = $NetworkUI/NetworkUIPanel/VBoxContainer/IPInput
+@onready var port_input: LineEdit = $NetworkUI/NetworkUIPanel/VBoxContainer/PortInput
 #endregion
 
 #region Network spawning

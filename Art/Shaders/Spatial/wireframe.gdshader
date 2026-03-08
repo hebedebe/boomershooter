@@ -1,6 +1,7 @@
 shader_type spatial;
 
 render_mode unshaded;
+render_mode cull_disabled;
 
 uniform vec4 modelColor : source_color;
 uniform vec4 wireframeColor : source_color;
