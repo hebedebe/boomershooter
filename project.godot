@@ -26,7 +26,6 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 
 [editor]
 
@@ -44,6 +43,10 @@ folder_colors={
 "res://Content/": "red",
 "res://Data/": "teal"
 }
+
+[global_group]
+
+network_manager="Group that contains only the network manager node"
 
 [input]
 

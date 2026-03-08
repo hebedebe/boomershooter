@@ -14,10 +14,15 @@ extends CharacterBody3D
 
 @onready var neck = $Neck
 
+var network_manager: NetworkManager
+
 var current_acceleration : float = 0
 var lock_mouse = true
 
 var username: String
+
+func _ready():
+	network_manager = get_tree().get_first_node_in_group("network_manager")
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -77,3 +82,6 @@ func _physics_process(delta):
 		velocity.z = temp_velocity.y
 
 	move_and_slide()
+
+func hit():
+	pass

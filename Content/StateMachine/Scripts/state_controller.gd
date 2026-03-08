@@ -2,8 +2,11 @@ class_name StateController
 extends Node
 
 @export var state: State
+@export var require_network_authority: bool = true
 
 func _ready() -> void:
+	if require_network_authority and not is_multiplayer_authority(): return
+	
 	if state:
 		state.enter()
 	else:
@@ -14,6 +17,8 @@ func _ready() -> void:
 			child.state_controller = self
 
 func _process(delta: float) -> void:
+	if require_network_authority and not is_multiplayer_authority(): return
+	
 	if state:
 		state.process(delta)
 

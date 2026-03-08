@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fde8yaqd1i5s" path="res://Content/Networking/Scripts/network_manager.gd" id="1_8vdkd"]
 
-[node name="Network" type="Node" unique_id=303830956]
+[node name="Network" type="Node" unique_id=303830956 groups=["network_manager"]]
 script = ExtResource("1_8vdkd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321245926]
@@ -59,7 +59,7 @@ size_flags_vertical = 4
 text = "Join Server"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=59691357]
-_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://b1xwdvlv4otyv")
+_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://b1xwdvlv4otyv", "uid://dn37y35itiegv")
 spawn_path = NodePath("../NetworkInstantiatedObjects")
 
 [node name="NetworkInstantiatedObjects" type="Node" parent="." unique_id=1823494445]

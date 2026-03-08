@@ -1,3 +1,4 @@
+class_name NetworkManager
 extends Node
 
 #region Variables
