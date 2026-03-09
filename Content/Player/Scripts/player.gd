@@ -23,6 +23,7 @@ signal on_parried(source_path: NodePath)
 @onready var attack_state_controller: StateController = $AttackStateController
 @onready var hurt_sound: AudioStreamPlayer = $Hurt
 @onready var dash_cooldown: Timer = $DashCooldown
+@onready var dash_sound: AudioStreamPlayer = $DashSound
 
 
 var network_manager: NetworkManager
@@ -73,12 +74,18 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
+		if Input.is_action_pressed("slam"):
+			velocity.y -= 6 * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		jump.play()
 		
+
+	var deceleration = deceleration_speed
+	if !is_on_floor():
+		deceleration = deceleration_speed * 0.8
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -93,14 +100,15 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
 			velocity += direction * 40
 			dash_cooldown.start()
+			dash_sound.play()
 		
 		var temp_velocity = Vector2(velocity.x, velocity.z)
-		temp_velocity = lerp(temp_velocity, Vector2(direction.x * current_speed, direction.z * current_speed), deceleration_speed * delta)
+		temp_velocity = lerp(temp_velocity, Vector2(direction.x * current_speed, direction.z * current_speed), deceleration * delta)
 		velocity.x = temp_velocity.x
 		velocity.z = temp_velocity.y
 	else:
 		var temp_velocity = Vector2(velocity.x, velocity.z)
-		temp_velocity = lerp(temp_velocity, Vector2.ZERO, deceleration_speed * delta)
+		temp_velocity = lerp(temp_velocity, Vector2.ZERO, deceleration * delta)
 		velocity.x = temp_velocity.x
 		velocity.z = temp_velocity.y
 

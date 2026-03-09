@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/Hurt.mp3" id="3_rtr7s"]
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
 [ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/Jump.mp3" id="3_yevl6"]
+[ext_resource type="AudioStream" uid="uid://dervputdob3yo" path="res://Art/Sounds/FX/Dash.mp3" id="4_yrxhh"]
 [ext_resource type="Script" uid="uid://dw4rxit35xb16" path="res://Content/Player/Scripts/States/idle.gd" id="6_20pa1"]
 [ext_resource type="Texture2D" uid="uid://b4wtp3sxa5ekt" path="res://Art/Textures/UI/hand_block.png" id="6_aak6e"]
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
@@ -49,6 +50,10 @@ radius = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px8o0"]
 radius = 0.4
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68xdw"]
+auto_exposure_enabled = true
+auto_exposure_scale = 0.01
+
 [sub_resource type="GDScript" id="GDScript_rn1qw"]
 script/source = "extends TextureRect
 
@@ -59,10 +64,6 @@ func _process(_delta: float) -> void:
 		var local_velocity = camera.get_local_velocity()
 		position = Vector2(local_velocity.x, local_velocity.z)
 "
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68xdw"]
-auto_exposure_enabled = true
-auto_exposure_scale = 0.01
 
 [sub_resource type="GDScript" id="GDScript_uei5y"]
 script/source = "extends CanvasLayer
@@ -120,6 +121,9 @@ one_shot = true
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=1669148541]
 stream = ExtResource("3_rtr7s")
 
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=610570339]
+stream = ExtResource("4_yrxhh")
+
 [node name="Jump" type="AudioStreamPlayer3D" parent="." unique_id=1475004018]
 stream = ExtResource("3_yevl6")
 
@@ -145,6 +149,26 @@ light_energy = 2.0
 light_volumetric_fog_energy = 0.06
 light_size = 0.2
 omni_range = 10.0
+
+[node name="Neck" type="Node3D" parent="." unique_id=544283028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7956089, 0)
+
+[node name="Camera" type="Camera3D" parent="Neck" unique_id=501222964]
+physics_interpolation_mode = 1
+cull_mask = 1047553
+attributes = SubResource("CameraAttributesPractical_68xdw")
+doppler_tracking = 2
+fov = 90.0
+far = 100.0
+script = ExtResource("2_kbsyd")
+tilt_strength = Vector2(0.1, 0.2)
+base_FOV = null
+FOV_modifier = null
+
+[node name="AttackRay" type="RayCast3D" parent="Neck/Camera" unique_id=1746267806]
+enabled = false
+target_position = Vector3(0, 0, -2.5)
+hit_back_faces = false
 
 [node name="AttackStateController" type="Node" parent="." unique_id=292420767 node_paths=PackedStringArray("state")]
 script = ExtResource("6_wonq3")
@@ -322,22 +346,6 @@ grow_vertical = 2
 expand_mode = 1
 flip_h = true
 script = SubResource("GDScript_rn1qw")
-
-[node name="Neck" type="Node3D" parent="." unique_id=544283028]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7956089, 0)
-
-[node name="Camera" type="Camera3D" parent="Neck" unique_id=501222964]
-physics_interpolation_mode = 1
-cull_mask = 1047553
-attributes = SubResource("CameraAttributesPractical_68xdw")
-fov = 90.0
-script = ExtResource("2_kbsyd")
-tilt_strength = Vector2(0.1, 0.2)
-
-[node name="AttackRay" type="RayCast3D" parent="Neck/Camera" unique_id=1746267806]
-enabled = false
-target_position = Vector3(0, 0, -2.5)
-hit_back_faces = false
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1227405404]
 script = SubResource("GDScript_uei5y")
