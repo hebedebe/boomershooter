@@ -12,6 +12,7 @@ signal on_parried(source_path: NodePath)
 @export var curve_speed : float = 0.6
 @export var acceleration_speed : float = 6
 @export var deceleration_speed : float = 10
+@export var slam_force : float = 120
 
 @export_category("Mouse")
 @export var mouse_sensitivity : float = 0.35
@@ -75,7 +76,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += gravity * delta
 		if Input.is_action_pressed("slam"):
-			velocity.y -= 60 * delta
+			velocity.y -= slam_force * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -98,7 +99,7 @@ func _physics_process(delta):
 		
 		#Dash
 		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
-			velocity += direction * 40 + direction * velocity.length()
+			velocity += direction * 40 + direction * velocity.length() * 2
 			dash_cooldown.start()
 			dash_sound.play()
 		
