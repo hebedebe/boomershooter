@@ -8,15 +8,13 @@
 
 config_version=5
 
-[animation]
-
-compatibility/default_parent_skeleton_in_mesh_instance_3d=true
-
 [application]
 
 config/name="Boomer Shooter"
+config/version="0.1"
 run/main_scene="uid://dj3ng3t0l6s1o"
 config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://dprfv0svf4406"
 
 [debug]
 
