@@ -142,4 +142,4 @@ func hurt(source_path: NodePath):
 	var source_player: Player = get_node(source_path)
 	if source_player:
 		var direction = (source_player.global_position - global_position).normalized()
-		velocity += direction * -70
+		velocity += direction * -70 + direction * -source_player.velocity.length()

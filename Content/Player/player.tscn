@@ -42,6 +42,9 @@ properties/3/replication_mode = 2
 properties/4/path = NodePath("Neck:rotation")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath(".:velocity")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_68xdw"]
 material = ExtResource("2_2fsga")
@@ -114,6 +117,9 @@ speed = 10.0
 jump_velocity = 5.0
 acceleration_curve = ExtResource("2_luk42")
 
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=874593681]
+replication_config = SubResource("SceneReplicationConfig_luk42")
+
 [node name="DashCooldown" type="Timer" parent="." unique_id=1666683208]
 wait_time = 0.7
 one_shot = true
@@ -130,9 +136,6 @@ stream = ExtResource("3_yevl6")
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1755956209]
 stream = ExtResource("3_4p16a")
 pitch_scale = 2.0
-
-[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=874593681]
-replication_config = SubResource("SceneReplicationConfig_luk42")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=472199481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -162,8 +165,6 @@ fov = 90.0
 far = 100.0
 script = ExtResource("2_kbsyd")
 tilt_strength = Vector2(0.1, 0.2)
-base_FOV = null
-FOV_modifier = null
 
 [node name="AttackRay" type="RayCast3D" parent="Neck/Camera" unique_id=1746267806]
 enabled = false
