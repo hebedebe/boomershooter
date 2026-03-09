@@ -4,9 +4,15 @@ extends State
 @onready var idle: Node = $"../Idle"
 @onready var idle_tex: TextureRect = $CanvasLayer/IdleTex
 @onready var overheat: AudioStreamPlayer = $Overheat
+@onready var player: Player = $"../.."
 
 func _ready() -> void:
 	cooldown.timeout.connect(go_idle)
+	player.on_hit.connect(on_hit)
+
+func on_hit(source_path: NodePath):
+	if not active: return
+	player.hurt_remote(source_path)
 	
 func on_enter():
 	cooldown.start()

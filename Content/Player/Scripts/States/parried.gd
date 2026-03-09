@@ -1,16 +1,24 @@
 extends State
 
 @onready var duration: Timer = $Duration
-@onready var idle: Node = $"../Idle"
+@onready var attack_cooldown: State = $"../AttackCooldown"
+@onready var player: Player = $"../.."
 
 func _ready() -> void:
-	duration.timeout.connect(go_idle)
+	duration.timeout.connect(go_cooldown)
+	player.on_hit.connect(on_hit)
+
+func on_hit(source_path: NodePath):
+	if not active: return
+	player.hurt_remote(source_path)
 	
-func go_idle():
-	state_controller.set_state(idle)
+func go_cooldown():
+	state_controller.set_state(attack_cooldown)
 
 func on_enter():
 	duration.start()
+	player.active = false
 	
 func on_exit():
 	duration.stop()
+	player.active=true

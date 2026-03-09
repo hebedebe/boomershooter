@@ -7,11 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://dxidc8bcrhwmh" path="res://Art/Sounds/FX/Footsteps.mp3" id="3_4p16a"]
 [ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/Chromakey.gdshader" id="3_7d8p2"]
 [ext_resource type="Texture2D" uid="uid://dyat1hdbschou" path="res://Art/Textures/UI/hand_default.png" id="3_rn1qw"]
+[ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/Hurt.mp3" id="3_rtr7s"]
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
 [ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/Jump.mp3" id="3_yevl6"]
-[ext_resource type="Script" uid="uid://bbxbahjxukxxr" path="res://Content/StateMachine/Scripts/state_controller.gd" id="5_wggg8"]
 [ext_resource type="Script" uid="uid://dw4rxit35xb16" path="res://Content/Player/Scripts/States/idle.gd" id="6_20pa1"]
 [ext_resource type="Texture2D" uid="uid://b4wtp3sxa5ekt" path="res://Art/Textures/UI/hand_block.png" id="6_aak6e"]
+[ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
 [ext_resource type="Script" uid="uid://djn5fr6pqu6ni" path="res://Content/Player/Scripts/States/block.gd" id="7_uot30"]
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
@@ -20,6 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://cn12ruklnsvrg" path="res://Art/Sounds/FX/Overheat.mp3" id="10_6qlop"]
 [ext_resource type="AudioStream" uid="uid://bglfljbqfeyu1" path="res://Art/Sounds/FX/BlockingHum.mp3" id="10_v2n5w"]
 [ext_resource type="Script" uid="uid://0gej1xwgh5d0" path="res://Content/Player/Scripts/States/parried.gd" id="12_20pa1"]
+[ext_resource type="AudioStream" uid="uid://vssu6qg84k13" path="res://Art/Sounds/FX/Block.mp3" id="12_qqdic"]
+[ext_resource type="Script" uid="uid://b21is8ytr1cuq" path="res://Content/Player/Scripts/States/parry.gd" id="12_wonq3"]
+[ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/Parry.mp3" id="13_5gbni"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -101,12 +105,16 @@ func _process(_delta: float) -> void:
 		text = \"state: unset (this is a bug)\"
 "
 
-[node name="Player" type="CharacterBody3D" unique_id=523176458]
+[node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
 physics_interpolation_mode = 1
 script = ExtResource("1_thq5r")
+gravity = Vector3(0, -9.82, 0)
 speed = 10.0
 jump_velocity = 5.0
 acceleration_curve = ExtResource("2_luk42")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=1669148541]
+stream = ExtResource("3_rtr7s")
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="." unique_id=1475004018]
 stream = ExtResource("3_yevl6")
@@ -135,7 +143,7 @@ light_size = 0.2
 omni_range = 10.0
 
 [node name="AttackStateController" type="Node" parent="." unique_id=292420767 node_paths=PackedStringArray("state")]
-script = ExtResource("5_wggg8")
+script = ExtResource("6_wonq3")
 state = NodePath("Idle")
 metadata/_custom_type_script = "uid://bbxbahjxukxxr"
 
@@ -163,6 +171,8 @@ metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Block" unique_id=98989972]
 
+[node name="ParryWindow" type="Timer" parent="AttackStateController/Block" unique_id=239728768]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Block" unique_id=601694908]
 
 [node name="BlockTex" type="TextureRect" parent="AttackStateController/Block/CanvasLayer" unique_id=68002313]
@@ -179,6 +189,38 @@ script = SubResource("GDScript_rn1qw")
 
 [node name="BlockingHum" type="AudioStreamPlayer" parent="AttackStateController/Block" unique_id=1357785622]
 stream = ExtResource("10_v2n5w")
+
+[node name="Block" type="AudioStreamPlayer" parent="AttackStateController/Block" unique_id=635267819]
+stream = ExtResource("12_qqdic")
+
+[node name="Parry" type="Node" parent="AttackStateController" unique_id=218078181]
+script = ExtResource("12_wonq3")
+max_duration = 0.1
+metadata/_custom_type_script = "uid://dpigb0oovgdxr"
+
+[node name="Duration" type="Timer" parent="AttackStateController/Parry" unique_id=1434792563]
+
+[node name="ParryWindow" type="Timer" parent="AttackStateController/Parry" unique_id=1443363329]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Parry" unique_id=2004496496]
+
+[node name="BlockTex" type="TextureRect" parent="AttackStateController/Parry/CanvasLayer" unique_id=2032852873]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_aak6e")
+expand_mode = 1
+flip_h = true
+script = SubResource("GDScript_rn1qw")
+
+[node name="BlockingHum" type="AudioStreamPlayer" parent="AttackStateController/Parry" unique_id=1209762083]
+stream = ExtResource("10_v2n5w")
+
+[node name="Parry" type="AudioStreamPlayer" parent="AttackStateController/Parry" unique_id=1980718146]
+stream = ExtResource("13_5gbni")
 
 [node name="BlockCooldown" type="Node" parent="AttackStateController" unique_id=1081726391]
 script = ExtResource("9_v4ny3")
@@ -254,7 +296,6 @@ script = ExtResource("12_20pa1")
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Parried" unique_id=533504688]
-wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Parried" unique_id=1870479148]
 
@@ -279,6 +320,11 @@ attributes = SubResource("CameraAttributesPractical_68xdw")
 fov = 90.0
 script = ExtResource("2_kbsyd")
 tilt_strength = Vector2(0.1, 0.2)
+
+[node name="AttackRay" type="RayCast3D" parent="Neck/Camera" unique_id=1746267806]
+enabled = false
+target_position = Vector3(0, 0, -2.5)
+hit_back_faces = false
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1227405404]
 script = SubResource("GDScript_uei5y")

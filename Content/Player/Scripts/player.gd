@@ -1,7 +1,11 @@
 class_name Player
 extends CharacterBody3D
 
+signal on_hit(source_path: NodePath)
+signal on_parried(source_path: NodePath)
+
 @export_category("Movement")
+@export var gravity : Vector3 = Vector3(0,-20,0)
 @export var speed : float = 5
 @export var jump_velocity : float = 0
 @export var acceleration_curve : Curve
@@ -15,13 +19,16 @@ extends CharacterBody3D
 @onready var neck = $Neck
 @onready var footsteps: AudioStreamPlayer3D = $Footsteps
 @onready var jump: AudioStreamPlayer3D = $Jump
+@onready var camera: PlayerCamera = $Neck/Camera
+@onready var attack_state_controller: StateController = $AttackStateController
+@onready var hurt_sound: AudioStreamPlayer = $Hurt
+
 
 var network_manager: NetworkManager
-
 var current_acceleration : float = 0
 var lock_mouse = true
-
 var username: String
+var active: bool = true
 
 func _ready():
 	network_manager = get_tree().get_first_node_in_group("network_manager")
@@ -32,7 +39,7 @@ func _enter_tree() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority() or not active: return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		lock_mouse = not lock_mouse
@@ -42,6 +49,8 @@ func _input(event):
 		neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _process(_delta):
+	if not active: return
+	
 	var should_footsteps_play = velocity.length_squared() > 10 and is_on_floor()
 	if should_footsteps_play != footsteps.playing:
 		footsteps.playing = should_footsteps_play
@@ -58,11 +67,11 @@ func add_impulse(impulse: Vector3):
 	velocity += transform.basis * impulse
 
 func _physics_process(delta):
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority() or not active: return
 	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -90,5 +99,32 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func hit():
+func hit_remote(source_path: NodePath):
+	rpc_id(get_multiplayer_authority(), "hit", source_path)
+
+func parry_remote(source_path: NodePath):
+	rpc_id(get_multiplayer_authority(), "parried", source_path)
+	
+func hurt_remote(source_path: NodePath):
+	rpc_id(get_multiplayer_authority(), "hurt", source_path)
+
+@rpc("call_local", "any_peer")
+func hit(source_path: NodePath):
+	if not is_multiplayer_authority(): return
 	print("Player hit!!!")
+	on_hit.emit(source_path)
+
+@rpc("call_local", "any_peer")
+func parried(source_path: NodePath):
+	if not is_multiplayer_authority(): return
+	on_parried.emit(source_path)
+	attack_state_controller.set_state($AttackStateController/Parried)
+
+@rpc("call_local", "any_peer")
+func hurt(source_path: NodePath):
+	hurt_sound.play()
+	if not is_multiplayer_authority(): return
+	var source_player: Player = get_node(source_path)
+	if source_player:
+		var direction = (source_player.global_position - global_position).normalized()
+		velocity += direction * -70

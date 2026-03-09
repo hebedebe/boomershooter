@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dj3ng3t0l6s1o"]
 
 [ext_resource type="PackedScene" uid="uid://bmbns44vimamd" path="res://Content/Networking/network.tscn" id="1_y1o6t"]
+[ext_resource type="FontFile" uid="uid://cuief2u2yn5uv" path="res://Art/Fonts/BangTime.ttf" id="2_le3s8"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Blank/blank.tscn" id="3_jxnjk"]
 [ext_resource type="PackedScene" uid="uid://ub6pxinpiewa" path="res://Content/Levels/Maps/Sphere/sphere.tscn" id="4_ec0n0"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
 [ext_resource type="AudioStream" uid="uid://b18tblqkiua47" path="res://Art/Sounds/FX/Theme.mp3" id="6_516sn"]
+[ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="7_a50q2"]
 
 [sub_resource type="GDScript" id="GDScript_jxnjk"]
 script/source = "extends Node3D
@@ -15,8 +17,63 @@ func _unhandled_input(_event: InputEvent) -> void:
 		get_tree().quit()
 "
 
+[sub_resource type="GDScript" id="GDScript_le3s8"]
+script/source = "extends CanvasLayer
+
+
+func _ready() -> void:
+	$\"../Network\".game_started.connect(hide)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkux8"]
+font = ExtResource("2_le3s8")
+font_size = 139
+font_color = Color(0.8216722, 0.0016847688, 0.9593107, 1)
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+stacked_shadow_count = 4
+stacked_shadow_0/offset = Vector2(1, 40)
+stacked_shadow_0/color = Color(0.19999993, 1, 0, 0.84313726)
+stacked_shadow_1/offset = Vector2(1, 80)
+stacked_shadow_1/color = Color(0, 1, 0.01666665, 0.73333335)
+stacked_shadow_2/offset = Vector2(1, 120)
+stacked_shadow_2/color = Color(0.01666665, 1, 0, 0.59607846)
+stacked_shadow_3/offset = Vector2(1, 160)
+stacked_shadow_3/color = Color(0.05000007, 1, 0, 0.40392157)
+
 [node name="Main" type="Node3D" unique_id=440981399]
 script = SubResource("GDScript_jxnjk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=327715345]
+script = SubResource("GDScript_le3s8")
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=545116186]
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_a50q2")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1514709197]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -688.0
+offset_top = 110.0
+offset_right = 677.0
+offset_bottom = 256.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Circuit Pustule"
+label_settings = SubResource("LabelSettings_nkux8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Network" parent="." unique_id=303830956 instance=ExtResource("1_y1o6t")]
 

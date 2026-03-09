@@ -1,28 +1,33 @@
 extends State
 
+const IMPULSE_FORCE: float = 30;
+
 @onready var attack_tex: TextureRect = $CanvasLayer/AttackTex
 @onready var player: Player = $"../.."
-@onready var camera: PlayerCamera = $"../../Neck/Camera"
 @onready var duration: Timer = $Duration
 @onready var attack_cooldown: Node = $"../AttackCooldown"
 @onready var attack: AudioStreamPlayer = $Attack
+@onready var attack_ray: RayCast3D = $"../../Neck/Camera/AttackRay"
 
 func _ready() -> void:
 	duration.timeout.connect(cooldown)
+	player.on_hit.connect(on_hit)
+
+func on_hit(source_path: NodePath):
+	if not active: return
+	player.hurt_remote(source_path)
 
 func on_enter():
 	attack_tex.visible = true
-	rpc_id(1, "create_attack")
+	player.add_impulse(player.camera.basis * Vector3(0,0,-IMPULSE_FORCE))
 	duration.start()
 	attack.play()
-
-@rpc("any_peer", "call_local")
-func create_attack():
-	var hitbox: AttackHitbox = preload("res://Content/Player/Attacks/attack_hitbox.tscn").instantiate()
-	hitbox.owning_player = player
-	hitbox.global_transform = camera.global_transform
-	player.network_manager.replicate(hitbox)
-	print("Attacked from player ", player.name)
+	
+	attack_ray.force_raycast_update() #bypasses enabled being off
+	var hit_object = attack_ray.get_collider()
+	if hit_object is Player:
+		hit_object.hit_remote(player.get_path())
+		print("Hit")
 	
 func cooldown():
 	state_controller.set_state(attack_cooldown)

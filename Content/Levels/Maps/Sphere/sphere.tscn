@@ -22,9 +22,9 @@ volumetric_fog_enabled = true
 environment = SubResource("Environment_wnn6w")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=902083271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.200432, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -43.251015, 0)
 use_collision = true
-radius = 16.606571
+radius = 41.00309
 radial_segments = 36
 rings = 40
 material = ExtResource("2_o0g21")

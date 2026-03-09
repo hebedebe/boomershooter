@@ -47,6 +47,7 @@ folder_colors={
 [global_group]
 
 network_manager="Group that contains only the network manager node"
+players="Group that contains all players"
 
 [input]
 

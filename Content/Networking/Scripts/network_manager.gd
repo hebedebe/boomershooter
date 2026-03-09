@@ -1,6 +1,8 @@
 class_name NetworkManager
 extends Node
 
+signal game_started
+
 #region Variables
 const MAX_CLIENTS: int = 2;
 
@@ -36,6 +38,8 @@ func start_host():
 	
 	network_ui.visible = false;
 	
+	game_started.emit()
+	
 func start_client():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip_input.text, int(port_input.text))
@@ -44,6 +48,9 @@ func start_client():
 	multiplayer.connected_to_server.connect(_connected_to_server)
 	multiplayer.connection_failed.connect(_connection_failed)
 	multiplayer.server_disconnected.connect(_server_disconnected)
+	
+	game_started.emit()
+	
 #endregion
 
 #region Network callbacks
