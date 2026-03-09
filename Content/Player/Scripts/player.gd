@@ -75,7 +75,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += gravity * delta
 		if Input.is_action_pressed("slam"):
-			velocity.y -= 6 * delta
+			velocity.y -= 60 * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -98,7 +98,7 @@ func _physics_process(delta):
 		
 		#Dash
 		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
-			velocity += direction * 40
+			velocity += direction * 40 + direction * velocity.length()
 			dash_cooldown.start()
 			dash_sound.play()
 		
