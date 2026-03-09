@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cg5er5qy41khs"]
+
+[ext_resource type="Script" uid="uid://jekjnm3b7c1l" path="res://Content/Particles/Scripts/auto_destroy.gd" id="1_ew038"]
+[ext_resource type="Script" uid="uid://2sbf0cdtlo8o" path="res://Content/Particles/Scripts/gpu_particles_autostart.gd" id="2_xv4bk"]
+
+[sub_resource type="Curve" id="Curve_xv4bk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_38ofd"]
+curve = SubResource("Curve_xv4bk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dw3d1"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_38ofd")
+scale_over_velocity_max = 3.0
+color = Color(1, 0, 0.74509805, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw3d1"]
+albedo_color = Color(0.80784315, 0, 0.7764706, 1)
+emission_enabled = true
+emission = Color(0.80784315, 0, 0.7764706, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ew038"]
+material = SubResource("StandardMaterial3D_dw3d1")
+radius = 0.05
+height = 0.1
+radial_segments = 10
+rings = 5
+
+[sub_resource type="Skin" id="Skin_ew038"]
+
+[node name="BounceParticles" type="Node3D" unique_id=528090890]
+script = ExtResource("1_ew038")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=197224503]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dw3d1")
+draw_pass_1 = SubResource("SphereMesh_ew038")
+draw_skin = SubResource("Skin_ew038")
+script = ExtResource("2_xv4bk")

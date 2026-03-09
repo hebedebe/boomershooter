@@ -11,3 +11,6 @@ func _ready() -> void:
 func body_entered(body: Object):
 	if body is Player:
 		body.velocity.y = bounce_force
+		var particles: Node3D = preload("res://Content/Particles/Bounce/bounce_particles.tscn").instantiate()
+		add_child(particles)
+		particles.position = Vector3.ZERO
