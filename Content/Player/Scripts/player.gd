@@ -22,6 +22,7 @@ signal on_parried(source_path: NodePath)
 @onready var camera: PlayerCamera = $Neck/Camera
 @onready var attack_state_controller: StateController = $AttackStateController
 @onready var hurt_sound: AudioStreamPlayer = $Hurt
+@onready var dash_cooldown: Timer = $DashCooldown
 
 
 var network_manager: NetworkManager
@@ -77,6 +78,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		jump.play()
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -86,6 +88,11 @@ func _physics_process(delta):
 		current_acceleration += acceleration_speed * delta
 		current_acceleration = clamp(current_acceleration, 0, 1)
 		var current_speed = speed * acceleration_curve.sample(current_acceleration)
+		
+		#Dash
+		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
+			velocity += direction * 40
+			dash_cooldown.start()
 		
 		var temp_velocity = Vector2(velocity.x, velocity.z)
 		temp_velocity = lerp(temp_velocity, Vector2(direction.x * current_speed, direction.z * current_speed), deceleration_speed * delta)

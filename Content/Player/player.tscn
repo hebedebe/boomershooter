@@ -44,10 +44,10 @@ properties/4/replication_mode = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_68xdw"]
 material = ExtResource("2_2fsga")
-radius = 0.2
+radius = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px8o0"]
-radius = 0.2
+radius = 0.4
 
 [sub_resource type="GDScript" id="GDScript_rn1qw"]
 script/source = "extends TextureRect
@@ -113,6 +113,10 @@ speed = 10.0
 jump_velocity = 5.0
 acceleration_curve = ExtResource("2_luk42")
 
+[node name="DashCooldown" type="Timer" parent="." unique_id=1666683208]
+wait_time = 0.7
+one_shot = true
+
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=1669148541]
 stream = ExtResource("3_rtr7s")
 
@@ -170,8 +174,10 @@ script = ExtResource("7_uot30")
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Block" unique_id=98989972]
+one_shot = true
 
 [node name="ParryWindow" type="Timer" parent="AttackStateController/Block" unique_id=239728768]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Block" unique_id=601694908]
 
@@ -199,8 +205,10 @@ max_duration = 0.1
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Parry" unique_id=1434792563]
+one_shot = true
 
 [node name="ParryWindow" type="Timer" parent="AttackStateController/Parry" unique_id=1443363329]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Parry" unique_id=2004496496]
 
@@ -227,6 +235,8 @@ script = ExtResource("9_v4ny3")
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Cooldown" type="Timer" parent="AttackStateController/BlockCooldown" unique_id=529242530]
+wait_time = 0.7
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/BlockCooldown" unique_id=1348513506]
 
@@ -251,6 +261,7 @@ metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Cooldown" type="Timer" parent="AttackStateController/AttackCooldown" unique_id=955397431]
 wait_time = 0.3
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/AttackCooldown" unique_id=178203705]
 
@@ -274,6 +285,7 @@ metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Attack" unique_id=1494064815]
 wait_time = 0.1
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Attack" unique_id=2145820250]
 
@@ -296,6 +308,7 @@ script = ExtResource("12_20pa1")
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Parried" unique_id=533504688]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/Parried" unique_id=1870479148]
 
