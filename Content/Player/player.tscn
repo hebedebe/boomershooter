@@ -72,16 +72,26 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_kev1q"]
 curve = SubResource("Curve_yrxhh")
 
-[sub_resource type="Gradient" id="Gradient_yrxhh"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_dep4y"]
+offsets = PackedFloat32Array(0, 0.26229507, 0.6229508, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.93411666, 0.81585526, 0, 1, 0.5333333, 1, 0, 1, 0, 1, 0.88333344, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_kev1q"]
-gradient = SubResource("Gradient_yrxhh")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xtngd"]
+gradient = SubResource("Gradient_dep4y")
+
+[sub_resource type="Curve" id="Curve_dep4y"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, -2.0940492, 0, 0, Vector2(1, -1), -1.8379657, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xtngd"]
+curve = SubResource("Curve_dep4y")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dep4y"]
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_kev1q")
+color_ramp = SubResource("GradientTexture1D_xtngd")
 alpha_curve = SubResource("CurveTexture_kev1q")
+hue_variation_curve = SubResource("CurveTexture_xtngd")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yrxhh"]
 material = ExtResource("9_dep4y")
