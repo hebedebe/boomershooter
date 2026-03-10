@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
 [ext_resource type="Script" uid="uid://djn5fr6pqu6ni" path="res://Content/Player/Scripts/States/block.gd" id="7_uot30"]
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
+[ext_resource type="Script" uid="uid://dgo7r0xghy5rr" path="res://Content/Player/Scripts/particles.gd" id="8_kev1q"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
 [ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/Attack.wav" id="9_p1xk2"]
 [ext_resource type="Script" uid="uid://ctvq025q66t6w" path="res://Content/Player/Scripts/States/block_cooldown.gd" id="9_v4ny3"]
@@ -45,10 +46,35 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath(".:velocity")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath("Body/DashParticles:emitting")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_68xdw"]
 material = ExtResource("2_2fsga")
 radius = 0.4
+
+[sub_resource type="Curve" id="Curve_yrxhh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kev1q"]
+curve = SubResource("Curve_yrxhh")
+
+[sub_resource type="Gradient" id="Gradient_yrxhh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kev1q"]
+gradient = SubResource("Gradient_yrxhh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dep4y"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_kev1q")
+alpha_curve = SubResource("CurveTexture_kev1q")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yrxhh"]
+material = ExtResource("2_2fsga")
+radius = 0.39
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px8o0"]
 radius = 0.4
@@ -140,6 +166,12 @@ pitch_scale = 2.0
 [node name="Body" type="MeshInstance3D" parent="." unique_id=472199481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_68xdw")
+
+[node name="DashParticles" type="GPUParticles3D" parent="Body" unique_id=1212220608]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_dep4y")
+draw_pass_1 = SubResource("CapsuleMesh_yrxhh")
+script = ExtResource("8_kev1q")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="." unique_id=342268889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

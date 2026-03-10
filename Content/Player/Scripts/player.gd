@@ -25,6 +25,7 @@ signal on_parried(source_path: NodePath)
 @onready var hurt_sound: AudioStreamPlayer = $Hurt
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var dash_sound: AudioStreamPlayer = $DashSound
+@onready var dash_particles: GPUParticles3D = $Body/DashParticles
 
 
 var network_manager: NetworkManager
@@ -100,6 +101,8 @@ func _physics_process(delta):
 		#Dash
 		if Input.is_action_just_pressed("dash") and dash_cooldown.is_stopped():
 			velocity += direction * 40 + direction * velocity.length() * 2
+			dash_particles.emitting = true
+			get_tree().create_timer(0.3).timeout.connect(func(): dash_particles.emitting=false)
 			dash_cooldown.start()
 			dash_sound.play()
 		
