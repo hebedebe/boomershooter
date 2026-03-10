@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://chfxxeuw47poj"]
+
+[ext_resource type="Script" uid="uid://djo4y17xixkan" path="res://Content/Particles/Scripts/cpu_particles_autostart.gd" id="1_0tn2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yoq8y"]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yoq8y"]
+material = SubResource("StandardMaterial3D_yoq8y")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_yoq8y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ParryParticles" type="Node3D" unique_id=866865892]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1178859572]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 2
+mesh = SubResource("QuadMesh_yoq8y")
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+orbit_velocity_curve = null
+scale_amount_curve = SubResource("Curve_yoq8y")
+color = Color(1, 0.9882353, 0, 1)
+script = ExtResource("1_0tn2b")

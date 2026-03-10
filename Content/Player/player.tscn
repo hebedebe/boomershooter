@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
 [ext_resource type="Script" uid="uid://djn5fr6pqu6ni" path="res://Content/Player/Scripts/States/block.gd" id="7_uot30"]
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
-[ext_resource type="Script" uid="uid://dgo7r0xghy5rr" path="res://Content/Player/Scripts/particles.gd" id="8_kev1q"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
 [ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/Attack.wav" id="9_p1xk2"]
 [ext_resource type="Script" uid="uid://ctvq025q66t6w" path="res://Content/Player/Scripts/States/block_cooldown.gd" id="9_v4ny3"]
@@ -168,10 +167,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_68xdw")
 
 [node name="DashParticles" type="GPUParticles3D" parent="Body" unique_id=1212220608]
+emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_dep4y")
 draw_pass_1 = SubResource("CapsuleMesh_yrxhh")
-script = ExtResource("8_kev1q")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="." unique_id=342268889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -190,6 +189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7956089, 0)
 
 [node name="Camera" type="Camera3D" parent="Neck" unique_id=501222964]
 physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003062725, 0, -0.006927371)
 cull_mask = 1047553
 attributes = SubResource("CameraAttributesPractical_68xdw")
 doppler_tracking = 2

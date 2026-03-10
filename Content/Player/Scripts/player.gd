@@ -118,6 +118,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func local_replicate(node: Node):
+	add_child(node)
+
 func hit_remote(source_path: NodePath):
 	rpc_id(get_multiplayer_authority(), "hit", source_path)
 
