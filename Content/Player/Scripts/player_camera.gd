@@ -21,4 +21,4 @@ func _process(delta: float) -> void:
 	var tilt_amount = lateral_velocity * tilt_strength
 	rotation_degrees = Vector3(tilt_amount.x, 0, tilt_amount.y)
 	
-	fov = clamp(lerpf(fov, base_FOV + local_velocity.length()*FOV_modifier, 5*delta), 1, 179)
+	fov = clamp(lerpf(fov, base_FOV + local_velocity.length()*FOV_modifier, 5*delta), 1, 150)

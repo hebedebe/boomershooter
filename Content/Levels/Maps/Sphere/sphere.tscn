@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="1_bfnnm"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="2_o0g21"]
+[ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="3_8000w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wnn6w"]
 panorama = ExtResource("1_bfnnm")
@@ -25,6 +26,78 @@ environment = SubResource("Environment_wnn6w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -43.251015, 0)
 use_collision = true
 radius = 41.00309
-radial_segments = 36
-rings = 40
+radial_segments = 80
+rings = 35
 material = ExtResource("2_o0g21")
+
+[node name="BouncePad" parent="." unique_id=1170943954 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.78580284, 0.6184769, 0, -0.6184769, 0.78580284, 0, 0, 0, 1, 24.784964, -10.656655, 0)
+
+[node name="BouncePad2" parent="." unique_id=104159010 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.7858028, -0.6184768, 8.742277e-08, -0.6184768, 0.7858028, 0, -6.869707e-08, -5.4068966e-08, -1, -24.785, -10.657, 0)
+
+[node name="BouncePad3" parent="." unique_id=1706660035 instance=ExtResource("3_8000w")]
+transform = Transform3D(-3.4348535e-08, -2.7034485e-08, -1, -0.6184769, 0.78580284, 0, 0.78580284, 0.6184769, -4.371139e-08, -1.9203198e-05, -10.656655, 24.78498)
+
+[node name="BouncePad4" parent="." unique_id=2042086723 instance=ExtResource("3_8000w")]
+transform = Transform3D(1.0304559e-07, 8.1103444e-08, 1, -0.6184768, 0.7858028, -2.6054013e-15, -0.7858028, -0.6184768, 1.3113416e-07, -1.7036426e-05, -10.657, -24.78498)
+
+[node name="BouncePad5" parent="." unique_id=81593557 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.5556465, 0.43732926, -0.70710677, -0.6184769, 0.78580284, 0, 0.5556465, 0.43732926, 0.70710677, 17.525608, -10.656655, 17.525627)
+
+[node name="BouncePad6" parent="." unique_id=1242525442 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.5556464, -0.43732908, 0.7071068, -0.6184768, 0.7858028, -2.6054016e-15, -0.55564654, -0.43732914, -0.7071067, -17.525646, -10.657, -17.525627)
+
+[node name="BouncePad7" parent="." unique_id=928283200 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.5556465, -0.43732926, -0.7071067, -0.6184769, 0.78580284, 1.3027009e-15, 0.5556464, 0.43732923, -0.7071068, -17.525646, -10.656655, 17.525627)
+
+[node name="BouncePad8" parent="." unique_id=2039319903 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.55564654, 0.43732917, 0.70710665, -0.6184768, 0.7858028, -8.289861e-15, -0.5556464, -0.43732908, 0.7071069, 17.525608, -10.657, -17.525627)
+
+[node name="BouncePad9" parent="." unique_id=1731567251 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.75902724, 0.5974028, -0.25881904, -0.6184769, 0.78580284, 0, 0.20338073, 0.16007361, 0.9659258, 23.940435, -10.656655, 6.4148254)
+
+[node name="BouncePad10" parent="." unique_id=743033067 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.7590272, -0.5974027, 0.25881913, -0.6184768, 0.7858028, -2.6054016e-15, -0.20338078, -0.16007364, -0.9659258, -23.940472, -10.657, -6.414825)
+
+[node name="BouncePad11" parent="." unique_id=785099334 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.20338076, -0.16007364, -0.9659258, -0.6184769, 0.78580284, 1.3027009e-15, 0.75902724, 0.5974028, -0.25881907, -6.414844, -10.656655, 23.940453)
+
+[node name="BouncePad12" parent="." unique_id=138689912 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.20338082, 0.16007365, 0.96592575, -0.6184768, 0.7858028, -9.178039e-15, -0.7590272, -0.59740263, 0.25881916, 6.414808, -10.657, -23.940453)
+
+[node name="BouncePad13" parent="." unique_id=1066790552 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.39290142, 0.3092385, -0.8660253, -0.6184769, 0.78580284, 0, 0.6805252, 0.53561676, 0.49999997, 12.392471, -10.656655, 21.46442)
+
+[node name="BouncePad14" parent="." unique_id=1721758250 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.39290136, -0.30923834, 0.8660254, -0.61847675, 0.7858027, -2.1073431e-08, -0.6805253, -0.5356166, -0.49999988, -12.392508, -10.657, -21.46442)
+
+[node name="BouncePad15" parent="." unique_id=188900217 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.6805252, -0.53561676, -0.49999988, -0.6184769, 0.78580284, 2.1073427e-08, 0.3929013, 0.30923843, -0.8660254, -21.46444, -10.656655, 12.392489)
+
+[node name="BouncePad16" parent="." unique_id=863932589 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.6805252, 0.5356166, 0.49999982, -0.61847675, 0.7858027, 2.1073404e-08, -0.39290133, -0.30923834, 0.86602545, 21.464401, -10.657, -12.392489)
+
+[node name="BouncePad17" parent="." unique_id=134906691 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.6805251, 0.53561664, -0.49999994, -0.6184769, 0.78580284, 2.2106825e-08, 0.39290136, 0.30923843, 0.8660253, 21.464405, -10.656655, 12.392491)
+
+[node name="BouncePad18" parent="." unique_id=1073914551 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.6805251, -0.5356166, 0.50000006, -0.6184768, 0.7858028, -5.2108035e-15, -0.39290148, -0.3092385, -0.86602545, -21.464441, -10.657, -12.39249)
+
+[node name="BouncePad19" parent="." unique_id=1842443094 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.39290142, -0.30923846, -0.8660254, -0.6184769, 0.78580284, 2.2106828e-08, 0.6805252, 0.5356167, -0.5, -12.3925085, -10.656655, 21.464422)
+
+[node name="BouncePad20" parent="." unique_id=63076287 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.39290154, 0.30923852, 0.8660254, -0.6184768, 0.7858028, -1.835608e-14, -0.6805252, -0.5356166, 0.5000001, 12.392474, -10.657, -21.46442)
+
+[node name="BouncePad21" parent="." unique_id=2019244452 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.20338075, 0.16007362, -0.9659257, -0.618477, 0.78580296, 0, 0.75902736, 0.59740293, 0.25881904, 6.4148064, -10.656655, 23.94045)
+
+[node name="BouncePad22" parent="." unique_id=449236392 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.20338063, -0.1600735, 0.96592575, -0.61847675, 0.7858027, -5.704802e-08, -0.7590273, -0.5974027, -0.25881892, -6.4148426, -10.657, -23.94045)
+
+[node name="BouncePad23" parent="." unique_id=137002017 instance=ExtResource("3_8000w")]
+transform = Transform3D(-0.7590272, -0.5974029, -0.25881892, -0.6184769, 0.78580284, 4.2146855e-08, 0.20338058, 0.16007353, -0.9659258, -23.94047, -10.656655, 6.4148245)
+
+[node name="BouncePad24" parent="." unique_id=709856135 instance=ExtResource("3_8000w")]
+transform = Transform3D(0.7590272, 0.5974027, 0.25881886, -0.6184768, 0.7858027, 2.5249282e-08, -0.20338063, -0.1600735, 0.9659258, 23.940432, -10.657, -6.4148245)

@@ -23,7 +23,7 @@ signal on_parried(source_path: NodePath)
 @onready var camera: PlayerCamera = $Neck/Camera
 @onready var attack_state_controller: StateController = $AttackStateController
 @onready var hurt_sound: AudioStreamPlayer = $Hurt
-@onready var dash_cooldown: Timer = $DashCooldown
+@onready var dash_cooldown: EnhancedTimer = $DashCooldown
 @onready var dash_sound: AudioStreamPlayer = $DashSound
 @onready var dash_particles: GPUParticles3D = $Body/DashParticles
 
@@ -82,6 +82,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		if dash_cooldown.get_elapsed_timer():
+			velocity.y += velocity.length() * 0.2
 		jump.play()
 		
 

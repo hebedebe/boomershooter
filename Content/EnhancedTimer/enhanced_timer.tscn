@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c5febbqryv0v7"]
+
+[ext_resource type="Script" uid="uid://bsdb316n8yki2" path="res://Content/EnhancedTimer/Scripts/enhanced_timer.gd" id="1_5180c"]
+
+[node name="EnhancedTimer" type="Timer" unique_id=2121440575]
+script = ExtResource("1_5180c")

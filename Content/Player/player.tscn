@@ -6,6 +6,7 @@
 [ext_resource type="Curve" uid="uid://dp3d6lwex6ss2" path="res://Content/Player/player_acceleration_curve.tres" id="2_luk42"]
 [ext_resource type="AudioStream" uid="uid://dxidc8bcrhwmh" path="res://Art/Sounds/FX/Footsteps.mp3" id="3_4p16a"]
 [ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/Chromakey.gdshader" id="3_7d8p2"]
+[ext_resource type="Script" uid="uid://bsdb316n8yki2" path="res://Content/EnhancedTimer/Scripts/enhanced_timer.gd" id="3_kev1q"]
 [ext_resource type="Texture2D" uid="uid://dyat1hdbschou" path="res://Art/Textures/UI/hand_default.png" id="3_rn1qw"]
 [ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/Hurt.mp3" id="3_rtr7s"]
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" uid="uid://djn5fr6pqu6ni" path="res://Content/Player/Scripts/States/block.gd" id="7_uot30"]
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
+[ext_resource type="Material" uid="uid://ctvdgbwbjkk5w" path="res://Art/Materials/Spatial/purple_circuit_fade.tres" id="9_dep4y"]
 [ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/Attack.wav" id="9_p1xk2"]
 [ext_resource type="Script" uid="uid://ctvq025q66t6w" path="res://Content/Player/Scripts/States/block_cooldown.gd" id="9_v4ny3"]
 [ext_resource type="AudioStream" uid="uid://cn12ruklnsvrg" path="res://Art/Sounds/FX/Overheat.mp3" id="10_6qlop"]
@@ -53,6 +55,16 @@ properties/6/replication_mode = 1
 material = ExtResource("2_2fsga")
 radius = 0.4
 
+[sub_resource type="GDScript" id="GDScript_xtngd"]
+script/source = "extends MeshInstance3D
+
+const PURPLE_CIRCUIT_ENEMY = preload(\"uid://dxvp7uelyuxew\")
+
+func _ready() -> void:
+	if not is_multiplayer_authority():
+		set_surface_override_material(0, PURPLE_CIRCUIT_ENEMY)
+"
+
 [sub_resource type="Curve" id="Curve_yrxhh"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -72,15 +84,17 @@ color_ramp = SubResource("GradientTexture1D_kev1q")
 alpha_curve = SubResource("CurveTexture_kev1q")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yrxhh"]
-material = ExtResource("2_2fsga")
+material = ExtResource("9_dep4y")
 radius = 0.39
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px8o0"]
 radius = 0.4
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68xdw"]
-auto_exposure_enabled = true
+exposure_multiplier = 0.6
 auto_exposure_scale = 0.01
+dof_blur_near_enabled = true
+dof_blur_near_distance = 1.0
 
 [sub_resource type="GDScript" id="GDScript_rn1qw"]
 script/source = "extends TextureRect
@@ -134,6 +148,15 @@ func _process(_delta: float) -> void:
 		text = \"state: unset (this is a bug)\"
 "
 
+[sub_resource type="GDScript" id="GDScript_dep4y"]
+script/source = "extends Label
+
+@onready var player: Player = $\"../../..\"
+
+func _process(_delta: float) -> void:
+	text = \"%s mps\" % snapped(player.velocity.length(), 0.1)
+"
+
 [node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
 physics_interpolation_mode = 1
 script = ExtResource("1_thq5r")
@@ -148,6 +171,7 @@ replication_config = SubResource("SceneReplicationConfig_luk42")
 [node name="DashCooldown" type="Timer" parent="." unique_id=1666683208]
 wait_time = 0.7
 one_shot = true
+script = ExtResource("3_kev1q")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=1669148541]
 stream = ExtResource("3_rtr7s")
@@ -165,6 +189,7 @@ pitch_scale = 2.0
 [node name="Body" type="MeshInstance3D" parent="." unique_id=472199481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_68xdw")
+script = SubResource("GDScript_xtngd")
 
 [node name="DashParticles" type="GPUParticles3D" parent="Body" unique_id=1212220608]
 emitting = false
@@ -435,3 +460,18 @@ offset_top = 116.0
 offset_right = 108.0
 offset_bottom = 139.0
 script = SubResource("GDScript_aak6e")
+
+[node name="Speed" type="Label" parent="HUD/Canvas" unique_id=1020426320]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -70.0
+offset_right = 20.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+script = SubResource("GDScript_dep4y")
