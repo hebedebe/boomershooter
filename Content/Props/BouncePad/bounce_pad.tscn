@@ -42,3 +42,8 @@ mesh = SubResource("BoxMesh_4v1wa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BounceArea" unique_id=334597487]
 shape = SubResource("BoxShape3D_5co71")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=827329832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7077708, 0)
+light_color = Color(1, 0, 1, 1)
+light_size = 2.0

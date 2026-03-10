@@ -181,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 light_color = Color(0.72156864, 0, 1, 1)
 light_energy = 2.0
 light_volumetric_fog_energy = 0.06
-light_size = 0.2
+light_size = 1.0
 omni_range = 10.0
 
 [node name="Neck" type="Node3D" parent="." unique_id=544283028]
