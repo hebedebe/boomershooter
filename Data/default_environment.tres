@@ -12,5 +12,7 @@ sky_material = SubResource("PanoramaSkyMaterial_wnn6w")
 background_mode = 2
 sky = SubResource("Sky_3m3rv")
 tonemap_mode = 2
+ssao_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
+adjustment_saturation = 2.0

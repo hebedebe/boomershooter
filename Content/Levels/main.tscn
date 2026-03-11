@@ -44,7 +44,7 @@ stacked_shadow_3/offset = Vector2(1, 160)
 stacked_shadow_3/color = Color(0.05000007, 1, 0, 0.40392157)
 
 [sub_resource type="FogMaterial" id="FogMaterial_le3s8"]
-albedo = Color(0, 1, 0, 1)
+albedo = Color(0, 0, 0, 1)
 emission = Color(0, 1, 0, 1)
 
 [node name="Main" type="Node3D" unique_id=440981399]

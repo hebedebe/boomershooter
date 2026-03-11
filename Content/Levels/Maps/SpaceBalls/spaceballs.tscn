@@ -121,6 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
 use_collision = true
 radius = 1.8359375
 height = 102.98242
+sides = 16
 material = ExtResource("3_gyhjh")
 
 [node name="BouncePad6" parent="." unique_id=921600909 instance=ExtResource("4_1y6ae")]
@@ -131,6 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
 use_collision = true
 radius = 1.8359375
 height = 102.98242
+sides = 16
 material = ExtResource("3_gyhjh")
 
 [node name="BouncePad7" parent="." unique_id=286353504 instance=ExtResource("4_1y6ae")]
@@ -141,6 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
 use_collision = true
 radius = 1.8359375
 height = 102.98242
+sides = 16
 material = ExtResource("3_gyhjh")
 
 [node name="BouncePad8" parent="." unique_id=64856628 instance=ExtResource("4_1y6ae")]
@@ -151,6 +154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
 use_collision = true
 radius = 1.8359375
 height = 102.98242
+sides = 16
 material = ExtResource("3_gyhjh")
 
 [node name="CeilingLamp" parent="." unique_id=1536409552 instance=ExtResource("5_kqfaw")]
