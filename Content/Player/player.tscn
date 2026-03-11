@@ -27,6 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://vssu6qg84k13" path="res://Art/Sounds/FX/Block.mp3" id="12_qqdic"]
 [ext_resource type="Script" uid="uid://b21is8ytr1cuq" path="res://Content/Player/Scripts/States/parry.gd" id="12_wonq3"]
 [ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/Parry.mp3" id="13_5gbni"]
+[ext_resource type="Shader" uid="uid://tlkxd1jwngls" path="res://Art/Shaders/PostProcess/adapt_to_palette.gdshader" id="26_6yrki"]
+[ext_resource type="Texture2D" uid="uid://0pgsd22mvnym" path="res://Art/Textures/Palettes/windows-95-256-colours-1x.png" id="27_xyxax"]
+[ext_resource type="SpriteFrames" uid="uid://cfknlk73072w5" path="res://Art/Textures/UI/DeathScreen/DeathScreen.tres" id="31_0femt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -51,7 +54,7 @@ properties/6/path = NodePath("Body/DashParticles:emitting")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_68xdw"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0femt"]
 material = ExtResource("2_2fsga")
 radius = 0.4
 
@@ -61,8 +64,7 @@ script/source = "extends MeshInstance3D
 const PURPLE_CIRCUIT_ENEMY = preload(\"uid://dxvp7uelyuxew\")
 
 func _ready() -> void:
-	if not is_multiplayer_authority():
-		set_surface_override_material(0, PURPLE_CIRCUIT_ENEMY)
+	visible = not is_multiplayer_authority()
 "
 
 [sub_resource type="Curve" id="Curve_yrxhh"]
@@ -106,6 +108,9 @@ auto_exposure_scale = 0.01
 dof_blur_near_enabled = true
 dof_blur_near_distance = 1.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0femt"]
+radius = 0.3
+
 [sub_resource type="GDScript" id="GDScript_rn1qw"]
 script/source = "extends TextureRect
 
@@ -125,11 +130,21 @@ func _enter_tree() -> void:
 	visible = is_multiplayer_authority()
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
+shader = ExtResource("26_6yrki")
+shader_parameter/palette = ExtResource("27_xyxax")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
 shader = ExtResource("3_7d8p2")
 shader_parameter/transparent_color = Color(1, 1, 1, 1)
 shader_parameter/pickup_range = 1.0
 shader_parameter/fade_amount = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7afkm"]
+shader = ExtResource("3_7d8p2")
+shader_parameter/transparent_color = Color(1, 1, 1, 1)
+shader_parameter/pickup_range = 0.5750000273125
+shader_parameter/fade_amount = 1.0
 
 [sub_resource type="GDScript" id="GDScript_1q6fh"]
 script/source = "extends Label
@@ -198,7 +213,7 @@ pitch_scale = 2.0
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=472199481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_68xdw")
+mesh = SubResource("CapsuleMesh_0femt")
 script = SubResource("GDScript_xtngd")
 
 [node name="DashParticles" type="GPUParticles3D" parent="Body" unique_id=1212220608]
@@ -229,14 +244,14 @@ cull_mask = 1047553
 attributes = SubResource("CameraAttributesPractical_68xdw")
 doppler_tracking = 2
 fov = 90.0
-far = 100.0
 script = ExtResource("2_kbsyd")
 tilt_strength = Vector2(0.1, 0.2)
 
-[node name="AttackRay" type="RayCast3D" parent="Neck/Camera" unique_id=1746267806]
+[node name="AttackCast" type="ShapeCast3D" parent="Neck/Camera" unique_id=497785064]
 enabled = false
+shape = SubResource("SphereShape3D_0femt")
 target_position = Vector3(0, 0, -2.5)
-hit_back_faces = false
+margin = 0.2
 
 [node name="AttackStateController" type="Node" parent="." unique_id=292420767 node_paths=PackedStringArray("state")]
 script = ExtResource("6_wonq3")
@@ -293,7 +308,7 @@ stream = ExtResource("12_qqdic")
 
 [node name="Parry" type="Node" parent="AttackStateController" unique_id=218078181]
 script = ExtResource("12_wonq3")
-max_duration = 0.1
+max_duration = 0.3
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Duration" type="Timer" parent="AttackStateController/Parry" unique_id=1434792563]
@@ -434,6 +449,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+z_index = 1025
+z_as_relative = false
+material = SubResource("ShaderMaterial_8p1dt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Frame" type="VideoStreamPlayer" parent="HUD/Canvas" unique_id=1298493384]
 material = SubResource("ShaderMaterial_rn1qw")
 layout_mode = 1
@@ -446,6 +472,12 @@ stream = ExtResource("3_x8iml")
 autoplay = true
 expand = true
 loop = true
+
+[node name="DeathScreen" type="AnimatedSprite2D" parent="HUD/Canvas" unique_id=1786352033]
+visible = false
+material = SubResource("ShaderMaterial_7afkm")
+position = Vector2(960, 540)
+sprite_frames = ExtResource("31_0femt")
 
 [node name="ID" type="Label" parent="HUD/Canvas" unique_id=747798068]
 layout_mode = 0

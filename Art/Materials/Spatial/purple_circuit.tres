@@ -1,11 +1,12 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c88i2703y5rds"]
 
 [ext_resource type="Texture2D" uid="uid://ckucsek60itqg" path="res://Art/Textures/Spatial/purple_circuit.png" id="1_xk342"]
+[ext_resource type="Material" uid="uid://b87rxkr4ag211" path="res://Art/Materials/Spatial/enemy_outline.tres" id="2_0e6n0"]
 [ext_resource type="Texture2D" uid="uid://bh7wprapyvgk" path="res://Art/Textures/Spatial/Metal/metal_n.png" id="2_76ta1"]
 [ext_resource type="Texture2D" uid="uid://jlcr1u31ykja" path="res://Art/Textures/Spatial/Metal/metal_s.png" id="3_0e6n0"]
 
 [resource]
-transparency = 1
+next_pass = ExtResource("2_0e6n0")
 specular_mode = 2
 disable_fog = true
 vertex_color_use_as_albedo = true

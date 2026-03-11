@@ -7,7 +7,7 @@ const IMPULSE_FORCE: float = 30;
 @onready var duration: Timer = $Duration
 @onready var attack_cooldown: Node = $"../AttackCooldown"
 @onready var attack: AudioStreamPlayer = $Attack
-@onready var attack_ray: RayCast3D = $"../../Neck/Camera/AttackRay"
+@onready var attack_cast: ShapeCast3D = $"../../Neck/Camera/AttackCast"
 
 func _ready() -> void:
 	duration.timeout.connect(cooldown)
@@ -23,11 +23,12 @@ func on_enter():
 	duration.start()
 	attack.play()
 	
-	attack_ray.force_raycast_update() #bypasses enabled being off
-	var hit_object = attack_ray.get_collider()
-	if hit_object is Player:
-		hit_object.hit_remote(player.get_path())
-		print("Hit")
+	attack_cast.force_shapecast_update() #bypasses enabled being off
+	for i in range(attack_cast.get_collision_count()):
+		var hit_object = attack_cast.get_collider(i)
+		if hit_object is Player and hit_object != player:
+			hit_object.hit_remote(player.get_path())
+			print("Hit")
 	
 func cooldown():
 	state_controller.set_state(attack_cooldown)

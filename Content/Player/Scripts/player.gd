@@ -26,6 +26,7 @@ signal on_parried(source_path: NodePath)
 @onready var dash_cooldown: EnhancedTimer = $DashCooldown
 @onready var dash_sound: AudioStreamPlayer = $DashSound
 @onready var dash_particles: GPUParticles3D = $Body/DashParticles
+@onready var death_screen: AnimatedSprite2D = $HUD/Canvas/DeathScreen
 
 
 var network_manager: NetworkManager
@@ -148,6 +149,8 @@ func parried(source_path: NodePath):
 func hurt(source_path: NodePath):
 	hurt_sound.play()
 	if not is_multiplayer_authority(): return
+	#death_screen.visible=true
+	#death_screen.play()
 	var source_player: Player = get_node(source_path)
 	if source_player:
 		var direction = (source_player.global_position - global_position).normalized()
