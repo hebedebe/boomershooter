@@ -29,7 +29,6 @@
 [ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/Parry.mp3" id="13_5gbni"]
 [ext_resource type="Shader" uid="uid://tlkxd1jwngls" path="res://Art/Shaders/PostProcess/adapt_to_palette.gdshader" id="26_6yrki"]
 [ext_resource type="Texture2D" uid="uid://0pgsd22mvnym" path="res://Art/Textures/Palettes/windows-95-256-colours-1x.png" id="27_xyxax"]
-[ext_resource type="SpriteFrames" uid="uid://cfknlk73072w5" path="res://Art/Textures/UI/DeathScreen/DeathScreen.tres" id="31_0femt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -139,12 +138,6 @@ shader = ExtResource("3_7d8p2")
 shader_parameter/transparent_color = Color(1, 1, 1, 1)
 shader_parameter/pickup_range = 1.0
 shader_parameter/fade_amount = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7afkm"]
-shader = ExtResource("3_7d8p2")
-shader_parameter/transparent_color = Color(1, 1, 1, 1)
-shader_parameter/pickup_range = 0.5750000273125
-shader_parameter/fade_amount = 1.0
 
 [sub_resource type="GDScript" id="GDScript_1q6fh"]
 script/source = "extends Label
@@ -472,12 +465,6 @@ stream = ExtResource("3_x8iml")
 autoplay = true
 expand = true
 loop = true
-
-[node name="DeathScreen" type="AnimatedSprite2D" parent="HUD/Canvas" unique_id=1786352033]
-visible = false
-material = SubResource("ShaderMaterial_7afkm")
-position = Vector2(960, 540)
-sprite_frames = ExtResource("31_0femt")
 
 [node name="ID" type="Label" parent="HUD/Canvas" unique_id=747798068]
 layout_mode = 0

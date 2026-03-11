@@ -1,0 +1,16 @@
+[gd_resource type="Environment" format=3 uid="uid://d0n1ouulw4mrl"]
+
+[ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="1_1udnm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wnn6w"]
+panorama = ExtResource("1_1udnm")
+
+[sub_resource type="Sky" id="Sky_3m3rv"]
+sky_material = SubResource("PanoramaSkyMaterial_wnn6w")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_3m3rv")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true

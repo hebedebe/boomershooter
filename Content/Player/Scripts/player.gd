@@ -26,8 +26,6 @@ signal on_parried(source_path: NodePath)
 @onready var dash_cooldown: EnhancedTimer = $DashCooldown
 @onready var dash_sound: AudioStreamPlayer = $DashSound
 @onready var dash_particles: GPUParticles3D = $Body/DashParticles
-@onready var death_screen: AnimatedSprite2D = $HUD/Canvas/DeathScreen
-
 
 var network_manager: NetworkManager
 var current_acceleration : float = 0
@@ -73,6 +71,9 @@ func add_impulse(impulse: Vector3):
 
 func _physics_process(delta):
 	if not is_multiplayer_authority() or not active: return
+	
+	if position.y < -50: #temporary
+		position = Vector3(0,10,0)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -149,9 +150,12 @@ func parried(source_path: NodePath):
 func hurt(source_path: NodePath):
 	hurt_sound.play()
 	if not is_multiplayer_authority(): return
-	#death_screen.visible=true
-	#death_screen.play()
+	#die()
 	var source_player: Player = get_node(source_path)
 	if source_player:
 		var direction = (source_player.global_position - global_position).normalized()
 		velocity += direction * -70 + direction * -source_player.velocity.length()
+
+func die():
+	pass
+	# do dying stuff here

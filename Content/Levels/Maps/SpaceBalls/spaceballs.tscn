@@ -1,27 +1,15 @@
 [gd_scene format=3 uid="uid://b1xwdvlv4otyv"]
 
-[ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="1_c0as3"]
+[ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_1y6ae"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="2_kr1wn"]
 [ext_resource type="Material" uid="uid://dowsi4uj3dsxw" path="res://Art/Materials/Spatial/metal.tres" id="3_gyhjh"]
 [ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="4_1y6ae"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wnn6w"]
-panorama = ExtResource("1_c0as3")
-
-[sub_resource type="Sky" id="Sky_3m3rv"]
-sky_material = SubResource("PanoramaSkyMaterial_wnn6w")
-
-[sub_resource type="Environment" id="Environment_wnn6w"]
-background_mode = 2
-sky = SubResource("Sky_3m3rv")
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
+[ext_resource type="PackedScene" uid="uid://cmfuhbafj68o0" path="res://Content/Props/Lights/Ceiling Lamp/ceiling_lamp.tscn" id="5_kqfaw"]
 
 [node name="World" type="Node3D" unique_id=886298498]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1801129146]
-environment = SubResource("Environment_wnn6w")
+environment = ExtResource("1_1y6ae")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=902083271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.200432, 0)
@@ -30,6 +18,20 @@ radius = 16.606571
 radial_segments = 36
 rings = 40
 material = ExtResource("2_kr1wn")
+
+[node name="Tunnel2" type="CSGBox3D" parent="CSGSphere3D" unique_id=227861451]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -2.5749817, 0)
+operation = 2
+use_collision = true
+size = Vector3(40, 4.122, 3.13)
+material = ExtResource("3_gyhjh")
+
+[node name="Tunnel" type="CSGBox3D" parent="CSGSphere3D" unique_id=1350251349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5749817, 0)
+operation = 2
+use_collision = true
+size = Vector3(40, 4.122, 3.13)
+material = ExtResource("3_gyhjh")
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=1982885348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -18.2, 0)
@@ -150,3 +152,26 @@ use_collision = true
 radius = 1.8359375
 height = 102.98242
 material = ExtResource("3_gyhjh")
+
+[node name="CeilingLamp" parent="." unique_id=1536409552 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, 0)
+
+[node name="CeilingLamp2" parent="." unique_id=192039868 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, -13)
+
+[node name="CeilingLamp3" parent="." unique_id=278427367 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.952, 13)
+
+[node name="CeilingLamp4" parent="." unique_id=456694411 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13, -18.951889, 5.68248e-07)
+
+[node name="CeilingLamp5" parent="." unique_id=1802977917 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13, -18.952, -5.68248e-07)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1936146033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.090063, 0)
+use_collision = true
+radius = 19.006836
+height = 0.5546875
+sides = 32
+material = ExtResource("2_kr1wn")
