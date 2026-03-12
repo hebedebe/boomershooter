@@ -19,6 +19,7 @@ color_ramp = SubResource("Gradient_trd2t")
 [node name="CeilingLamp" type="OmniLight3D" unique_id=1536409552]
 light_color = Color(0, 1, 0, 1)
 light_size = 0.124
+light_bake_mode = 1
 distance_fade_begin = 5.0
 distance_fade_length = 15.0
 omni_range = 6.82822

@@ -49,6 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7077708, 0)
 light_color = Color(1, 0, 1, 1)
 light_volumetric_fog_energy = 2.0
 light_size = 2.0
+light_bake_mode = 1
 
 [node name="Bounce_SFX" type="AudioStreamPlayer3D" parent="." unique_id=288791693]
 stream = ExtResource("4_0u0jn")

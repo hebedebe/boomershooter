@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://fedgjeypg71c"]
 
 [ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_0p2r0"]
+[ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="2_8s2oe"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="2_ekdm0"]
 [ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="3_ug3bg"]
 [ext_resource type="Material" uid="uid://darmjdbd1htec" path="res://Art/Materials/Spatial/frosted_glass_glowing.tres" id="4_0p2r0"]
+[ext_resource type="PackedScene" uid="uid://cmfuhbafj68o0" path="res://Content/Props/Lights/Ceiling Lamp/ceiling_lamp.tscn" id="5_l8nq4"]
 
 [node name="World" type="Node3D" unique_id=886298498]
 
@@ -14,19 +16,19 @@ environment = ExtResource("1_0p2r0")
 transform = Transform3D(4.777422, 0, 0, 0, 1, 0, 0, 0, 4.9483514, 0, -718.43726, 0)
 use_collision = true
 size = Vector3(10, 1434.6057, 10)
-material = ExtResource("2_ekdm0")
+material = ExtResource("2_8s2oe")
 
 [node name="BouncePad" parent="." unique_id=1170943954 instance=ExtResource("3_ug3bg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -1.1365192, 0)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -13.788582, -1.1365192, -13.788582)
 
 [node name="BouncePad2" parent="." unique_id=781711815 instance=ExtResource("3_ug3bg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.1365192, 0)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 13.788582, -1.1365192, 13.788582)
 
 [node name="BouncePad3" parent="." unique_id=1870972278 instance=ExtResource("3_ug3bg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.68248e-07, -1.1365192, -13)
+transform = Transform3D(-0.70710695, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.70710695, 13.788582, -1.1365192, -13.788582)
 
 [node name="BouncePad4" parent="." unique_id=367925461 instance=ExtResource("3_ug3bg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.68248e-07, -1.1365192, 13)
+transform = Transform3D(-0.70710695, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.70710695, -13.788582, -1.1365192, 13.788582)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=414393131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.7557373, -10)
@@ -97,4 +99,38 @@ light_color = Color(0, 1, 0, 1)
 light_energy = 5.0
 light_volumetric_fog_energy = 2.0
 light_size = 6.0
+light_bake_mode = 1
 omni_range = 37.091156
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=610823708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6243796, 0)
+use_collision = true
+size = Vector3(12, 0.5, 12)
+material = ExtResource("2_ekdm0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=349218171]
+transform = Transform3D(1, 0, 0, 0, 0.9324375, 0.3613317, 0, -0.3613317, 0.9324375, 0, 1.0192871, -12.687427)
+use_collision = true
+size = Vector3(2.52, 0.5, 14.522766)
+material = ExtResource("2_ekdm0")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=314324731]
+transform = Transform3D(-1, 3.1614228e-08, -8.150634e-08, 0, 0.93232393, 0.3616246, 8.742278e-08, 0.3616246, -0.93232393, 0, 1.019, 12.687)
+use_collision = true
+size = Vector3(2.52, 0.5, 14.522766)
+material = ExtResource("2_ekdm0")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=532950970]
+transform = Transform3D(-4.371139e-08, 0.3613317, -0.9324375, 0, 0.9324375, 0.3613317, 1, 1.579431e-08, -4.0758138e-08, 12.687214, 1.0192871, -0.00021259164)
+use_collision = true
+size = Vector3(2.52, 0.5, 14.522766)
+material = ExtResource("2_ekdm0")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=2128659387]
+transform = Transform3D(-4.371138e-08, -0.3616246, 0.93232393, -1.7763567e-15, 0.93232393, 0.3616246, -1, 1.5807114e-08, -4.0753168e-08, -12.687214, 1.019, -0.00021370078)
+use_collision = true
+size = Vector3(2.52, 0.5, 14.522766)
+material = ExtResource("2_ekdm0")
+
+[node name="CeilingLamp" parent="." unique_id=1536409552 instance=ExtResource("5_l8nq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1757998, 0)
