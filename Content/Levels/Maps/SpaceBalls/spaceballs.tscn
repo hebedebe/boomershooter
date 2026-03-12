@@ -11,7 +11,85 @@
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1801129146]
 environment = ExtResource("1_1y6ae")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=902083271]
+[node name="Bouncepads" type="Node3D" parent="." unique_id=391516691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.200432, 0)
+
+[node name="BouncePad" parent="Bouncepads" unique_id=1170943954 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 16.592003, 0)
+
+[node name="BouncePad2" parent="Bouncepads" unique_id=487670612 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 16.592432, 0)
+
+[node name="BouncePad3" parent="Bouncepads" unique_id=290680760 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, 16.592003, -50)
+
+[node name="BouncePad4" parent="Bouncepads" unique_id=646974267 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, 16.592432, 50)
+
+[node name="BouncePad5" parent="Bouncepads" unique_id=574016844 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 17.67767, -6.407568, 17.67767)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bouncepads/BouncePad5" unique_id=1222240637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
+use_collision = true
+radius = 1.8359375
+height = 102.98242
+sides = 16
+material = ExtResource("3_gyhjh")
+
+[node name="BouncePad6" parent="Bouncepads" unique_id=921600909 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -17.67767, -6.407568, -17.67767)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bouncepads/BouncePad6" unique_id=400350187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
+use_collision = true
+radius = 1.8359375
+height = 102.98242
+sides = 16
+material = ExtResource("3_gyhjh")
+
+[node name="BouncePad7" parent="Bouncepads" unique_id=286353504 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(-0.7071069, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071069, -17.67767, -6.407568, 17.67767)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bouncepads/BouncePad7" unique_id=919916792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
+use_collision = true
+radius = 1.8359375
+height = 102.98242
+sides = 16
+material = ExtResource("3_gyhjh")
+
+[node name="BouncePad8" parent="Bouncepads" unique_id=64856628 instance=ExtResource("4_1y6ae")]
+transform = Transform3D(-0.7071069, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071069, 17.67767, -6.407568, -17.67767)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bouncepads/BouncePad8" unique_id=734288116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
+use_collision = true
+radius = 1.8359375
+height = 102.98242
+sides = 16
+material = ExtResource("3_gyhjh")
+
+[node name="Lights" type="Node3D" parent="." unique_id=1685242730]
+
+[node name="CeilingLamp" parent="Lights" unique_id=1536409552 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, 0)
+
+[node name="CeilingLamp2" parent="Lights" unique_id=192039868 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, -13)
+
+[node name="CeilingLamp3" parent="Lights" unique_id=278427367 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.952, 13)
+
+[node name="CeilingLamp4" parent="Lights" unique_id=456694411 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13, -18.951889, 5.68248e-07)
+
+[node name="CeilingLamp5" parent="Lights" unique_id=1802977917 instance=ExtResource("5_kqfaw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13, -18.952, -5.68248e-07)
+
+[node name="Spheres" type="Node3D" parent="." unique_id=703835597]
+
+[node name="CenterSphere" type="CSGSphere3D" parent="Spheres" unique_id=902083271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.200432, 0)
 use_collision = true
 radius = 16.606571
@@ -19,45 +97,38 @@ radial_segments = 36
 rings = 40
 material = ExtResource("2_kr1wn")
 
-[node name="Tunnel2" type="CSGBox3D" parent="CSGSphere3D" unique_id=227861451]
+[node name="Tunnel2" type="CSGBox3D" parent="Spheres/CenterSphere" unique_id=227861451]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -2.5749817, 0)
 operation = 2
 use_collision = true
 size = Vector3(40, 4.122, 3.13)
 material = ExtResource("3_gyhjh")
 
-[node name="Tunnel" type="CSGBox3D" parent="CSGSphere3D" unique_id=1350251349]
+[node name="Tunnel" type="CSGBox3D" parent="Spheres/CenterSphere" unique_id=1350251349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5749817, 0)
 operation = 2
 use_collision = true
 size = Vector3(40, 4.122, 3.13)
 material = ExtResource("3_gyhjh")
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=1982885348]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -18.2, 0)
+[node name="CentreRing" type="CSGCylinder3D" parent="Spheres/CenterSphere" unique_id=1936146033]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, -10.899153, 5.253691e-07)
 use_collision = true
-radius = 16.606571
-radial_segments = 36
-rings = 40
+radius = 19.006836
+height = 12.57373
+sides = 32
+cone = true
 material = ExtResource("2_kr1wn")
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="." unique_id=1191416545]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -18.2, 0)
+[node name="Pillar" type="CSGCylinder3D" parent="Spheres/CenterSphere" unique_id=1366216871]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 1.1444092e-05, -139.60997, 2.1855692e-06)
 use_collision = true
-radius = 16.606571
-radial_segments = 36
-rings = 40
+radius = 14.852
+height = 265.243
+sides = 32
 material = ExtResource("2_kr1wn")
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="." unique_id=762151726]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.1855694e-06, -18.2, -50)
-use_collision = true
-radius = 16.606571
-radial_segments = 36
-rings = 40
-material = ExtResource("2_kr1wn")
-
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="." unique_id=781422239]
+[node name="ForwardSphere" type="CSGSphere3D" parent="Spheres" unique_id=781422239]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.1855694e-06, -18.2, 50)
 use_collision = true
 radius = 16.606571
@@ -65,117 +136,132 @@ radial_segments = 36
 rings = 40
 material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=568759169]
+[node name="ForwardRing" type="CSGCylinder3D" parent="Spheres/ForwardSphere" unique_id=610246775]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 0, -10.899584, 2.1855694e-06)
+use_collision = true
+radius = 19.006836
+height = 12.57373
+sides = 32
+cone = true
+material = ExtResource("2_kr1wn")
+
+[node name="Pillar" type="CSGCylinder3D" parent="Spheres/ForwardSphere" unique_id=1565157957]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 1.1444092e-05, -139.60997, 2.1855692e-06)
+use_collision = true
+radius = 14.852
+height = 265.243
+sides = 32
+material = ExtResource("2_kr1wn")
+
+[node name="RightSphere" type="CSGSphere3D" parent="Spheres" unique_id=1982885348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -18.2, 0)
+use_collision = true
+radius = 16.606571
+radial_segments = 36
+rings = 40
+material = ExtResource("2_kr1wn")
+
+[node name="RightRing" type="CSGCylinder3D" parent="Spheres/RightSphere" unique_id=1509056384]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 0, -10.899584, 2.1855694e-06)
+use_collision = true
+radius = 19.006836
+height = 12.57373
+sides = 32
+cone = true
+material = ExtResource("2_kr1wn")
+
+[node name="Pillar" type="CSGCylinder3D" parent="Spheres/RightSphere" unique_id=350443119]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 1.1444092e-05, -139.60997, 2.1855692e-06)
+use_collision = true
+radius = 14.852
+height = 265.243
+sides = 32
+material = ExtResource("2_kr1wn")
+
+[node name="LeftSphere" type="CSGSphere3D" parent="Spheres" unique_id=1191416545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -18.2, 0)
+use_collision = true
+radius = 16.606571
+radial_segments = 36
+rings = 40
+material = ExtResource("2_kr1wn")
+
+[node name="LeftRing" type="CSGCylinder3D" parent="Spheres/LeftSphere" unique_id=1463344365]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 0, -10.899584, 2.1855694e-06)
+use_collision = true
+radius = 19.006836
+height = 12.57373
+sides = 32
+cone = true
+material = ExtResource("2_kr1wn")
+
+[node name="Pillar" type="CSGCylinder3D" parent="Spheres/LeftSphere" unique_id=30226227]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 1.1444092e-05, -139.60997, 2.1855692e-06)
+use_collision = true
+radius = 14.852
+height = 265.243
+sides = 32
+material = ExtResource("2_kr1wn")
+
+[node name="BackSphere" type="CSGSphere3D" parent="Spheres" unique_id=762151726]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.1855694e-06, -18.2, -50)
+use_collision = true
+radius = 16.606571
+radial_segments = 36
+rings = 40
+material = ExtResource("2_kr1wn")
+
+[node name="BackRing" type="CSGCylinder3D" parent="Spheres/BackSphere" unique_id=103260561]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 0, -10.899584, 2.1855694e-06)
+use_collision = true
+radius = 19.006836
+height = 12.57373
+sides = 32
+cone = true
+material = ExtResource("2_kr1wn")
+
+[node name="Pillar" type="CSGCylinder3D" parent="Spheres/BackSphere" unique_id=1611993855]
+transform = Transform3D(-4.371139e-08, 8.742278e-08, -1, 0, -1, -8.742278e-08, -1, -3.821371e-15, 4.371139e-08, 1.1444092e-05, -139.60997, 2.1855692e-06)
+use_collision = true
+radius = 14.852
+height = 265.243
+sides = 32
+material = ExtResource("2_kr1wn")
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1622522171]
+
+[node name="Platform1" type="CSGBox3D" parent="Platforms" unique_id=568759169]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -6.40963, 0)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
+material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=351476895]
+[node name="Platform2" type="CSGBox3D" parent="Platforms" unique_id=351476895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.40963, 0)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
+material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=384656923]
+[node name="Platform3" type="CSGBox3D" parent="Platforms" unique_id=384656923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.40963, 6)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
+material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=896927480]
+[node name="Platform4" type="CSGBox3D" parent="Platforms" unique_id=896927480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.41, -6)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
+material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1416440818]
+[node name="Platform5" type="CSGBox3D" parent="Platforms" unique_id=1416440818]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, -6.40963, -2.6226832e-07)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
+material = ExtResource("2_kr1wn")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1918412830]
+[node name="Platform6" type="CSGBox3D" parent="Platforms" unique_id=1918412830]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, -6.41, 2.6226832e-07)
 use_collision = true
 size = Vector3(100, 1.535, 2.45)
-material = ExtResource("3_gyhjh")
-
-[node name="BouncePad" parent="." unique_id=1170943954 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -1.6084296, 0)
-
-[node name="BouncePad2" parent="." unique_id=487670612 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1.608, 0)
-
-[node name="BouncePad3" parent="." unique_id=290680760 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, -1.6084296, -50)
-
-[node name="BouncePad4" parent="." unique_id=646974267 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, -1.608, 50)
-
-[node name="BouncePad5" parent="." unique_id=574016844 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, -24.608, 25)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="BouncePad5" unique_id=1222240637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
-use_collision = true
-radius = 1.8359375
-height = 102.98242
-sides = 16
-material = ExtResource("3_gyhjh")
-
-[node name="BouncePad6" parent="." unique_id=921600909 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 0, -24.608, -25)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="BouncePad6" unique_id=400350187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
-use_collision = true
-radius = 1.8359375
-height = 102.98242
-sides = 16
-material = ExtResource("3_gyhjh")
-
-[node name="BouncePad7" parent="." unique_id=286353504 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(-1.0000001, 0, 4.3711392e-08, 0, 1, 0, -4.3711392e-08, 0, -1.0000001, -25, -24.608, -1.0927847e-06)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="BouncePad7" unique_id=919916792]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
-use_collision = true
-radius = 1.8359375
-height = 102.98242
-sides = 16
-material = ExtResource("3_gyhjh")
-
-[node name="BouncePad8" parent="." unique_id=64856628 instance=ExtResource("4_1y6ae")]
-transform = Transform3D(-1.0000001, 0, 4.3711392e-08, 0, 1, 0, -4.3711392e-08, 0, -1.0000001, 25, -24.608, 1.0927847e-06)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="BouncePad8" unique_id=734288116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.521408, 0)
-use_collision = true
-radius = 1.8359375
-height = 102.98242
-sides = 16
-material = ExtResource("3_gyhjh")
-
-[node name="CeilingLamp" parent="." unique_id=1536409552 instance=ExtResource("5_kqfaw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, 0)
-
-[node name="CeilingLamp2" parent="." unique_id=192039868 instance=ExtResource("5_kqfaw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.951889, -13)
-
-[node name="CeilingLamp3" parent="." unique_id=278427367 instance=ExtResource("5_kqfaw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.952, 13)
-
-[node name="CeilingLamp4" parent="." unique_id=456694411 instance=ExtResource("5_kqfaw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13, -18.951889, 5.68248e-07)
-
-[node name="CeilingLamp5" parent="." unique_id=1802977917 instance=ExtResource("5_kqfaw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13, -18.952, -5.68248e-07)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1936146033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -23.090063, 0)
-use_collision = true
-radius = 19.006836
-height = 0.5546875
-sides = 32
 material = ExtResource("2_kr1wn")

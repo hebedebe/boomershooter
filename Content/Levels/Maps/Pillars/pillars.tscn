@@ -29,10 +29,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.68
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.68248e-07, -1.1365192, 13)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=414393131]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.8371582, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.7557373, -10)
 use_collision = true
 radius = 1.1142578
-height = 5.6743164
+height = 7.837158
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=743017996]
@@ -64,24 +64,24 @@ height = 26.719833
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1204089098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.837, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.96486866, 10)
 use_collision = true
 radius = 1.1142578
-height = 5.6743164
+height = 7.418579
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1586394941]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 1.8371582, -10)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0.7557373, -10)
 use_collision = true
 radius = 1.1142578
-height = 5.6743164
+height = 7.837158
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=790440889]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 1.837, 10)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 0.7555791, 10)
 use_collision = true
 radius = 1.1142578
-height = 5.6743164
+height = 7.837158
 material = ExtResource("2_ekdm0")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=322159902]

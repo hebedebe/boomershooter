@@ -14,7 +14,9 @@ const MAX_CLIENTS: int = 2;
 
 #region Network spawning
 @onready var spawned_nodes: Node = $NetworkInstantiatedObjects
+
 var player_scene = preload("res://Content/Player/player.tscn")
+var player_map: Dictionary[int, Player]
 #endregion
 
 var local_username: String;
@@ -54,18 +56,21 @@ func start_client():
 #endregion
 
 #region Network callbacks
-func _on_player_connected(id: int):
+func _on_player_connected(id: int): #server
 	print("Player %s joined the game" % id)
 	
 	var player: Player = player_scene.instantiate()
 	player.name = str(id)
 	player.username = local_username
 	replicate(player)
+	player_map[id] = player
 	
-func _on_player_disconnected(id: int):
+func _on_player_disconnected(id: int): #server
 	print("Player %s left the game" % id)
+	player_map[id].queue_free()
+	player_map.erase(id)
 	
-func _connected_to_server(): #Called when the client connects
+func _connected_to_server(): #Called when the client or host connects
 	print("Connected to server")
 	network_ui.visible = false
 

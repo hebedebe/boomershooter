@@ -43,6 +43,11 @@ stacked_shadow_2/color = Color(0.01666665, 1, 0, 0.59607846)
 stacked_shadow_3/offset = Vector2(1, 160)
 stacked_shadow_3/color = Color(0.05000007, 1, 0, 0.40392157)
 
+[sub_resource type="FogMaterial" id="FogMaterial_a50q2"]
+density = 0.004
+albedo = Color(0, 0, 0, 1)
+emission = Color(0, 1, 0, 1)
+
 [sub_resource type="FogMaterial" id="FogMaterial_le3s8"]
 albedo = Color(0, 0, 0, 1)
 emission = Color(0, 1, 0, 1)
@@ -88,6 +93,12 @@ maps = Array[PackedScene]([ExtResource("5_q6qep"), ExtResource("8_nkux8")])
 stream = ExtResource("6_516sn")
 autoplay = true
 parameters/looping = true
+
+[node name="FogVolume2" type="FogVolume" parent="." unique_id=1376956168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22, 0)
+visible = false
+size = Vector3(1000, 128.02148, 1000)
+material = SubResource("FogMaterial_a50q2")
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=1155964798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -90, 0)

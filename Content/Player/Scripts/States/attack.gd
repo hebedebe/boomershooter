@@ -1,6 +1,7 @@
 extends State
 
-const IMPULSE_FORCE: float = 30;
+@export var impulse_force : float = 30;
+@export var attack_delay: float = 0.05;
 
 @onready var attack_tex: TextureRect = $CanvasLayer/AttackTex
 @onready var player: Player = $"../.."
@@ -8,6 +9,7 @@ const IMPULSE_FORCE: float = 30;
 @onready var attack_cooldown: Node = $"../AttackCooldown"
 @onready var attack: AudioStreamPlayer = $Attack
 @onready var attack_cast: ShapeCast3D = $"../../Neck/Camera/AttackCast"
+@onready var neck: Node3D = $"../../Neck"
 
 func _ready() -> void:
 	duration.timeout.connect(cooldown)
@@ -19,9 +21,11 @@ func on_hit(source_path: NodePath):
 
 func on_enter():
 	attack_tex.visible = true
-	player.add_impulse(player.camera.basis * Vector3(0,0,-IMPULSE_FORCE))
+	player.add_impulse(neck.basis * Vector3(0,0,-impulse_force))
+	await get_tree().create_timer(attack_delay).timeout
 	duration.start()
 	attack.play()
+	
 	
 	attack_cast.force_shapecast_update() #bypasses enabled being off
 	for i in range(attack_cast.get_collision_count()):

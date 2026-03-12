@@ -4,6 +4,7 @@ extends Node3D
 @export var bounce_force: float = 100
 
 @onready var bounce_area: Area3D = $BounceArea
+@onready var bounce_sfx: AudioStreamPlayer3D = $Bounce_SFX
 
 func _ready() -> void:
 	bounce_area.body_entered.connect(body_entered)
@@ -14,3 +15,4 @@ func body_entered(body: Object):
 		var particles: Node3D = preload("res://Content/Particles/Bounce/bounce_particles.tscn").instantiate()
 		add_child(particles)
 		particles.global_position = body.global_position
+		bounce_sfx.play()

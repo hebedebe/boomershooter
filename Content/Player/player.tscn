@@ -166,6 +166,14 @@ func _process(_delta: float) -> void:
 		text = \"state: unset (this is a bug)\"
 "
 
+[sub_resource type="GDScript" id="GDScript_xyxax"]
+script/source = "extends Label
+
+
+func _process(_delta: float) -> void:
+	text = \"fps: %s\" % Engine.get_frames_per_second()
+"
+
 [sub_resource type="GDScript" id="GDScript_dep4y"]
 script/source = "extends Label
 
@@ -243,7 +251,7 @@ tilt_strength = Vector2(0.1, 0.2)
 [node name="AttackCast" type="ShapeCast3D" parent="Neck/Camera" unique_id=497785064]
 enabled = false
 shape = SubResource("SphereShape3D_0femt")
-target_position = Vector3(0, 0, -2.5)
+target_position = Vector3(0, 0, -3)
 margin = 0.2
 
 [node name="AttackStateController" type="Node" parent="." unique_id=292420767 node_paths=PackedStringArray("state")]
@@ -435,6 +443,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -489,6 +498,14 @@ offset_top = 116.0
 offset_right = 108.0
 offset_bottom = 139.0
 script = SubResource("GDScript_aak6e")
+
+[node name="FPS" type="Label" parent="HUD/Canvas" unique_id=1241416074]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 144.0
+offset_right = 108.0
+offset_bottom = 167.0
+script = SubResource("GDScript_xyxax")
 
 [node name="Speed" type="Label" parent="HUD/Canvas" unique_id=1020426320]
 layout_mode = 1
