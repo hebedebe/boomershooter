@@ -18,6 +18,7 @@ func go_cooldown():
 func on_enter():
 	duration.start()
 	player.active = false
+	%BrokenGlass.glass_fall()
 	
 func on_exit():
 	duration.stop()

@@ -4,14 +4,14 @@
 [ext_resource type="Material" uid="uid://c88i2703y5rds" path="res://Art/Materials/Spatial/purple_circuit.tres" id="2_2fsga"]
 [ext_resource type="Script" uid="uid://bnvxnurqkrkf3" path="res://Content/Player/Scripts/player_camera.gd" id="2_kbsyd"]
 [ext_resource type="Curve" uid="uid://dp3d6lwex6ss2" path="res://Content/Player/player_acceleration_curve.tres" id="2_luk42"]
-[ext_resource type="AudioStream" uid="uid://dxidc8bcrhwmh" path="res://Art/Sounds/FX/Footsteps.mp3" id="3_4p16a"]
-[ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/Chromakey.gdshader" id="3_7d8p2"]
+[ext_resource type="AudioStream" uid="uid://dxidc8bcrhwmh" path="res://Art/Sounds/FX/footsteps.mp3" id="3_4p16a"]
+[ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/chroma_key.gdshader" id="3_7d8p2"]
 [ext_resource type="Script" uid="uid://bsdb316n8yki2" path="res://Content/EnhancedTimer/Scripts/enhanced_timer.gd" id="3_kev1q"]
 [ext_resource type="Texture2D" uid="uid://dyat1hdbschou" path="res://Art/Textures/UI/hand_default.png" id="3_rn1qw"]
-[ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/Hurt.mp3" id="3_rtr7s"]
+[ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/hurt.mp3" id="3_rtr7s"]
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
-[ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/Jump.mp3" id="3_yevl6"]
-[ext_resource type="AudioStream" uid="uid://dervputdob3yo" path="res://Art/Sounds/FX/Dash.mp3" id="4_yrxhh"]
+[ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/jump.mp3" id="3_yevl6"]
+[ext_resource type="AudioStream" uid="uid://dervputdob3yo" path="res://Art/Sounds/FX/dash.mp3" id="4_yrxhh"]
 [ext_resource type="Script" uid="uid://dw4rxit35xb16" path="res://Content/Player/Scripts/States/idle.gd" id="6_20pa1"]
 [ext_resource type="Texture2D" uid="uid://b4wtp3sxa5ekt" path="res://Art/Textures/UI/hand_block.png" id="6_aak6e"]
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
@@ -19,16 +19,18 @@
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
 [ext_resource type="Material" uid="uid://ctvdgbwbjkk5w" path="res://Art/Materials/Spatial/purple_circuit_fade.tres" id="9_dep4y"]
-[ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/Attack.wav" id="9_p1xk2"]
+[ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/attack.wav" id="9_p1xk2"]
 [ext_resource type="Script" uid="uid://ctvq025q66t6w" path="res://Content/Player/Scripts/States/block_cooldown.gd" id="9_v4ny3"]
-[ext_resource type="AudioStream" uid="uid://cn12ruklnsvrg" path="res://Art/Sounds/FX/Overheat.mp3" id="10_6qlop"]
-[ext_resource type="AudioStream" uid="uid://bglfljbqfeyu1" path="res://Art/Sounds/FX/BlockingHum.mp3" id="10_v2n5w"]
+[ext_resource type="AudioStream" uid="uid://cn12ruklnsvrg" path="res://Art/Sounds/FX/overheat.mp3" id="10_6qlop"]
+[ext_resource type="AudioStream" uid="uid://bglfljbqfeyu1" path="res://Art/Sounds/FX/blocking_hum.mp3" id="10_v2n5w"]
 [ext_resource type="Script" uid="uid://0gej1xwgh5d0" path="res://Content/Player/Scripts/States/parried.gd" id="12_20pa1"]
-[ext_resource type="AudioStream" uid="uid://vssu6qg84k13" path="res://Art/Sounds/FX/Block.mp3" id="12_qqdic"]
+[ext_resource type="AudioStream" uid="uid://vssu6qg84k13" path="res://Art/Sounds/FX/block.mp3" id="12_qqdic"]
 [ext_resource type="Script" uid="uid://b21is8ytr1cuq" path="res://Content/Player/Scripts/States/parry.gd" id="12_wonq3"]
-[ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/Parry.mp3" id="13_5gbni"]
+[ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/parry.mp3" id="13_5gbni"]
 [ext_resource type="Shader" uid="uid://tlkxd1jwngls" path="res://Art/Shaders/PostProcess/adapt_to_palette.gdshader" id="26_6yrki"]
-[ext_resource type="Texture2D" uid="uid://0pgsd22mvnym" path="res://Art/Textures/Palettes/windows-95-256-colours-1x.png" id="27_xyxax"]
+[ext_resource type="AudioStream" uid="uid://bqim2dm08500x" path="res://Art/Sounds/FX/glass_break.mp3" id="27_0femt"]
+[ext_resource type="Shader" uid="uid://l424w0c5eamt" path="res://Art/Shaders/PostProcess/broken_glass.gdshader" id="29_0femt"]
+[ext_resource type="Shader" uid="uid://ckw7rhbn3s35x" path="res://Art/Shaders/PostProcess/fisheye.gdshader" id="29_px8oj"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -129,9 +131,54 @@ func _enter_tree() -> void:
 	visible = is_multiplayer_authority()
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px8oj"]
+shader = ExtResource("29_0femt")
+shader_parameter/fall_progress = 0.0
+shader_parameter/pieces_x = 5
+shader_parameter/pieces_y = 3
+shader_parameter/gravity = 2.2
+shader_parameter/scatter = 0.22
+shader_parameter/rotation_amount = 4.0
+shader_parameter/point_jitter = 0.34
+shader_parameter/delay_variation = 0.28
+shader_parameter/edge_thickness = 0.00450000021375
+shader_parameter/edge_brightness = 2.0
+shader_parameter/alpha_fade = 0.0
+
+[sub_resource type="GDScript" id="GDScript_0femt"]
+script/source = "extends ColorRect
+
+@export var fall_speed: float = 1
+
+@onready var broken_glass_sfx: AudioStreamPlayer = $BrokenGlassSFX
+
+var falling: bool = false
+var progress: float = 0
+
+func _ready() -> void:
+	visible = false
+
+func _process(delta: float) -> void:
+	if falling:
+		if material is ShaderMaterial:
+			material.set_shader_parameter(\"fall_progress\", progress)
+			progress += delta * fall_speed;
+			if progress >= 1:
+				falling=false
+
+func glass_fall():
+	visible = true
+	falling = true
+	broken_glass_sfx.play()
+	progress=0
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aak6e"]
+shader = ExtResource("29_px8oj")
+shader_parameter/fish_intensity = 1.0000000475
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
 shader = ExtResource("26_6yrki")
-shader_parameter/palette = ExtResource("27_xyxax")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
 shader = ExtResource("3_7d8p2")
@@ -142,24 +189,29 @@ shader_parameter/fade_amount = 0.5
 [sub_resource type="GDScript" id="GDScript_1q6fh"]
 script/source = "extends Label
 
+@onready var player: Player = $\"../../../..\"
 
-func _enter_tree() -> void:
-	text = \"ID: %s\" % $\"../../..\".name
+func _ready() -> void:
+	text = \"ID: %s\" % player.name
 "
 
 [sub_resource type="GDScript" id="GDScript_2mypc"]
 script/source = "extends Label
 
+@onready var player: Player = $\"../../../..\"
 
-func _enter_tree() -> void:
-	text = \"Username: %s\" % $\"../../..\".username
+
+func _ready() -> void:
+	text = \"Username: %s\" % player.username
 "
 
 [sub_resource type="GDScript" id="GDScript_aak6e"]
 script/source = "extends Label
 
+@onready var attack_state_controller: PlayerAttackStateController = $\"../../../../AttackStateController\"
+
 func _process(_delta: float) -> void:
-	var state: State = $\"../../../AttackStateController\".state
+	var state: State = attack_state_controller.state
 	if state:
 		text = \"state: %s\" % state.name
 	else:
@@ -177,7 +229,7 @@ func _process(_delta: float) -> void:
 [sub_resource type="GDScript" id="GDScript_dep4y"]
 script/source = "extends Label
 
-@onready var player: Player = $\"../../..\"
+@onready var player: Player = $\"../../../..\"
 
 func _process(_delta: float) -> void:
 	text = \"%s mps\" % snapped(player.velocity.length(), 0.1)
@@ -186,9 +238,9 @@ func _process(_delta: float) -> void:
 [node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
 physics_interpolation_mode = 1
 script = ExtResource("1_thq5r")
-gravity = Vector3(0, -9.82, 0)
+gravity = Vector3(0, -19.64, 0)
 speed = 10.0
-jump_velocity = 5.0
+jump_velocity = 7.0
 acceleration_curve = ExtResource("2_luk42")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=874593681]
@@ -245,8 +297,10 @@ cull_mask = 1047553
 attributes = SubResource("CameraAttributesPractical_68xdw")
 doppler_tracking = 2
 fov = 90.0
+size = 0.2
 script = ExtResource("2_kbsyd")
 tilt_strength = Vector2(0.1, 0.2)
+base_FOV = 120.0
 
 [node name="AttackCast" type="ShapeCast3D" parent="Neck/Camera" unique_id=497785064]
 enabled = false
@@ -343,7 +397,7 @@ script = ExtResource("9_v4ny3")
 metadata/_custom_type_script = "uid://dpigb0oovgdxr"
 
 [node name="Cooldown" type="Timer" parent="AttackStateController/BlockCooldown" unique_id=529242530]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AttackStateController/BlockCooldown" unique_id=1348513506]
@@ -443,7 +497,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -451,8 +504,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+[node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
+unique_name_in_owner = true
 z_index = 1025
+z_as_relative = false
+material = SubResource("ShaderMaterial_px8oj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_0femt")
+
+[node name="BrokenGlassSFX" type="AudioStreamPlayer" parent="HUD/Canvas/PostProcess/BrokenGlass" unique_id=695188927]
+stream = ExtResource("27_0femt")
+
+[node name="Fisheye" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=2023683954]
+material = SubResource("ShaderMaterial_aak6e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+visible = false
 z_as_relative = false
 material = SubResource("ShaderMaterial_8p1dt")
 layout_mode = 1
@@ -475,49 +553,29 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="ID" type="Label" parent="HUD/Canvas" unique_id=747798068]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Canvas" unique_id=79344105]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 64.0
-offset_right = 108.0
-offset_bottom = 87.0
+offset_left = 107.0
+offset_top = 85.0
+offset_right = 276.0
+offset_bottom = 216.0
+
+[node name="ID" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=747798068]
+layout_mode = 2
 script = SubResource("GDScript_1q6fh")
 
-[node name="Username" type="Label" parent="HUD/Canvas" unique_id=1063662847]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 90.0
-offset_right = 108.0
-offset_bottom = 113.0
+[node name="Username" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1063662847]
+layout_mode = 2
 script = SubResource("GDScript_2mypc")
 
-[node name="State" type="Label" parent="HUD/Canvas" unique_id=1500498092]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 116.0
-offset_right = 108.0
-offset_bottom = 139.0
+[node name="State" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1500498092]
+layout_mode = 2
 script = SubResource("GDScript_aak6e")
 
-[node name="FPS" type="Label" parent="HUD/Canvas" unique_id=1241416074]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 144.0
-offset_right = 108.0
-offset_bottom = 167.0
+[node name="FPS" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1241416074]
+layout_mode = 2
 script = SubResource("GDScript_xyxax")
 
-[node name="Speed" type="Label" parent="HUD/Canvas" unique_id=1020426320]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -70.0
-offset_right = 20.0
-offset_bottom = -47.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Speed" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1020426320]
+layout_mode = 2
 script = SubResource("GDScript_dep4y")

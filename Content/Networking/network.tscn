@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://bmbns44vimamd"]
 
 [ext_resource type="Script" uid="uid://fde8yaqd1i5s" path="res://Content/Networking/Scripts/network_manager.gd" id="1_8vdkd"]
+[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="2_m77u4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wsxd"]
+shader = ExtResource("2_m77u4")
+shader_parameter/blur = 1.0770000511575
+shader_parameter/warp_intensity = 0.4
+shader_parameter/strength_x = 12.0
+shader_parameter/strength_y = 12.0
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/corner_radius = 0.3
+shader_parameter/edge_smoothness = 3.0
+shader_parameter/tint = Color(0.57680225, 0.7383729, 1, 0.12156863)
+shader_parameter/edge_highlight = Color(1, 1, 1, 0.3)
+shader_parameter/edge_width = 1.5
+shader_parameter/chromatic_strength = 0.8650000410875
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m77u4"]
 content_margin_left = 0.0
@@ -14,6 +30,8 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m77u4"]
+
 [node name="Network" type="Node" unique_id=303830956 groups=["network_manager"]]
 script = ExtResource("1_8vdkd")
 
@@ -22,6 +40,7 @@ script = ExtResource("1_8vdkd")
 [node name="NetworkUIPanel" type="Panel" parent="NetworkUI" unique_id=1851565272]
 z_index = 1
 z_as_relative = false
+material = SubResource("ShaderMaterial_7wsxd")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,26 +67,31 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UsernameInput" type="LineEdit" parent="NetworkUI/NetworkUIPanel/VBoxContainer" unique_id=1098471546]
+material = SubResource("ShaderMaterial_m77u4")
 layout_mode = 2
 placeholder_text = "Username..."
 
 [node name="IPInput" type="LineEdit" parent="NetworkUI/NetworkUIPanel/VBoxContainer" unique_id=1540103816]
+material = SubResource("ShaderMaterial_m77u4")
 layout_mode = 2
 text = "localhost"
 placeholder_text = "IP address..."
 
 [node name="PortInput" type="LineEdit" parent="NetworkUI/NetworkUIPanel/VBoxContainer" unique_id=1445001467]
+material = SubResource("ShaderMaterial_m77u4")
 layout_mode = 2
 text = "8080"
 placeholder_text = "Port..."
 
 [node name="StartServerButton" type="Button" parent="NetworkUI/NetworkUIPanel/VBoxContainer" unique_id=831359447]
+material = SubResource("ShaderMaterial_m77u4")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Start Server"
 
 [node name="JoinServerButton" type="Button" parent="NetworkUI/NetworkUIPanel/VBoxContainer" unique_id=1234523273]
+material = SubResource("ShaderMaterial_m77u4")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

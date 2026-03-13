@@ -4,6 +4,9 @@ extends CharacterBody3D
 signal on_hit(source_path: NodePath)
 signal on_parried(source_path: NodePath)
 
+@export_category("Combat")
+@export var lives: int = 2
+
 @export_category("Movement")
 @export var gravity : Vector3 = Vector3(0,-20,0)
 @export var speed : float = 5
@@ -150,11 +153,13 @@ func parried(source_path: NodePath):
 func hurt(source_path: NodePath):
 	hurt_sound.play()
 	if not is_multiplayer_authority(): return
-	#die()
+	lives -= 1
 	var source_player: Player = get_node(source_path)
 	if source_player:
 		var direction = (source_player.global_position - global_position).normalized()
 		velocity += direction * -30 + direction * -source_player.velocity.length() + Vector3(0,10,0)
+	if lives <= 0:
+		die()
 
 func die():
 	pass

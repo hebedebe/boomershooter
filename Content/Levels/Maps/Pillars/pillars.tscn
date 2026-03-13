@@ -15,7 +15,41 @@ environment = ExtResource("1_0p2r0")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2137742346]
 transform = Transform3D(4.777422, 0, 0, 0, 1, 0, 0, 0, 4.9483514, 0, -718.43726, 0)
 use_collision = true
-size = Vector3(10, 1434.6057, 10)
+size = Vector3(10, 1434.606, 10)
+material = ExtResource("2_8s2oe")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D" unique_id=947592808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 717.35364, 0)
+operation = 2
+radius = 2.6291103
+radial_segments = 24
+material = ExtResource("2_ekdm0")
+
+[node name="Ring" type="Node3D" parent="." unique_id=1140800460]
+transform = Transform3D(1, 0, 0, 0, 6.4511137, 0, 0, 0, 1, 0, -34.79871, 0)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Ring" unique_id=307610414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.15657234, 0)
+use_collision = true
+size = Vector3(4, 13.38, 64)
+material = ExtResource("2_8s2oe")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Ring" unique_id=1298484174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.15657234, 0)
+use_collision = true
+size = Vector3(4, 13.38, 64)
+material = ExtResource("2_8s2oe")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Ring" unique_id=179455387]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.3113416e-06, -0.15657234, 30)
+use_collision = true
+size = Vector3(4, 13.38, 64)
+material = ExtResource("2_8s2oe")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Ring" unique_id=2142724429]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.3113416e-06, -0.15657234, -30)
+use_collision = true
+size = Vector3(4, 13.38, 64)
 material = ExtResource("2_8s2oe")
 
 [node name="BouncePad" parent="." unique_id=1170943954 instance=ExtResource("3_ug3bg")]
@@ -35,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.7557373, -10)
 use_collision = true
 radius = 1.1142578
 height = 7.837158
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=743017996]
@@ -42,6 +77,7 @@ transform = Transform3D(0.7303798, 0.25, 0.6356457, -0.0062360317, 0.93301284, -
 use_collision = true
 radius = 1.1142578
 height = 26.719833
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." unique_id=1151559953]
@@ -49,6 +85,7 @@ transform = Transform3D(-0.73081416, -0.25016546, -0.635081, -0.0065131914, 0.93
 use_collision = true
 radius = 1.1142578
 height = 26.719833
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." unique_id=1976816614]
@@ -56,6 +93,7 @@ transform = Transform3D(0.6830127, -0.25881913, -0.6830127, -0.00623601, 0.93301
 use_collision = true
 radius = 1.1142578
 height = 26.719833
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." unique_id=1874591051]
@@ -63,6 +101,7 @@ transform = Transform3D(-0.6825453, 0.2589544, 0.6834285, -0.0065132026, 0.93293
 use_collision = true
 radius = 1.1142578
 height = 26.719833
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1204089098]
@@ -70,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.96486866, 10)
 use_collision = true
 radius = 1.1142578
 height = 7.418579
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1586394941]
@@ -77,6 +117,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 
 use_collision = true
 radius = 1.1142578
 height = 7.837158
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=790440889]
@@ -84,14 +125,15 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10,
 use_collision = true
 radius = 1.1142578
 height = 7.837158
+sides = 16
 material = ExtResource("2_ekdm0")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=322159902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.914827, 0)
 use_collision = true
 radius = 6.0
-radial_segments = 24
-rings = 12
+radial_segments = 48
+rings = 24
 material = ExtResource("4_0p2r0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGSphere3D" unique_id=1542744196]

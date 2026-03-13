@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cuief2u2yn5uv" path="res://Art/Fonts/BangTime.ttf" id="2_le3s8"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
-[ext_resource type="AudioStream" uid="uid://b18tblqkiua47" path="res://Art/Sounds/FX/Theme.mp3" id="6_516sn"]
+[ext_resource type="AudioStream" uid="uid://b18tblqkiua47" path="res://Art/Sounds/FX/theme.mp3" id="6_516sn"]
 [ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="7_a50q2"]
 [ext_resource type="PackedScene" uid="uid://fedgjeypg71c" path="res://Content/Levels/Maps/Pillars/pillars.tscn" id="8_nkux8"]
 
@@ -46,11 +46,11 @@ stacked_shadow_3/color = Color(0.05000007, 1, 0, 0.40392157)
 [sub_resource type="FogMaterial" id="FogMaterial_a50q2"]
 density = 0.004
 albedo = Color(0, 0, 0, 1)
-emission = Color(0, 1, 0, 1)
+emission = Color(0.25490198, 0.25882354, 0.17254902, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_le3s8"]
 albedo = Color(0, 0, 0, 1)
-emission = Color(0, 1, 0, 1)
+emission = Color(0.25410664, 0.26, 0.17159998, 1)
 
 [node name="Main" type="Node3D" unique_id=440981399]
 script = SubResource("GDScript_jxnjk")
@@ -96,8 +96,7 @@ parameters/looping = true
 
 [node name="FogVolume2" type="FogVolume" parent="." unique_id=1376956168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22, 0)
-visible = false
-size = Vector3(1000, 128.02148, 1000)
+size = Vector3(1000, 742.41, 1000)
 material = SubResource("FogMaterial_a50q2")
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=1155964798]
