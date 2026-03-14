@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdtji3w5adjrd"]
 
 [ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_jr1es"]
+[ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="2_pool5"]
 [ext_resource type="PackedScene" uid="uid://n708qdyyeref" path="res://Content/Props/MovingPlatform/moving_platform.tscn" id="3_6mxf0"]
 [ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="3_vyp8v"]
 [ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="4_lndun"]
@@ -15,6 +16,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.094836, 0)
 use_collision = true
 size = Vector3(3, 3, 3)
 material = ExtResource("3_vyp8v")
+
+[node name="Edge" type="CSGBox3D" parent="." unique_id=1696303930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -89.794785, 0)
+use_collision = true
+size = Vector3(2.57, 172.3999, 28.22)
+material = ExtResource("2_pool5")
+
+[node name="Edge2" type="CSGBox3D" parent="." unique_id=1123130188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -89.795, 0)
+use_collision = true
+size = Vector3(2.57, 172.3999, 28.22)
+material = ExtResource("2_pool5")
+
+[node name="Edge3" type="CSGBox3D" parent="." unique_id=1874856421]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.742278e-07, -89.794785, 20)
+use_collision = true
+size = Vector3(2.57, 172.3999, 28.22)
+material = ExtResource("2_pool5")
+
+[node name="Edge4" type="CSGBox3D" parent="." unique_id=2006011232]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.742278e-07, -89.795, -20)
+use_collision = true
+size = Vector3(2.57, 172.3999, 28.22)
+material = ExtResource("2_pool5")
 
 [node name="MovingPlatform" parent="." unique_id=781357609 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)

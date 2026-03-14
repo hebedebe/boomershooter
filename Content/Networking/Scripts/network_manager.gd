@@ -38,12 +38,11 @@ func _ready() -> void:
 	
 func reset() -> void:
 	game_reset.emit()
-	if multiplayer.is_server():
-		for id in player_map.keys():
-			if id != 1:
-				player_map[id].queue_free()
-				player_map.erase(id)
-				multiplayer.multiplayer_peer.disconnect_peer(id)
+	for id in player_map.keys():
+		if id != 1:
+			player_map[id].queue_free()
+			player_map.erase(id)
+			multiplayer.multiplayer_peer.disconnect_peer(id)
 	multiplayer.multiplayer_peer.close()
 	network_ui.show()
 	spawned_nodes.clear()

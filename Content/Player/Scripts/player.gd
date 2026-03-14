@@ -31,6 +31,7 @@ signal on_parried(source_path: NodePath)
 @onready var dash_particles: GPUParticles3D = $Body/DashParticles
 @onready var death: Control = $HUD/Canvas/Death
 @onready var land: AudioStreamPlayer3D = $Land
+@onready var wind_fast: AudioStreamPlayer = $WindFast
 
 var network_manager: NetworkManager
 var current_acceleration : float = 0
@@ -91,12 +92,19 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if not is_on_floor():
+		if velocity.length() > 25:
+			if not wind_fast.playing:
+				wind_fast.play()
+		
 		velocity += gravity * delta
 		if Input.is_action_pressed("slam"):
 			velocity.y -= slam_force * delta
-
+	else:
+		wind_fast.stop()
+			
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():

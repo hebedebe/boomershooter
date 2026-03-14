@@ -12,6 +12,7 @@
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
 [ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/jump.mp3" id="3_yevl6"]
 [ext_resource type="AudioStream" uid="uid://dervputdob3yo" path="res://Art/Sounds/FX/dash.mp3" id="4_yrxhh"]
+[ext_resource type="AudioStream" uid="uid://cvpy3pwgxojjf" path="res://Art/Sounds/FX/wind_fast.mp3" id="5_7vjwh"]
 [ext_resource type="Script" uid="uid://dw4rxit35xb16" path="res://Content/Player/Scripts/States/idle.gd" id="6_20pa1"]
 [ext_resource type="Texture2D" uid="uid://b4wtp3sxa5ekt" path="res://Art/Textures/UI/hand_block.png" id="6_aak6e"]
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
@@ -33,9 +34,9 @@
 [ext_resource type="FontFile" uid="uid://bylyb1djh36fq" path="res://Art/Fonts/Perfect DOS VGA 437 Win.ttf" id="27_wggg8"]
 [ext_resource type="Shader" uid="uid://l424w0c5eamt" path="res://Art/Shaders/PostProcess/broken_glass.gdshader" id="29_0femt"]
 [ext_resource type="Shader" uid="uid://ckw7rhbn3s35x" path="res://Art/Shaders/PostProcess/fisheye.gdshader" id="29_px8oj"]
-[ext_resource type="Texture2D" uid="uid://j8blchui2jtn" path="res://Art/Textures/Palettes/apollo-1x.png" id="30_px8oj"]
 [ext_resource type="Shader" uid="uid://b5aak8sqcu40i" path="res://Art/Shaders/PostProcess/film_grain.gdshader" id="31_gq5co"]
 [ext_resource type="Texture2D" uid="uid://dlimxq7oussns" path="res://Art/Textures/Spatial/bounce_pad.png" id="34_0id1h"]
+[ext_resource type="Texture2D" uid="uid://68wjvvowgsol" path="res://Art/Textures/Palettes/cc-29-1x.png" id="34_7vjwh"]
 [ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="34_wggg8"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
@@ -147,61 +148,6 @@ script/source = "extends CanvasLayer
 func _enter_tree() -> void:
 	visible = is_multiplayer_authority()
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_px8oj"]
-shader = ExtResource("29_0femt")
-shader_parameter/fall_progress = 0.0
-shader_parameter/pieces_x = 5
-shader_parameter/pieces_y = 3
-shader_parameter/gravity = 2.2
-shader_parameter/scatter = 0.22
-shader_parameter/rotation_amount = 4.0
-shader_parameter/point_jitter = 0.34
-shader_parameter/delay_variation = 0.28
-shader_parameter/edge_thickness = 0.00450000021375
-shader_parameter/edge_brightness = 2.0
-shader_parameter/alpha_fade = 0.0
-
-[sub_resource type="GDScript" id="GDScript_0femt"]
-script/source = "extends ColorRect
-
-@export var fall_speed: float = 1
-
-@onready var broken_glass_sfx: AudioStreamPlayer = $BrokenGlassSFX
-
-var falling: bool = false
-var progress: float = 0
-
-func _ready() -> void:
-	visible = false
-
-func _process(delta: float) -> void:
-	if falling:
-		if material is ShaderMaterial:
-			material.set_shader_parameter(\"fall_progress\", progress)
-			progress += delta * fall_speed;
-			if progress >= 1:
-				falling=false
-
-func glass_fall():
-	visible = true
-	falling = true
-	broken_glass_sfx.play()
-	progress=0
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aak6e"]
-shader = ExtResource("29_px8oj")
-shader_parameter/fish_intensity = 1.0000000475
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vjwh"]
-shader = ExtResource("31_gq5co")
-shader_parameter/grain_amount = 0.01200000057
-shader_parameter/grain_size = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
-shader = ExtResource("26_6yrki")
-shader_parameter/palette = ExtResource("30_px8oj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pcdcg"]
 shader = ExtResource("34_wggg8")
@@ -332,6 +278,61 @@ func _process(_delta: float) -> void:
 	text = \"Lives: %s\" % player.lives
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px8oj"]
+shader = ExtResource("29_0femt")
+shader_parameter/fall_progress = 0.0
+shader_parameter/pieces_x = 5
+shader_parameter/pieces_y = 3
+shader_parameter/gravity = 2.2
+shader_parameter/scatter = 0.22
+shader_parameter/rotation_amount = 4.0
+shader_parameter/point_jitter = 0.34
+shader_parameter/delay_variation = 0.28
+shader_parameter/edge_thickness = 0.00450000021375
+shader_parameter/edge_brightness = 2.0
+shader_parameter/alpha_fade = 0.0
+
+[sub_resource type="GDScript" id="GDScript_0femt"]
+script/source = "extends ColorRect
+
+@export var fall_speed: float = 1
+
+@onready var broken_glass_sfx: AudioStreamPlayer = $BrokenGlassSFX
+
+var falling: bool = false
+var progress: float = 0
+
+func _ready() -> void:
+	visible = false
+
+func _process(delta: float) -> void:
+	if falling:
+		if material is ShaderMaterial:
+			material.set_shader_parameter(\"fall_progress\", progress)
+			progress += delta * fall_speed;
+			if progress >= 1:
+				falling=false
+
+func glass_fall():
+	visible = true
+	falling = true
+	broken_glass_sfx.play()
+	progress=0
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aak6e"]
+shader = ExtResource("29_px8oj")
+shader_parameter/fish_intensity = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vjwh"]
+shader = ExtResource("31_gq5co")
+shader_parameter/grain_amount = 0.01200000057
+shader_parameter/grain_size = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
+shader = ExtResource("26_6yrki")
+shader_parameter/palette = ExtResource("34_7vjwh")
+
 [node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
 physics_interpolation_mode = 1
 script = ExtResource("1_thq5r")
@@ -355,6 +356,9 @@ script = SubResource("GDScript_0id1h")
 wait_time = 0.7
 one_shot = true
 script = ExtResource("3_kev1q")
+
+[node name="WindFast" type="AudioStreamPlayer" parent="." unique_id=302980341]
+stream = ExtResource("5_7vjwh")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=1669148541]
 stream = ExtResource("3_rtr7s")
@@ -629,60 +633,6 @@ text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
-unique_name_in_owner = true
-z_index = 1025
-z_as_relative = false
-material = SubResource("ShaderMaterial_px8oj")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = SubResource("GDScript_0femt")
-
-[node name="BrokenGlassSFX" type="AudioStreamPlayer" parent="HUD/Canvas/PostProcess/BrokenGlass" unique_id=695188927]
-stream = ExtResource("27_0femt")
-
-[node name="Fisheye" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=2023683954]
-material = SubResource("ShaderMaterial_aak6e")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Grain" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1894599362]
-material = SubResource("ShaderMaterial_7vjwh")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
-visible = false
-z_as_relative = false
-material = SubResource("ShaderMaterial_8p1dt")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Death" type="Control" parent="HUD/Canvas" unique_id=1751329503]
 visible = false
 layout_mode = 1
@@ -777,6 +727,7 @@ expand = true
 loop = true
 
 [node name="Panel" type="Panel" parent="HUD/Canvas" unique_id=2056500338]
+visible = false
 material = SubResource("ShaderMaterial_0id1h")
 layout_mode = 0
 offset_left = 122.0
@@ -877,3 +828,57 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_wggg8")
+
+[node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
+unique_name_in_owner = true
+z_index = 1025
+z_as_relative = false
+material = SubResource("ShaderMaterial_px8oj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_0femt")
+
+[node name="BrokenGlassSFX" type="AudioStreamPlayer" parent="HUD/Canvas/PostProcess/BrokenGlass" unique_id=695188927]
+stream = ExtResource("27_0femt")
+
+[node name="Fisheye" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=2023683954]
+material = SubResource("ShaderMaterial_aak6e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grain" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1894599362]
+material = SubResource("ShaderMaterial_7vjwh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+visible = false
+z_as_relative = false
+material = SubResource("ShaderMaterial_8p1dt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -2,15 +2,15 @@
 
 [ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_le3s8"]
 [ext_resource type="PackedScene" uid="uid://bmbns44vimamd" path="res://Content/Networking/network.tscn" id="1_y1o6t"]
-[ext_resource type="FontFile" uid="uid://ckh4q3pk3erd0" path="res://Art/Fonts/VerveShadow.ttf" id="2_le3s8"]
+[ext_resource type="FontFile" uid="uid://bld8q3soyjwoo" path="res://Art/Fonts/Verve.ttf" id="2_5gywb"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
 [ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Donut/donut.tscn" id="5_vm62j"]
 [ext_resource type="PackedScene" uid="uid://cdtji3w5adjrd" path="res://Content/Levels/Maps/Platforms/platforms.tscn" id="7_5gywb"]
-[ext_resource type="AudioStream" uid="uid://fhk5rco0pu41" path="res://Art/Sounds/Music/theme_bebop.mp3" id="7_le3s8"]
 [ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="7_nkux8"]
 [ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="8_le3s8"]
 [ext_resource type="PackedScene" uid="uid://fedgjeypg71c" path="res://Content/Levels/Maps/Pillars/pillars.tscn" id="8_nkux8"]
+[ext_resource type="AudioStream" uid="uid://sqmp25tbrq3r" path="res://Art/Sounds/Music/wind_ambience.mp3" id="10_5gywb"]
 
 [sub_resource type="GDScript" id="GDScript_jxnjk"]
 script/source = "extends Node3D
@@ -43,7 +43,7 @@ func _ready() -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkux8"]
-font = ExtResource("2_le3s8")
+font = ExtResource("2_5gywb")
 font_size = 139
 font_color = Color(0.8216722, 0.0016847688, 0.9593107, 1)
 outline_size = 15
@@ -219,10 +219,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -244.0
-offset_top = 197.0
-offset_right = 255.92017
-offset_bottom = 237.0
+offset_left = -46.0
+offset_top = 441.0
+offset_right = 54.0
+offset_bottom = 481.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkux8")
@@ -240,7 +240,7 @@ script = SubResource("GDScript_5gywb")
 [node name="Network" parent="." unique_id=303830956 instance=ExtResource("1_y1o6t")]
 
 [node name="Theme" type="AudioStreamPlayer" parent="." unique_id=852464650]
-stream = ExtResource("7_le3s8")
+stream = ExtResource("10_5gywb")
 volume_db = -14.857
 autoplay = true
 parameters/looping = true
