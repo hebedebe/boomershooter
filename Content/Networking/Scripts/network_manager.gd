@@ -47,6 +47,7 @@ func reset() -> void:
 	multiplayer.multiplayer_peer.close()
 	network_ui.show()
 	spawned_nodes.clear()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 #region Start server/client
 func start_host():
@@ -80,7 +81,7 @@ func _on_player_connected(id: int): #server
 	var player: Player = player_scene.instantiate()
 	
 	player.name = str(id)
-	player.username = local_username
+	#player.username = local_username
 	
 	replicate(player)
 	player_map[id] = player
@@ -101,6 +102,7 @@ func _connection_failed(): #Called when the client fails to connect
 func _server_disconnected(): #Server shutdown and client is kicked
 	print("Server disconnected")
 	network_ui.visible = true
+	reset()
 
 #endregion
 

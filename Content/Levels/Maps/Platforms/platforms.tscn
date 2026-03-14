@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://cdtji3w5adjrd"]
+
+[ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_jr1es"]
+[ext_resource type="PackedScene" uid="uid://n708qdyyeref" path="res://Content/Props/MovingPlatform/moving_platform.tscn" id="3_6mxf0"]
+[ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="3_vyp8v"]
+[ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="4_lndun"]
+
+[node name="World" type="Node3D" unique_id=886298498]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1801129146]
+environment = ExtResource("1_jr1es")
+
+[node name="SpawnPlatform" type="CSGBox3D" parent="." unique_id=522970139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.094836, 0)
+use_collision = true
+size = Vector3(3, 3, 3)
+material = ExtResource("3_vyp8v")
+
+[node name="MovingPlatform" parent="." unique_id=781357609 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+move_speed = 2.0
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform" unique_id=392882286]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, 6.7882247, -5, 6.5336666)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform" unique_id=1264143436]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, -6.7882247, -5, 6.5336666)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform" unique_id=109991587]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, -6.7882247, -5, -6.5336666)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform" unique_id=1385176687]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, 6.7882247, -5, -6.5336666)
+top_level = true
+
+[node name="MovingPlatform3" parent="." unique_id=65280847 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+start_index = 2
+move_speed = 2.0
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform3" unique_id=639470586]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, 6.7882247, -5, 6.5336666)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform3" unique_id=238411900]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, -6.7882247, -5, 6.5336666)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform3" unique_id=674789187]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, -6.7882247, -5, -6.5336666)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform3" unique_id=764723483]
+transform = Transform3D(1.2924621, 0, -0.6500357, 0, 1, 0, 1.2924621, 0, 0.6500357, 6.7882247, -5, -6.5336666)
+top_level = true
+
+[node name="MovingPlatform2" parent="." unique_id=1393553939 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform2" unique_id=1491775853]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, 10.453866, -5, 10.453867)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform2" unique_id=303687284]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, -10.453866, -5, 10.453867)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform2" unique_id=1726784933]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, -10.453866, -5, -10.453867)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform2" unique_id=1708007035]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, 10.453866, -5, -10.453867)
+top_level = true
+
+[node name="MovingPlatform4" parent="." unique_id=1241848930 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+start_index = 2
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform4" unique_id=1441671506]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, 10.453866, -5, 10.453867)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform4" unique_id=1829829289]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, -10.453866, -5, 10.453867)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform4" unique_id=54009554]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, -10.453866, -5, -10.453867)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform4" unique_id=1675918399]
+transform = Transform3D(2.1944854, 0, -0.7109095, 0, 1, 0, 2.1944854, 0, 0.7109095, 10.453866, -5, -10.453867)
+top_level = true
+
+[node name="MovingPlatform5" parent="." unique_id=1579357083 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+start_index = 2
+move_speed = 5.0
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform5" unique_id=2064131127]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, 15.6807995, -5, 15.6808)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform5" unique_id=1766313099]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, -15.6807995, -5, 15.6808)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform5" unique_id=319090746]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, -15.6807995, -5, -15.6808)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform5" unique_id=499223519]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, 15.6807995, -5, -15.6808)
+top_level = true
+
+[node name="BouncePad" parent="MovingPlatform5" unique_id=1170943954 instance=ExtResource("4_lndun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27213717, 0)
+
+[node name="MovingPlatform6" parent="." unique_id=1360104836 node_paths=PackedStringArray("checkpoints") instance=ExtResource("3_6mxf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+checkpoints = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")]
+move_speed = 5.0
+
+[node name="Checkpoint1" type="Node3D" parent="MovingPlatform6" unique_id=1486573816]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, 15.6807995, -5, 15.6808)
+top_level = true
+
+[node name="Checkpoint2" type="Node3D" parent="MovingPlatform6" unique_id=1332581410]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, -15.6807995, -5, 15.6808)
+top_level = true
+
+[node name="Checkpoint3" type="Node3D" parent="MovingPlatform6" unique_id=1157587725]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, -15.6807995, -5, -15.6808)
+top_level = true
+
+[node name="Checkpoint4" type="Node3D" parent="MovingPlatform6" unique_id=771464581]
+transform = Transform3D(4.020531, 0, -0.6220458, 0, 1, 0, 4.020531, 0, 0.6220458, 15.6807995, -5, -15.6808)
+top_level = true
+
+[node name="BouncePad" parent="MovingPlatform6" unique_id=1070122689 instance=ExtResource("4_lndun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27213717, 0)

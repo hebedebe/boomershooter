@@ -41,6 +41,7 @@ var on_floor_last_frame: bool = false
 
 func _ready():
 	network_manager = get_tree().get_first_node_in_group("network_manager")
+	username = network_manager.local_username
 	if username.is_empty() and is_multiplayer_authority():
 		username = "Nameless Fodder"
 
@@ -98,7 +99,7 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		velocity += direction * 10
 		if dash_cooldown.get_elapsed_timer():
@@ -137,6 +138,7 @@ func _physics_process(delta):
 
 	on_floor_last_frame = is_on_floor()
 
+	velocity += get_platform_velocity()
 	move_and_slide()
 
 func local_replicate(node: Node):

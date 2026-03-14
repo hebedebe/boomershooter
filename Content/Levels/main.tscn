@@ -5,7 +5,8 @@
 [ext_resource type="FontFile" uid="uid://ckh4q3pk3erd0" path="res://Art/Fonts/VerveShadow.ttf" id="2_le3s8"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
-[ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Pits/pits.tscn" id="5_vm62j"]
+[ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Donut/donut.tscn" id="5_vm62j"]
+[ext_resource type="PackedScene" uid="uid://cdtji3w5adjrd" path="res://Content/Levels/Maps/Platforms/platforms.tscn" id="7_5gywb"]
 [ext_resource type="AudioStream" uid="uid://fhk5rco0pu41" path="res://Art/Sounds/Music/theme_bebop.mp3" id="7_le3s8"]
 [ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="7_nkux8"]
 [ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="8_le3s8"]
@@ -124,6 +125,14 @@ func update_text():
 	text = \"Map %s: %s\" % [index, map.maps[index].resource_path]
 "
 
+[sub_resource type="GDScript" id="GDScript_5gywb"]
+script/source = "extends Button
+
+
+func _pressed() -> void:
+	get_tree().quit()
+"
+
 [sub_resource type="FogMaterial" id="FogMaterial_a50q2"]
 density = 0.004
 albedo = Color(0, 0, 0, 1)
@@ -173,7 +182,7 @@ vertical_alignment = 1
 
 [node name="Map" type="Node3D" parent="." unique_id=285992084]
 script = ExtResource("2_runna")
-maps = Array[PackedScene]([ExtResource("5_q6qep"), ExtResource("8_nkux8"), ExtResource("5_vm62j")])
+maps = Array[PackedScene]([ExtResource("5_q6qep"), ExtResource("8_nkux8"), ExtResource("5_vm62j"), ExtResource("7_5gywb")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Map" unique_id=1990931707]
 script = SubResource("GDScript_vm62j")
@@ -193,7 +202,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkux8")
 
-[node name="Button" type="Button" parent="Map/CanvasLayer/Panel" unique_id=882826610]
+[node name="Changemap" type="Button" parent="Map/CanvasLayer/Panel" unique_id=882826610]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,6 +211,31 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Map: "
 script = SubResource("GDScript_nkux8")
+
+[node name="Panel2" type="Panel" parent="Map/CanvasLayer" unique_id=2092621410]
+material = SubResource("ShaderMaterial_vm62j")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = 197.0
+offset_right = 255.92017
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nkux8")
+
+[node name="Exit" type="Button" parent="Map/CanvasLayer/Panel2" unique_id=703001118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+script = SubResource("GDScript_5gywb")
 
 [node name="Network" parent="." unique_id=303830956 instance=ExtResource("1_y1o6t")]
 

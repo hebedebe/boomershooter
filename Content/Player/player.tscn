@@ -59,7 +59,7 @@ properties/5/spawn = true
 properties/5/replication_mode = 1
 properties/6/path = NodePath("Body/DashParticles:emitting")
 properties/6/spawn = true
-properties/6/replication_mode = 1
+properties/6/replication_mode = 2
 
 [sub_resource type="GDScript" id="GDScript_0id1h"]
 script/source = "extends Label3D
