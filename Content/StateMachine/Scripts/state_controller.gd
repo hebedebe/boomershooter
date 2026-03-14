@@ -3,8 +3,10 @@ extends Node
 
 @export var state: State
 @export var require_network_authority: bool = true
+@export var active: bool = true
 
 func _ready() -> void:
+	if not active: return
 	if require_network_authority and not is_multiplayer_authority(): return
 	
 	if state:
@@ -17,6 +19,7 @@ func _ready() -> void:
 			child.state_controller = self
 
 func _process(delta: float) -> void:
+	if not active: return
 	if require_network_authority and not is_multiplayer_authority(): return
 	
 	if state:

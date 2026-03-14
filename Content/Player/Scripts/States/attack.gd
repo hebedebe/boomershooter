@@ -1,5 +1,7 @@
 extends State
 
+const MAX_ATTACK_Y: float = 5
+
 @export var impulse_force : float = 30;
 @export var attack_delay: float = 0.05;
 
@@ -21,7 +23,9 @@ func on_hit(source_path: NodePath):
 
 func on_enter():
 	attack_tex.visible = true
-	player.add_impulse(neck.basis * Vector3(0,0,-impulse_force))
+	var attack_impulse = neck.basis * Vector3(0,0,-impulse_force)
+	attack_impulse.y = clampf(attack_impulse.y, -MAX_ATTACK_Y, MAX_ATTACK_Y)
+	player.add_impulse(attack_impulse)
 	await get_tree().create_timer(attack_delay).timeout
 	duration.start()
 	attack.play()

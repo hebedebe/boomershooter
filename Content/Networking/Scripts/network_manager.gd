@@ -2,6 +2,9 @@ class_name NetworkManager
 extends Node
 
 signal game_started
+signal server_started
+signal client_started
+signal game_reset
 
 #region Variables
 const MAX_CLIENTS: int = 2;
@@ -13,7 +16,7 @@ const MAX_CLIENTS: int = 2;
 #endregion
 
 #region Network spawning
-@onready var spawned_nodes: Node = $NetworkInstantiatedObjects
+@onready var spawned_nodes: NetworkObjectContainer = $NetworkInstantiatedObjects
 
 var player_scene = preload("res://Content/Player/player.tscn")
 var player_map: Dictionary[int, Player]
@@ -23,7 +26,26 @@ var local_username: String;
 #endregion
 
 func _ready() -> void:
-	pass
+	#host signals
+	multiplayer.peer_connected.connect(_on_player_connected)
+	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	
+	#client signals
+	multiplayer.connected_to_server.connect(_connected_to_server)
+	multiplayer.connection_failed.connect(_connection_failed)
+	multiplayer.server_disconnected.connect(_server_disconnected)
+	
+func reset() -> void:
+	game_reset.emit()
+	if multiplayer.is_server():
+		for id in player_map.keys():
+			if id != 1:
+				player_map[id].queue_free()
+				player_map.erase(id)
+				multiplayer.multiplayer_peer.disconnect_peer(id)
+	multiplayer.multiplayer_peer.close()
+	network_ui.show()
+	spawned_nodes.clear()
 
 #region Start server/client
 func start_host():
@@ -31,37 +53,34 @@ func start_host():
 	peer.create_server(int(port_input.text), MAX_CLIENTS)
 	multiplayer.multiplayer_peer = peer
 	
-	multiplayer.peer_connected.connect(_on_player_connected)
-	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	network_ui.visible = false;
 	
 	_on_player_connected(multiplayer.get_unique_id())
 	
-	$"../Map".spawn_random_map()
-	
-	network_ui.visible = false;
-	
+	server_started.emit()
 	game_started.emit()
+	
 	
 func start_client():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip_input.text, int(port_input.text))
 	multiplayer.multiplayer_peer = peer
 	
-	multiplayer.connected_to_server.connect(_connected_to_server)
-	multiplayer.connection_failed.connect(_connection_failed)
-	multiplayer.server_disconnected.connect(_server_disconnected)
-	
+	client_started.emit()
 	game_started.emit()
 	
 #endregion
 
 #region Network callbacks
 func _on_player_connected(id: int): #server
+	if not multiplayer.is_server(): return
 	print("Player %s joined the game" % id)
 	
 	var player: Player = player_scene.instantiate()
+	
 	player.name = str(id)
 	player.username = local_username
+	
 	replicate(player)
 	player_map[id] = player
 	

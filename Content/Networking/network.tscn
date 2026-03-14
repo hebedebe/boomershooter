@@ -2,21 +2,22 @@
 
 [ext_resource type="Script" uid="uid://fde8yaqd1i5s" path="res://Content/Networking/Scripts/network_manager.gd" id="1_8vdkd"]
 [ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="2_m77u4"]
+[ext_resource type="Script" uid="uid://6wd6nm3leuts" path="res://Content/Networking/Scripts/network_object_container.gd" id="3_7wsxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7wsxd"]
 shader = ExtResource("2_m77u4")
 shader_parameter/blur = 1.0770000511575
-shader_parameter/warp_intensity = 0.4
+shader_parameter/warp_intensity = 0.698000033155
 shader_parameter/strength_x = 12.0
 shader_parameter/strength_y = 12.0
 shader_parameter/offset_x = 0.0
 shader_parameter/offset_y = 0.0
-shader_parameter/corner_radius = 0.3
-shader_parameter/edge_smoothness = 3.0
-shader_parameter/tint = Color(0.57680225, 0.7383729, 1, 0.12156863)
-shader_parameter/edge_highlight = Color(1, 1, 1, 0.3)
-shader_parameter/edge_width = 1.5
-shader_parameter/chromatic_strength = 0.8650000410875
+shader_parameter/corner_radius = 0.1850000087875
+shader_parameter/edge_smoothness = 1.0
+shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
+shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
+shader_parameter/edge_width = 3.0000001425
+shader_parameter/chromatic_strength = 1.610000076475
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m77u4"]
 content_margin_left = 0.0
@@ -98,10 +99,11 @@ size_flags_vertical = 4
 text = "Join Server"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=59691357]
-_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://qh2ehkqv2ub8", "uid://b1xwdvlv4otyv", "uid://fedgjeypg71c")
+_spawnable_scenes = PackedStringArray("uid://b5dbmv7xvb3sb", "uid://b1xwdvlv4otyv", "uid://fedgjeypg71c")
 spawn_path = NodePath("../NetworkInstantiatedObjects")
 
 [node name="NetworkInstantiatedObjects" type="Node" parent="." unique_id=1823494445]
+script = ExtResource("3_7wsxd")
 
 [connection signal="text_changed" from="NetworkUI/NetworkUIPanel/VBoxContainer/UsernameInput" to="." method="_on_username_input_text_changed"]
 [connection signal="pressed" from="NetworkUI/NetworkUIPanel/VBoxContainer/StartServerButton" to="." method="start_host"]

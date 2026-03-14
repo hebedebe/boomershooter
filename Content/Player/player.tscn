@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cf12k8rsi81u3" path="res://Content/Player/Scripts/attack_state_controller.gd" id="6_wonq3"]
 [ext_resource type="Script" uid="uid://djn5fr6pqu6ni" path="res://Content/Player/Scripts/States/block.gd" id="7_uot30"]
 [ext_resource type="Script" uid="uid://dhqjays8qo7kh" path="res://Content/Player/Scripts/States/attack_cooldown.gd" id="8_1q6fh"]
+[ext_resource type="AudioStream" uid="uid://dd1cnfjfr0thi" path="res://Art/Sounds/FX/land.mp3" id="8_pcdcg"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
 [ext_resource type="Material" uid="uid://ctvdgbwbjkk5w" path="res://Art/Materials/Spatial/purple_circuit_fade.tres" id="9_dep4y"]
 [ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/attack.wav" id="9_p1xk2"]
@@ -29,8 +30,13 @@
 [ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/parry.mp3" id="13_5gbni"]
 [ext_resource type="Shader" uid="uid://tlkxd1jwngls" path="res://Art/Shaders/PostProcess/adapt_to_palette.gdshader" id="26_6yrki"]
 [ext_resource type="AudioStream" uid="uid://bqim2dm08500x" path="res://Art/Sounds/FX/glass_break.mp3" id="27_0femt"]
+[ext_resource type="FontFile" uid="uid://bylyb1djh36fq" path="res://Art/Fonts/Perfect DOS VGA 437 Win.ttf" id="27_wggg8"]
 [ext_resource type="Shader" uid="uid://l424w0c5eamt" path="res://Art/Shaders/PostProcess/broken_glass.gdshader" id="29_0femt"]
 [ext_resource type="Shader" uid="uid://ckw7rhbn3s35x" path="res://Art/Shaders/PostProcess/fisheye.gdshader" id="29_px8oj"]
+[ext_resource type="Texture2D" uid="uid://j8blchui2jtn" path="res://Art/Textures/Palettes/apollo-1x.png" id="30_px8oj"]
+[ext_resource type="Shader" uid="uid://b5aak8sqcu40i" path="res://Art/Shaders/PostProcess/film_grain.gdshader" id="31_gq5co"]
+[ext_resource type="Texture2D" uid="uid://dlimxq7oussns" path="res://Art/Textures/Spatial/bounce_pad.png" id="34_0id1h"]
+[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="34_wggg8"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -54,6 +60,18 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath("Body/DashParticles:emitting")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+
+[sub_resource type="GDScript" id="GDScript_0id1h"]
+script/source = "extends Label3D
+
+@onready var player: Player = $\"..\"
+
+func _ready() -> void:
+	visible = not is_multiplayer_authority()
+
+func _process(_delta: float) -> void:
+	text = \"%s (%s)\" % [player.username, player.get_multiplayer_authority()]
+"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0femt"]
 material = ExtResource("2_2fsga")
@@ -104,9 +122,8 @@ radius = 0.39
 radius = 0.4
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68xdw"]
-exposure_multiplier = 0.6
+exposure_multiplier = 0.338
 auto_exposure_scale = 0.01
-dof_blur_near_enabled = true
 dof_blur_near_distance = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0femt"]
@@ -177,8 +194,55 @@ func glass_fall():
 shader = ExtResource("29_px8oj")
 shader_parameter/fish_intensity = 1.0000000475
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vjwh"]
+shader = ExtResource("31_gq5co")
+shader_parameter/grain_amount = 0.01200000057
+shader_parameter/grain_size = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
 shader = ExtResource("26_6yrki")
+shader_parameter/palette = ExtResource("30_px8oj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcdcg"]
+shader = ExtResource("34_wggg8")
+shader_parameter/blur = 1.0770000511575
+shader_parameter/warp_intensity = 0.698000033155
+shader_parameter/strength_x = 12.0
+shader_parameter/strength_y = 12.0
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/corner_radius = 0.1850000087875
+shader_parameter/edge_smoothness = 1.0
+shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
+shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
+shader_parameter/edge_width = 3.0000001425
+shader_parameter/chromatic_strength = 1.610000076475
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcdcg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="GDScript" id="GDScript_pcdcg"]
+script/source = "extends Button
+
+
+func _pressed() -> void:
+	var network_manager = get_tree().get_first_node_in_group(\"network_manager\")
+	if network_manager is NetworkManager:
+		network_manager.reset()
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
 shader = ExtResource("3_7d8p2")
@@ -186,29 +250,53 @@ shader_parameter/transparent_color = Color(1, 1, 1, 1)
 shader_parameter/pickup_range = 1.0
 shader_parameter/fade_amount = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0id1h"]
+shader = ExtResource("34_wggg8")
+shader_parameter/blur = 1.0770000511575
+shader_parameter/warp_intensity = 0.698000033155
+shader_parameter/strength_x = 12.0
+shader_parameter/strength_y = 12.0
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/corner_radius = 0.1850000087875
+shader_parameter/edge_smoothness = 1.0
+shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
+shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
+shader_parameter/edge_width = 3.0000001425
+shader_parameter/chromatic_strength = 1.610000076475
+
 [sub_resource type="GDScript" id="GDScript_1q6fh"]
 script/source = "extends Label
 
-@onready var player: Player = $\"../../../..\"
+@onready var player: Player = $\"../../../../..\"
 
 func _ready() -> void:
 	text = \"ID: %s\" % player.name
 "
 
+[sub_resource type="GDScript" id="GDScript_gq5co"]
+script/source = "extends Label
+
+@onready var player: Player = $\"../../../../..\"
+
+func _process(_delta: float) -> void:
+	text = \"Authority: %s\" % player.get_multiplayer_authority()
+"
+
 [sub_resource type="GDScript" id="GDScript_2mypc"]
 script/source = "extends Label
 
-@onready var player: Player = $\"../../../..\"
+@onready var player: Player = $\"../../../../..\"
 
 
-func _ready() -> void:
+func _process(_delta: float) -> void:
 	text = \"Username: %s\" % player.username
 "
 
 [sub_resource type="GDScript" id="GDScript_aak6e"]
 script/source = "extends Label
 
-@onready var attack_state_controller: PlayerAttackStateController = $\"../../../../AttackStateController\"
+@onready var attack_state_controller: PlayerAttackStateController = $\"../../../../../AttackStateController\"
 
 func _process(_delta: float) -> void:
 	var state: State = attack_state_controller.state
@@ -229,10 +317,19 @@ func _process(_delta: float) -> void:
 [sub_resource type="GDScript" id="GDScript_dep4y"]
 script/source = "extends Label
 
-@onready var player: Player = $\"../../../..\"
+@onready var player: Player = $\"../../../../..\"
 
 func _process(_delta: float) -> void:
-	text = \"%s mps\" % snapped(player.velocity.length(), 0.1)
+	text = \"%s m/s\" % snapped(player.velocity.length(), 0.1)
+"
+
+[sub_resource type="GDScript" id="GDScript_wggg8"]
+script/source = "extends Label
+
+@onready var player: Player = $\"../../../../..\"
+
+func _process(_delta: float) -> void:
+	text = \"Lives: %s\" % player.lives
 "
 
 [node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
@@ -245,6 +342,14 @@ acceleration_curve = ExtResource("2_luk42")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=874593681]
 replication_config = SubResource("SceneReplicationConfig_luk42")
+visibility_update_mode = 1
+
+[node name="Username" type="Label3D" parent="." unique_id=802265741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1619549, 0)
+billboard = 1
+double_sided = false
+font = ExtResource("27_wggg8")
+script = SubResource("GDScript_0id1h")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=1666683208]
 wait_time = 0.7
@@ -259,6 +364,9 @@ stream = ExtResource("4_yrxhh")
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="." unique_id=1475004018]
 stream = ExtResource("3_yevl6")
+
+[node name="Land" type="AudioStreamPlayer3D" parent="." unique_id=1453113712]
+stream = ExtResource("8_pcdcg")
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1755956209]
 stream = ExtResource("3_4p16a")
@@ -291,16 +399,18 @@ omni_range = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7956089, 0)
 
 [node name="Camera" type="Camera3D" parent="Neck" unique_id=501222964]
+unique_name_in_owner = true
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003062725, 0, -0.006927371)
-cull_mask = 1047553
+cull_mask = 1
 attributes = SubResource("CameraAttributesPractical_68xdw")
 doppler_tracking = 2
 fov = 90.0
 size = 0.2
 script = ExtResource("2_kbsyd")
-tilt_strength = Vector2(0.1, 0.2)
-base_FOV = 120.0
+tilt_strength = Vector2(0.2, 0.4)
+bob_strength = 0.16
+bob_speed = 0.015
 
 [node name="AttackCast" type="ShapeCast3D" parent="Neck/Camera" unique_id=497785064]
 enabled = false
@@ -496,6 +606,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Crosshair" type="Label" parent="HUD/Canvas" unique_id=312652746]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
 layout_mode = 1
 anchors_preset = 15
@@ -503,6 +636,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
 unique_name_in_owner = true
@@ -529,6 +663,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Grain" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1894599362]
+material = SubResource("ShaderMaterial_7vjwh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
 visible = false
 z_as_relative = false
@@ -540,6 +683,85 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Death" type="Control" parent="HUD/Canvas" unique_id=1751329503]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Canvas/Death" unique_id=1866679957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_0id1h")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=554585756]
+material = SubResource("ShaderMaterial_pcdcg")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -74.0
+offset_right = 347.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
+
+[node name="Label" type="Label" parent="HUD/Canvas/Death/TextureRect/Panel" unique_id=1290227400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("27_wggg8")
+theme_override_font_sizes/font_size = 89
+text = "You are dead."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=1920899915]
+material = SubResource("ShaderMaterial_pcdcg")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = 99.0
+offset_right = 258.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
+
+[node name="Succumb" type="Button" parent="HUD/Canvas/Death/TextureRect/Panel2" unique_id=274053781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+text = "Succumb"
+script = SubResource("GDScript_pcdcg")
+
 [node name="Frame" type="VideoStreamPlayer" parent="HUD/Canvas" unique_id=1298493384]
 material = SubResource("ShaderMaterial_rn1qw")
 layout_mode = 1
@@ -548,34 +770,110 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stream = ExtResource("3_x8iml")
 autoplay = true
 expand = true
 loop = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Canvas" unique_id=79344105]
+[node name="Panel" type="Panel" parent="HUD/Canvas" unique_id=2056500338]
+material = SubResource("ShaderMaterial_0id1h")
 layout_mode = 0
-offset_left = 107.0
-offset_top = 85.0
-offset_right = 276.0
-offset_bottom = 216.0
+offset_left = 122.0
+offset_top = 774.0
+offset_right = 302.0
+offset_bottom = 936.03503
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
 
-[node name="ID" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=747798068]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Canvas/Panel" unique_id=79344105]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+
+[node name="ID" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=747798068]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_1q6fh")
 
-[node name="Username" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1063662847]
+[node name="Authority" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=899110528]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+script = SubResource("GDScript_gq5co")
+
+[node name="Username" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=1063662847]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+autowrap_mode = 3
 script = SubResource("GDScript_2mypc")
 
-[node name="State" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1500498092]
+[node name="State" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=1500498092]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_aak6e")
 
-[node name="FPS" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1241416074]
+[node name="FPS" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=1241416074]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_xyxax")
 
-[node name="Speed" type="Label" parent="HUD/Canvas/VBoxContainer" unique_id=1020426320]
+[node name="Speed" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=1020426320]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_dep4y")
+
+[node name="Lives" type="Label" parent="HUD/Canvas/Panel/VBoxContainer" unique_id=1917669942]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+script = SubResource("GDScript_wggg8")

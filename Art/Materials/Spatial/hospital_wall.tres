@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvhhvbf5lmtne" path="res://Art/Textures/Spatial/Hospital Wall/hospital_wall_s.png" id="3_bng8l"]
 
 [resource]
+albedo_color = Color(1, 0.94166666, 0.86, 1)
 albedo_texture = ExtResource("1_afx78")
 roughness_texture = ExtResource("3_bng8l")
 normal_enabled = true

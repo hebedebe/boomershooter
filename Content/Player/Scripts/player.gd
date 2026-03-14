@@ -29,15 +29,20 @@ signal on_parried(source_path: NodePath)
 @onready var dash_cooldown: EnhancedTimer = $DashCooldown
 @onready var dash_sound: AudioStreamPlayer = $DashSound
 @onready var dash_particles: GPUParticles3D = $Body/DashParticles
+@onready var death: Control = $HUD/Canvas/Death
+@onready var land: AudioStreamPlayer3D = $Land
 
 var network_manager: NetworkManager
 var current_acceleration : float = 0
 var lock_mouse = true
 var username: String
 var active: bool = true
+var on_floor_last_frame: bool = false
 
 func _ready():
 	network_manager = get_tree().get_first_node_in_group("network_manager")
+	if username.is_empty() and is_multiplayer_authority():
+		username = "Nameless Fodder"
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -75,8 +80,12 @@ func add_impulse(impulse: Vector3):
 func _physics_process(delta):
 	if not is_multiplayer_authority() or not active: return
 	
+	if is_on_floor() and not on_floor_last_frame:
+		land.play()
+	
 	if position.y < -50: #temporary
 		position = Vector3(0,10,0)
+		hurt(get_path())
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -84,9 +93,13 @@ func _physics_process(delta):
 		if Input.is_action_pressed("slam"):
 			velocity.y -= slam_force * delta
 
+	var input_dir = Input.get_vector("left", "right", "forward", "back")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		velocity += direction * 10
 		if dash_cooldown.get_elapsed_timer():
 			velocity.y += velocity.length() * 0.2
 		jump.play()
@@ -98,8 +111,6 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		current_acceleration += acceleration_speed * delta
 		current_acceleration = clamp(current_acceleration, 0, 1)
@@ -122,6 +133,8 @@ func _physics_process(delta):
 		temp_velocity = lerp(temp_velocity, Vector2.ZERO, deceleration * delta)
 		velocity.x = temp_velocity.x
 		velocity.z = temp_velocity.y
+
+	on_floor_last_frame = is_on_floor()
 
 	move_and_slide()
 
@@ -154,6 +167,7 @@ func hurt(source_path: NodePath):
 	hurt_sound.play()
 	if not is_multiplayer_authority(): return
 	lives -= 1
+	%BrokenGlass.glass_fall()
 	var source_player: Player = get_node(source_path)
 	if source_player:
 		var direction = (source_player.global_position - global_position).normalized()
@@ -162,5 +176,8 @@ func hurt(source_path: NodePath):
 		die()
 
 func die():
-	pass
+	death.show()
+	active = false
+	attack_state_controller.active = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# do dying stuff here

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dj3ng3t0l6s1o"]
 
+[ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_le3s8"]
 [ext_resource type="PackedScene" uid="uid://bmbns44vimamd" path="res://Content/Networking/network.tscn" id="1_y1o6t"]
-[ext_resource type="FontFile" uid="uid://cuief2u2yn5uv" path="res://Art/Fonts/BangTime.ttf" id="2_le3s8"]
+[ext_resource type="FontFile" uid="uid://ckh4q3pk3erd0" path="res://Art/Fonts/VerveShadow.ttf" id="2_le3s8"]
 [ext_resource type="Script" uid="uid://bulrgvtuar82" path="res://Content/Levels/Scripts/map_loader.gd" id="2_runna"]
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
-[ext_resource type="AudioStream" uid="uid://b18tblqkiua47" path="res://Art/Sounds/FX/theme.mp3" id="6_516sn"]
-[ext_resource type="Texture2D" uid="uid://dyoshjf8td4i4" path="res://Art/Textures/Spatial/FOIL2.JPG" id="7_a50q2"]
+[ext_resource type="AudioStream" uid="uid://fhk5rco0pu41" path="res://Art/Sounds/Music/theme_bebop.mp3" id="7_le3s8"]
+[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="7_nkux8"]
+[ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="8_le3s8"]
 [ext_resource type="PackedScene" uid="uid://fedgjeypg71c" path="res://Content/Levels/Maps/Pillars/pillars.tscn" id="8_nkux8"]
 
 [sub_resource type="GDScript" id="GDScript_jxnjk"]
@@ -14,6 +16,84 @@ script/source = "extends Node3D
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed(\"quit\"):
 		get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_a50q2"]
+script/source = "extends Camera3D
+
+@export var rotation_speed: float = 0.3
+
+@onready var network: NetworkManager = $\"../Network\"
+
+func _ready() -> void:
+	network.game_started.connect(func():current=false)
+
+func _process(delta: float) -> void:
+	rotation.y += delta * rotation_speed
+"
+
+[sub_resource type="GDScript" id="GDScript_vm62j"]
+script/source = "extends CanvasLayer
+
+@onready var network: NetworkManager = $\"../../Network\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	network.game_reset.connect(reset)
+	network.game_started.connect(hide)
+	print(\"Connected network signals\")
+	
+func reset():
+	print(\"show map select\")
+	show()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vm62j"]
+shader = ExtResource("7_nkux8")
+shader_parameter/blur = 1.0770000511575
+shader_parameter/warp_intensity = 0.698000033155
+shader_parameter/strength_x = 12.0
+shader_parameter/strength_y = 12.0
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/corner_radius = 0.1850000087875
+shader_parameter/edge_smoothness = 1.0
+shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
+shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
+shader_parameter/edge_width = 3.0000001425
+shader_parameter/chromatic_strength = 1.610000076475
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkux8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="GDScript" id="GDScript_nkux8"]
+script/source = "extends Button
+
+@onready var map: MapLoader = $\"../../..\"
+
+func _ready() -> void:
+	update_text()
+
+func _pressed() -> void:
+	map.next_index()
+	update_text()
+
+func update_text():
+	var index = map.selected_index
+	text = \"Map %s: %s\" % [index, map.maps[index].resource_path]
 "
 
 [sub_resource type="GDScript" id="GDScript_le3s8"]
@@ -46,7 +126,7 @@ stacked_shadow_3/color = Color(0.05000007, 1, 0, 0.40392157)
 [sub_resource type="FogMaterial" id="FogMaterial_a50q2"]
 density = 0.004
 albedo = Color(0, 0, 0, 1)
-emission = Color(0.25490198, 0.25882354, 0.17254902, 1)
+emission = Color(0.17703001, 0.18, 0.1206, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_le3s8"]
 albedo = Color(0, 0, 0, 1)
@@ -54,6 +134,46 @@ emission = Color(0.25410664, 0.26, 0.17159998, 1)
 
 [node name="Main" type="Node3D" unique_id=440981399]
 script = SubResource("GDScript_jxnjk")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=162544490]
+transform = Transform3D(0.985256, 0.17108656, 0, -0.16183248, 0.9319635, 0.32442924, 0.055505484, -0.31964585, 0.94591, 0, 94.0838, 0)
+current = true
+script = SubResource("GDScript_a50q2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D" unique_id=793215289]
+environment = ExtResource("1_le3s8")
+
+[node name="Map" type="Node3D" parent="." unique_id=285992084]
+script = ExtResource("2_runna")
+maps = Array[PackedScene]([ExtResource("5_q6qep"), ExtResource("8_nkux8")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Map" unique_id=1990931707]
+script = SubResource("GDScript_vm62j")
+
+[node name="Panel" type="Panel" parent="Map/CanvasLayer" unique_id=413181461]
+material = SubResource("ShaderMaterial_vm62j")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 121.0
+offset_right = 254.92004
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nkux8")
+
+[node name="Button" type="Button" parent="Map/CanvasLayer/Panel" unique_id=882826610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Map: "
+script = SubResource("GDScript_nkux8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=327715345]
 script = SubResource("GDScript_le3s8")
@@ -65,7 +185,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_a50q2")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1514709197]
 anchors_preset = 5
@@ -85,12 +204,9 @@ vertical_alignment = 1
 
 [node name="Network" parent="." unique_id=303830956 instance=ExtResource("1_y1o6t")]
 
-[node name="Map" type="Node3D" parent="." unique_id=285992084]
-script = ExtResource("2_runna")
-maps = Array[PackedScene]([ExtResource("5_q6qep"), ExtResource("8_nkux8")])
-
 [node name="Theme" type="AudioStreamPlayer" parent="." unique_id=852464650]
-stream = ExtResource("6_516sn")
+stream = ExtResource("7_le3s8")
+volume_db = -14.857
 autoplay = true
 parameters/looping = true
 
@@ -103,3 +219,57 @@ material = SubResource("FogMaterial_a50q2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -90, 0)
 size = Vector3(1000, 100, 1000)
 material = SubResource("FogMaterial_le3s8")
+
+[node name="Background" type="Node3D" parent="." unique_id=569008485]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background" unique_id=510208894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.530693, -75.48512, 142.23389)
+size = Vector3(20, 500, 20)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Background" unique_id=923320016]
+transform = Transform3D(0.9409812, 0, 0.33845872, 0, 1, 0, -0.33845872, 0, 0.9409812, -0.8303299, -101.44174, 367.55496)
+size = Vector3(117.729004, 448.0868, 31.4292)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Background" unique_id=1130872021]
+transform = Transform3D(0.9409812, 0, 0.33845872, 0, 1, 0, -0.33845872, 0, 0.9409812, -413.3118, -101.44174, -89.83875)
+size = Vector3(117.729004, 448.0868, 89.2522)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Background" unique_id=1658415230]
+transform = Transform3D(0.9409812, 0, 0.33845872, 0, 1, 0, -0.33845872, 0, 0.9409812, 263.83148, -165.1997, -190.45737)
+size = Vector3(117.729004, 320.57086, 31.4292)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Background" unique_id=1297863316]
+transform = Transform3D(0.36857894, 0, -0.92959654, 0, 1, 0, 0.92959654, 0, 0.36857894, 302.06375, -132.79402, -133.574)
+size = Vector3(117.729004, 385.38223, 31.4292)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Background" unique_id=85016807]
+transform = Transform3D(0.48614275, -0.023414783, -0.8735656, 0.16485687, 0.98414916, 0.06536467, 0.8581884, -0.17578982, 0.48229703, -258.64127, -131.63083, -331.3287)
+size = Vector3(117.729004, 385.38223, 67.02173)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Background" unique_id=1023482941]
+transform = Transform3D(0.2795003, -0.41283455, -0.8668605, -0.7913905, 0.41217157, -0.45145956, 0.54367334, 0.8122082, -0.21151127, -360.33466, -13.464721, -211.27135)
+size = Vector3(44.094116, 355.07895, 44.96222)
+material = ExtResource("8_le3s8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Background" unique_id=1047577857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.556282, -131.69165, 174.54611)
+size = Vector3(20, 387.5869, 20)
+material = ExtResource("8_le3s8")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Background" unique_id=654906101]
+transform = Transform3D(0.5216994, -0.67354125, -0.5236142, 0.7905827, 0.6123553, 0, 0.32063794, -0.41396037, 0.8519555, -25.95504, 0, 155.92589)
+radius = 5.0
+height = 86.091
+material = ExtResource("8_le3s8")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Background" unique_id=1751223479]
+transform = Transform3D(-0.49632126, -0.79316306, -0.35292745, 0.7993703, -0.258961, -0.5421684, 0.33863342, -0.55120945, 0.76255864, -228.12575, 19.420744, 32.038555)
+radius = 5.0
+height = 417.6756
+material = ExtResource("8_le3s8")

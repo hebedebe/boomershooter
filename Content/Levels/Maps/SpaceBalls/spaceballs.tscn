@@ -16,6 +16,7 @@ environment = ExtResource("1_1y6ae")
 transform = Transform3D(1, 0, 0, 0, 0.8583516, 0.51306194, 0, -0.51306194, 0.8583516, 0, 0, 0)
 light_color = Color(0.43061334, 0.44, 0.3696, 1)
 light_energy = 0.1
+light_bake_mode = 1
 sky_mode = 1
 
 [node name="Bouncepads" type="Node3D" parent="." unique_id=391516691]
