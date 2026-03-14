@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://qh2ehkqv2ub8"]
+
+[ext_resource type="Environment" uid="uid://d0n1ouulw4mrl" path="res://Data/default_environment.tres" id="1_xhqh3"]
+[ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="2_s7ioy"]
+[ext_resource type="Material" uid="uid://ci51i1g1moq1l" path="res://Art/Materials/Spatial/hospital_floor.tres" id="2_tb0lv"]
+[ext_resource type="PackedScene" uid="uid://b4meaoog8qr74" path="res://Content/Props/BouncePad/bounce_pad.tscn" id="3_xhqh3"]
+
+[node name="World" type="Node3D" unique_id=886298498]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1801129146]
+environment = ExtResource("1_xhqh3")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1052518419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.040099, 0)
+use_collision = true
+inner_radius = 20.418707
+outer_radius = 25.859499
+sides = 32
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGTorus3D" unique_id=1982971307]
+operation = 2
+size = Vector3(100, 11.46, 22.475)
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=980707892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.630354, 0)
+use_collision = true
+size = Vector3(1.305, 0.923, 48.78)
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1444350234]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -4.630354, 0)
+use_collision = true
+size = Vector3(1.305, 0.923, 19.765)
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1059478232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.462784, -5.668928, 0)
+use_collision = true
+size = Vector3(1.305, 3, 20)
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1249045868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.463, -5.669, 0)
+use_collision = true
+size = Vector3(1.305, 3, 20)
+material = ExtResource("2_s7ioy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=522970139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.07421, 0)
+use_collision = true
+size = Vector3(3, 3, 3)
+material = ExtResource("2_tb0lv")
+
+[node name="BouncePad" parent="." unique_id=1170943954 instance=ExtResource("3_xhqh3")]
+transform = Transform3D(0.80610394, 0, -0.59177405, 0, 1, 0, 0.59177405, 0, 0.80610394, 19.443264, -1.6932026, 13.002483)
+
+[node name="BouncePad2" parent="." unique_id=236148512 instance=ExtResource("3_xhqh3")]
+transform = Transform3D(-0.80592823, 0, 0.59201324, 0, 1, 0, -0.59201324, 0, -0.80592823, -19.443, -1.693, 13.002)
+
+[node name="BouncePad3" parent="." unique_id=529574454 instance=ExtResource("3_xhqh3")]
+transform = Transform3D(-0.8061038, 0, 0.59177405, 0, 1, 0, -0.59177405, 0, -0.8061038, -19.443, -1.6932026, -12.998003)
+
+[node name="BouncePad4" parent="." unique_id=686519656 instance=ExtResource("3_xhqh3")]
+transform = Transform3D(0.8059282, 0, -0.5920133, 0, 1, 0, 0.5920133, 0, 0.8059282, 19.443264, -1.693, -12.997516)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=707970009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -84.19556, -22.97286)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=92524161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.004, -84.196, -13.11)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=556695090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.004, -84.196, -13.11)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=742737029]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.7482583e-07, -84.19556, 23.177622)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=1611972205]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 19.004, -84.196, 13.314762)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." unique_id=1562857041]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.004, -84.196, 13.31476)
+use_collision = true
+radius = 1.7177734
+height = 159.82361
+material = ExtResource("2_s7ioy")
