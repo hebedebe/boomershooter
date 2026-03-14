@@ -8,6 +8,7 @@ signal game_reset
 
 #region Variables
 const MAX_CLIENTS: int = 2;
+const CONNECTION_CONNECTED = multiplayer.multiplayer_peer.ConnectionStatus.CONNECTION_CONNECTED
 
 #region UI nodes
 @onready var network_ui: CanvasLayer = $NetworkUI

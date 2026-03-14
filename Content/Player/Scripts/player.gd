@@ -78,6 +78,7 @@ func add_impulse(impulse: Vector3):
 	velocity += transform.basis * impulse
 
 func _physics_process(delta):
+	if multiplayer.multiplayer_peer.get_connection_status() != network_manager.CONNECTION_CONNECTED: return
 	if not is_multiplayer_authority() or not active: return
 	
 	if is_on_floor() and not on_floor_last_frame:
