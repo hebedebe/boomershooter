@@ -86,8 +86,9 @@ func _on_player_connected(id: int): #server
 	
 func _on_player_disconnected(id: int): #server
 	print("Player %s left the game" % id)
-	player_map[id].queue_free()
-	player_map.erase(id)
+	if player_map.has(id):
+		player_map[id].queue_free()
+		player_map.erase(id)
 	
 func _connected_to_server(): #Called when the client or host connects
 	print("Connected to server")
