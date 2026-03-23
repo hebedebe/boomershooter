@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bmbns44vimamd"]
 
 [ext_resource type="Script" uid="uid://fde8yaqd1i5s" path="res://Content/Networking/Scripts/network_manager.gd" id="1_8vdkd"]
-[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="2_m77u4"]
-[ext_resource type="Script" uid="uid://6wd6nm3leuts" path="res://Content/Networking/Scripts/network_object_container.gd" id="3_7wsxd"]
+[ext_resource type="Shader" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="2_m77u4"]
+[ext_resource type="Script" path="res://Content/Networking/Scripts/network_object_container.gd" id="3_7wsxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7wsxd"]
 shader = ExtResource("2_m77u4")

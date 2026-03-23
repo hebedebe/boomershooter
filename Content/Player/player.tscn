@@ -4,14 +4,14 @@
 [ext_resource type="Material" uid="uid://c88i2703y5rds" path="res://Art/Materials/Spatial/purple_circuit.tres" id="2_2fsga"]
 [ext_resource type="Script" uid="uid://bnvxnurqkrkf3" path="res://Content/Player/Scripts/player_camera.gd" id="2_kbsyd"]
 [ext_resource type="Curve" uid="uid://dp3d6lwex6ss2" path="res://Content/Player/player_acceleration_curve.tres" id="2_luk42"]
-[ext_resource type="AudioStream" uid="uid://dxidc8bcrhwmh" path="res://Art/Sounds/FX/footsteps.mp3" id="3_4p16a"]
-[ext_resource type="Shader" uid="uid://chhejiic1nw81" path="res://Art/Shaders/UI/chroma_key.gdshader" id="3_7d8p2"]
+[ext_resource type="AudioStream" uid="uid://da4ji16uihwjq" path="res://Art/Sounds/FX/footsteps.mp3" id="3_4p16a"]
+[ext_resource type="Shader" path="res://Art/Shaders/UI/chroma_key.gdshader" id="3_7d8p2"]
 [ext_resource type="Script" uid="uid://bsdb316n8yki2" path="res://Content/EnhancedTimer/Scripts/enhanced_timer.gd" id="3_kev1q"]
 [ext_resource type="Texture2D" uid="uid://dyat1hdbschou" path="res://Art/Textures/UI/hand_default.png" id="3_rn1qw"]
-[ext_resource type="AudioStream" uid="uid://csv5od0e5yos" path="res://Art/Sounds/FX/hurt.mp3" id="3_rtr7s"]
+[ext_resource type="AudioStream" uid="uid://ntvry48t8iw2" path="res://Art/Sounds/FX/hurt.mp3" id="3_rtr7s"]
 [ext_resource type="VideoStream" uid="uid://bjkcu6maa33dq" path="res://Art/Textures/UI/Frame/flesh-frame.ogv" id="3_x8iml"]
-[ext_resource type="AudioStream" uid="uid://da48ryji73xn7" path="res://Art/Sounds/FX/jump.mp3" id="3_yevl6"]
-[ext_resource type="AudioStream" uid="uid://dervputdob3yo" path="res://Art/Sounds/FX/dash.mp3" id="4_yrxhh"]
+[ext_resource type="AudioStream" uid="uid://cil61cf3peqa5" path="res://Art/Sounds/FX/jump.mp3" id="3_yevl6"]
+[ext_resource type="AudioStream" uid="uid://dse7mdlad8cab" path="res://Art/Sounds/FX/dash.mp3" id="4_yrxhh"]
 [ext_resource type="AudioStream" uid="uid://cvpy3pwgxojjf" path="res://Art/Sounds/FX/wind_fast.mp3" id="5_7vjwh"]
 [ext_resource type="Script" uid="uid://dw4rxit35xb16" path="res://Content/Player/Scripts/States/idle.gd" id="6_20pa1"]
 [ext_resource type="Texture2D" uid="uid://b4wtp3sxa5ekt" path="res://Art/Textures/UI/hand_block.png" id="6_aak6e"]
@@ -21,23 +21,23 @@
 [ext_resource type="AudioStream" uid="uid://dd1cnfjfr0thi" path="res://Art/Sounds/FX/land.mp3" id="8_pcdcg"]
 [ext_resource type="Script" uid="uid://cu1j6buniq75m" path="res://Content/Player/Scripts/States/attack.gd" id="9_1lj21"]
 [ext_resource type="Material" uid="uid://ctvdgbwbjkk5w" path="res://Art/Materials/Spatial/purple_circuit_fade.tres" id="9_dep4y"]
-[ext_resource type="AudioStream" uid="uid://4tr5ykbqrab7" path="res://Art/Sounds/FX/attack.wav" id="9_p1xk2"]
+[ext_resource type="AudioStream" uid="uid://rd1oy6jr7d2e" path="res://Art/Sounds/FX/attack.wav" id="9_p1xk2"]
 [ext_resource type="Script" uid="uid://ctvq025q66t6w" path="res://Content/Player/Scripts/States/block_cooldown.gd" id="9_v4ny3"]
-[ext_resource type="AudioStream" uid="uid://cn12ruklnsvrg" path="res://Art/Sounds/FX/overheat.mp3" id="10_6qlop"]
+[ext_resource type="AudioStream" uid="uid://c8ully708s05y" path="res://Art/Sounds/FX/overheat.mp3" id="10_6qlop"]
 [ext_resource type="AudioStream" uid="uid://bglfljbqfeyu1" path="res://Art/Sounds/FX/blocking_hum.mp3" id="10_v2n5w"]
 [ext_resource type="Script" uid="uid://0gej1xwgh5d0" path="res://Content/Player/Scripts/States/parried.gd" id="12_20pa1"]
-[ext_resource type="AudioStream" uid="uid://vssu6qg84k13" path="res://Art/Sounds/FX/block.mp3" id="12_qqdic"]
+[ext_resource type="AudioStream" uid="uid://bmnibyctmw2s6" path="res://Art/Sounds/FX/block.mp3" id="12_qqdic"]
 [ext_resource type="Script" uid="uid://b21is8ytr1cuq" path="res://Content/Player/Scripts/States/parry.gd" id="12_wonq3"]
-[ext_resource type="AudioStream" uid="uid://03yvnba8t57l" path="res://Art/Sounds/FX/parry.mp3" id="13_5gbni"]
+[ext_resource type="AudioStream" uid="uid://p2k64lxghkdf" path="res://Art/Sounds/FX/parry.mp3" id="13_5gbni"]
 [ext_resource type="Shader" uid="uid://tlkxd1jwngls" path="res://Art/Shaders/PostProcess/adapt_to_palette.gdshader" id="26_6yrki"]
 [ext_resource type="AudioStream" uid="uid://bqim2dm08500x" path="res://Art/Sounds/FX/glass_break.mp3" id="27_0femt"]
 [ext_resource type="FontFile" uid="uid://bylyb1djh36fq" path="res://Art/Fonts/Perfect DOS VGA 437 Win.ttf" id="27_wggg8"]
-[ext_resource type="Shader" uid="uid://l424w0c5eamt" path="res://Art/Shaders/PostProcess/broken_glass.gdshader" id="29_0femt"]
-[ext_resource type="Shader" uid="uid://ckw7rhbn3s35x" path="res://Art/Shaders/PostProcess/fisheye.gdshader" id="29_px8oj"]
-[ext_resource type="Shader" uid="uid://b5aak8sqcu40i" path="res://Art/Shaders/PostProcess/film_grain.gdshader" id="31_gq5co"]
+[ext_resource type="Shader" path="res://Art/Shaders/PostProcess/broken_glass.gdshader" id="29_0femt"]
+[ext_resource type="Shader" path="res://Art/Shaders/PostProcess/fisheye.gdshader" id="29_px8oj"]
+[ext_resource type="Shader" path="res://Art/Shaders/PostProcess/film_grain.gdshader" id="31_gq5co"]
 [ext_resource type="Texture2D" uid="uid://dlimxq7oussns" path="res://Art/Textures/Spatial/bounce_pad.png" id="34_0id1h"]
 [ext_resource type="Texture2D" uid="uid://68wjvvowgsol" path="res://Art/Textures/Palettes/cc-29-1x.png" id="34_7vjwh"]
-[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="34_wggg8"]
+[ext_resource type="Shader" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="34_wggg8"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_luk42"]
 properties/0/path = NodePath(".:position")
@@ -149,7 +149,141 @@ func _enter_tree() -> void:
 	visible = is_multiplayer_authority()
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcdcg"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7vjwh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p5bmx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_84cy2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bqbn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7gv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prtwj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xevg7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_gcnnm"]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/constants/tick_offset = 0
+HSlider/icons/grabber = SubResource("PlaceholderTexture2D_7vjwh")
+HSlider/icons/grabber_disabled = SubResource("PlaceholderTexture2D_p5bmx")
+HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_84cy2")
+HSlider/icons/tick = SubResource("PlaceholderTexture2D_bqbn8")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_yq7gv")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_prtwj")
+HSlider/styles/slider = SubResource("StyleBoxFlat_xevg7")
+
+[sub_resource type="GDScript" id="GDScript_7vjwh"]
+script/source = "extends HSlider
+
+@onready var dash_cooldown: EnhancedTimer = $\"../../../../DashCooldown\"
+
+func _process(delta: float) -> void:
+	value = 1-dash_cooldown.time_left/dash_cooldown.wait_time
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
+shader = ExtResource("3_7d8p2")
+shader_parameter/transparent_color = Color(1, 1, 1, 1)
+shader_parameter/pickup_range = 1.0
+shader_parameter/fade_amount = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px8oj"]
+shader = ExtResource("29_0femt")
+shader_parameter/fall_progress = 0.0
+shader_parameter/pieces_x = 5
+shader_parameter/pieces_y = 3
+shader_parameter/gravity = 2.2
+shader_parameter/scatter = 0.22
+shader_parameter/rotation_amount = 4.0
+shader_parameter/point_jitter = 0.34
+shader_parameter/delay_variation = 0.28
+shader_parameter/edge_thickness = 0.00450000021375
+shader_parameter/edge_brightness = 2.0
+shader_parameter/alpha_fade = 0.0
+
+[sub_resource type="GDScript" id="GDScript_0femt"]
+script/source = "extends ColorRect
+
+@export var fall_speed: float = 1
+
+@onready var broken_glass_sfx: AudioStreamPlayer = $BrokenGlassSFX
+
+var falling: bool = false
+var progress: float = 0
+
+func _ready() -> void:
+	visible = false
+
+func _process(delta: float) -> void:
+	if falling:
+		if material is ShaderMaterial:
+			material.set_shader_parameter(\"fall_progress\", progress)
+			progress += delta * fall_speed;
+			if progress >= 1:
+				falling=false
+
+func glass_fall():
+	visible = true
+	falling = true
+	broken_glass_sfx.play()
+	progress=0
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aak6e"]
+shader = ExtResource("29_px8oj")
+shader_parameter/fish_intensity = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vjwh"]
+shader = ExtResource("31_gq5co")
+shader_parameter/grain_amount = 0.01200000057
+shader_parameter/grain_size = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
+shader = ExtResource("26_6yrki")
+shader_parameter/palette = ExtResource("34_7vjwh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0id1h"]
 shader = ExtResource("34_wggg8")
 shader_parameter/blur = 1.0770000511575
 shader_parameter/warp_intensity = 0.698000033155
@@ -179,37 +313,6 @@ expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
-
-[sub_resource type="GDScript" id="GDScript_pcdcg"]
-script/source = "extends Button
-
-
-func _pressed() -> void:
-	var network_manager = get_tree().get_first_node_in_group(\"network_manager\")
-	if network_manager is NetworkManager:
-		network_manager.reset()
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1qw"]
-shader = ExtResource("3_7d8p2")
-shader_parameter/transparent_color = Color(1, 1, 1, 1)
-shader_parameter/pickup_range = 1.0
-shader_parameter/fade_amount = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0id1h"]
-shader = ExtResource("34_wggg8")
-shader_parameter/blur = 1.0770000511575
-shader_parameter/warp_intensity = 0.698000033155
-shader_parameter/strength_x = 12.0
-shader_parameter/strength_y = 12.0
-shader_parameter/offset_x = 0.0
-shader_parameter/offset_y = 0.0
-shader_parameter/corner_radius = 0.1850000087875
-shader_parameter/edge_smoothness = 1.0
-shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
-shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
-shader_parameter/edge_width = 3.0000001425
-shader_parameter/chromatic_strength = 1.610000076475
 
 [sub_resource type="GDScript" id="GDScript_1q6fh"]
 script/source = "extends Label
@@ -278,60 +381,30 @@ func _process(_delta: float) -> void:
 	text = \"Lives: %s\" % player.lives
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_px8oj"]
-shader = ExtResource("29_0femt")
-shader_parameter/fall_progress = 0.0
-shader_parameter/pieces_x = 5
-shader_parameter/pieces_y = 3
-shader_parameter/gravity = 2.2
-shader_parameter/scatter = 0.22
-shader_parameter/rotation_amount = 4.0
-shader_parameter/point_jitter = 0.34
-shader_parameter/delay_variation = 0.28
-shader_parameter/edge_thickness = 0.00450000021375
-shader_parameter/edge_brightness = 2.0
-shader_parameter/alpha_fade = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcdcg"]
+shader = ExtResource("34_wggg8")
+shader_parameter/blur = 1.0770000511575
+shader_parameter/warp_intensity = 0.698000033155
+shader_parameter/strength_x = 12.0
+shader_parameter/strength_y = 12.0
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.0
+shader_parameter/corner_radius = 0.1850000087875
+shader_parameter/edge_smoothness = 1.0
+shader_parameter/tint = Color(0.9831143, 0.90532446, 0.59723693, 0.12156863)
+shader_parameter/edge_highlight = Color(0.9939335, 0.91431606, 0.50187296, 0.3019608)
+shader_parameter/edge_width = 3.0000001425
+shader_parameter/chromatic_strength = 1.610000076475
 
-[sub_resource type="GDScript" id="GDScript_0femt"]
-script/source = "extends ColorRect
+[sub_resource type="GDScript" id="GDScript_pcdcg"]
+script/source = "extends Button
 
-@export var fall_speed: float = 1
 
-@onready var broken_glass_sfx: AudioStreamPlayer = $BrokenGlassSFX
-
-var falling: bool = false
-var progress: float = 0
-
-func _ready() -> void:
-	visible = false
-
-func _process(delta: float) -> void:
-	if falling:
-		if material is ShaderMaterial:
-			material.set_shader_parameter(\"fall_progress\", progress)
-			progress += delta * fall_speed;
-			if progress >= 1:
-				falling=false
-
-func glass_fall():
-	visible = true
-	falling = true
-	broken_glass_sfx.play()
-	progress=0
+func _pressed() -> void:
+	var network_manager = get_tree().get_first_node_in_group(\"network_manager\")
+	if network_manager is NetworkManager:
+		network_manager.reset()
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aak6e"]
-shader = ExtResource("29_px8oj")
-shader_parameter/fish_intensity = 1.0000000475
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vjwh"]
-shader = ExtResource("31_gq5co")
-shader_parameter/grain_amount = 0.01200000057
-shader_parameter/grain_size = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8p1dt"]
-shader = ExtResource("26_6yrki")
-shader_parameter/palette = ExtResource("34_7vjwh")
 
 [node name="Player" type="CharacterBody3D" unique_id=523176458 groups=["players"]]
 physics_interpolation_mode = 1
@@ -353,7 +426,6 @@ font = ExtResource("27_wggg8")
 script = SubResource("GDScript_0id1h")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=1666683208]
-wait_time = 0.7
 one_shot = true
 script = ExtResource("3_kev1q")
 
@@ -633,84 +705,25 @@ text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Death" type="Control" parent="HUD/Canvas" unique_id=1751329503]
-visible = false
+[node name="DashSlider" type="HSlider" parent="HUD/Canvas/Crosshair" unique_id=287175087]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Canvas/Death" unique_id=1866679957]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("34_0id1h")
-stretch_mode = 1
-
-[node name="Panel" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=554585756]
-material = SubResource("ShaderMaterial_pcdcg")
-layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -74.0
-offset_right = 347.5
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
-
-[node name="Label" type="Label" parent="HUD/Canvas/Death/TextureRect/Panel" unique_id=1290227400]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 17.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("27_wggg8")
-theme_override_font_sizes/font_size = 89
-text = "You are dead."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel2" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=1920899915]
-material = SubResource("ShaderMaterial_pcdcg")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = 99.0
-offset_right = 258.5
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
-
-[node name="Succumb" type="Button" parent="HUD/Canvas/Death/TextureRect/Panel2" unique_id=274053781]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("27_wggg8")
-text = "Succumb"
-script = SubResource("GDScript_pcdcg")
+grow_vertical = 0
+theme = SubResource("Theme_gcnnm")
+max_value = 1.0
+step = 0.01
+editable = false
+scrollable = false
+script = SubResource("GDScript_7vjwh")
 
 [node name="Frame" type="VideoStreamPlayer" parent="HUD/Canvas" unique_id=1298493384]
 material = SubResource("ShaderMaterial_rn1qw")
@@ -726,8 +739,62 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="Panel" type="Panel" parent="HUD/Canvas" unique_id=2056500338]
+[node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
+unique_name_in_owner = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_px8oj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_0femt")
+
+[node name="BrokenGlassSFX" type="AudioStreamPlayer" parent="HUD/Canvas/PostProcess/BrokenGlass" unique_id=695188927]
+stream = ExtResource("27_0femt")
+
+[node name="Fisheye" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=2023683954]
 visible = false
+material = SubResource("ShaderMaterial_aak6e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grain" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1894599362]
+visible = false
+material = SubResource("ShaderMaterial_7vjwh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+visible = false
+z_as_relative = false
+material = SubResource("ShaderMaterial_8p1dt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HUD/Canvas" unique_id=2056500338]
 material = SubResource("ShaderMaterial_0id1h")
 layout_mode = 0
 offset_left = 122.0
@@ -829,56 +896,84 @@ theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("27_wggg8")
 script = SubResource("GDScript_wggg8")
 
-[node name="PostProcess" type="Control" parent="HUD/Canvas" unique_id=972285032]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="BrokenGlass" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=174995085]
-unique_name_in_owner = true
-z_index = 1025
-z_as_relative = false
-material = SubResource("ShaderMaterial_px8oj")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = SubResource("GDScript_0femt")
-
-[node name="BrokenGlassSFX" type="AudioStreamPlayer" parent="HUD/Canvas/PostProcess/BrokenGlass" unique_id=695188927]
-stream = ExtResource("27_0femt")
-
-[node name="Fisheye" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=2023683954]
-material = SubResource("ShaderMaterial_aak6e")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Grain" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1894599362]
-material = SubResource("ShaderMaterial_7vjwh")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Palettize" type="ColorRect" parent="HUD/Canvas/PostProcess" unique_id=1580223033]
+[node name="Death" type="Control" parent="HUD/Canvas" unique_id=1751329503]
 visible = false
-z_as_relative = false
-material = SubResource("ShaderMaterial_8p1dt")
+z_index = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Canvas/Death" unique_id=1866679957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_0id1h")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=554585756]
+material = SubResource("ShaderMaterial_pcdcg")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -74.0
+offset_right = 347.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
+
+[node name="Label" type="Label" parent="HUD/Canvas/Death/TextureRect/Panel" unique_id=1290227400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("27_wggg8")
+theme_override_font_sizes/font_size = 89
+text = "You are dead."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="HUD/Canvas/Death/TextureRect" unique_id=1920899915]
+material = SubResource("ShaderMaterial_pcdcg")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = 99.0
+offset_right = 258.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcdcg")
+
+[node name="Succumb" type="Button" parent="HUD/Canvas/Death/TextureRect/Panel2" unique_id=274053781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_wggg8")
+text = "Succumb"
+script = SubResource("GDScript_pcdcg")

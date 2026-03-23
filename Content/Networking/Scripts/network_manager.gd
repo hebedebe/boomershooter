@@ -7,7 +7,7 @@ signal client_started
 signal game_reset
 
 #region Variables
-const MAX_CLIENTS: int = 2;
+const MAX_CLIENTS: int = 16;
 const CONNECTION_CONNECTED = multiplayer.multiplayer_peer.ConnectionStatus.CONNECTION_CONNECTED
 
 #region UI nodes

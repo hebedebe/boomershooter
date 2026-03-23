@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1xwdvlv4otyv" path="res://Content/Levels/Maps/SpaceBalls/spaceballs.tscn" id="5_q6qep"]
 [ext_resource type="PackedScene" uid="uid://qh2ehkqv2ub8" path="res://Content/Levels/Maps/Donut/donut.tscn" id="5_vm62j"]
 [ext_resource type="PackedScene" uid="uid://cdtji3w5adjrd" path="res://Content/Levels/Maps/Platforms/platforms.tscn" id="7_5gywb"]
-[ext_resource type="Shader" uid="uid://68kon07ttnie" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="7_nkux8"]
+[ext_resource type="Shader" path="res://Art/Shaders/UI/liquid_glass.gdshader" id="7_nkux8"]
 [ext_resource type="Material" uid="uid://bk78uuhgqo1e3" path="res://Art/Materials/Spatial/hospital_wall.tres" id="8_le3s8"]
 [ext_resource type="PackedScene" uid="uid://fedgjeypg71c" path="res://Content/Levels/Maps/Pillars/pillars.tscn" id="8_nkux8"]
 [ext_resource type="AudioStream" uid="uid://sqmp25tbrq3r" path="res://Art/Sounds/Music/wind_ambience.mp3" id="10_5gywb"]
@@ -163,6 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1514709197]
 anchors_preset = 5

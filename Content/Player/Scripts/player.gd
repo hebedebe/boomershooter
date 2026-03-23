@@ -16,6 +16,7 @@ signal on_parried(source_path: NodePath)
 @export var acceleration_speed : float = 6
 @export var deceleration_speed : float = 10
 @export var slam_force : float = 120
+@export var max_velocity: float = 100
 
 @export_category("Mouse")
 @export var mouse_sensitivity : float = 0.35
@@ -88,7 +89,7 @@ func _physics_process(delta):
 	
 	if position.y < -50: #temporary
 		position = Vector3(0,10,0)
-		hurt(get_path())
+		#hurt(get_path())
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -146,6 +147,7 @@ func _physics_process(delta):
 
 	on_floor_last_frame = is_on_floor()
 
+	velocity = velocity.limit_length(max_velocity)
 	velocity += get_platform_velocity()
 	move_and_slide()
 
