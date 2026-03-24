@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func on_enter():
 	knife = preload("res://Content/Knife/knife.tscn").instantiate()
+	knife.set_multiplayer_authority(get_multiplayer_authority())
 	knife.player = player
 	knife.global_transform = %Camera.global_transform
 	knife.retrieved.connect(knife_retrieved)

@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://c0e27tj4j2n7w"]
 
-[ext_resource type="Script" uid="uid://tddrlxpvqm02" path="res://Content/Knife/Scripts/render_cable.gd" id="1_ej1k1"]
 [ext_resource type="Script" uid="uid://c2gwo0hdjdg0g" path="res://Content/Knife/Scripts/knife.gd" id="1_tk7gy"]
 [ext_resource type="PackedScene" uid="uid://boabkekxf6307" path="res://Art/Blender/Knife.blend" id="1_w1yrc"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_ej1k1"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ej1k1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk7gy"]
 margin = 0.2
@@ -14,18 +19,11 @@ size = Vector3(0.125, 0.18, 0.7866592)
 script = ExtResource("1_tk7gy")
 speed = 30.0
 
-[node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=1592012054]
-transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, -0.12537602)
-mesh = SubResource("ImmediateMesh_ej1k1")
-script = ExtResource("1_ej1k1")
-points = Array[Vector3]([])
-metadata/_custom_type_script = "uid://d17qocky3nl27"
+[node name="KnifeSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1094806261]
+replication_config = SubResource("SceneReplicationConfig_ej1k1")
 
 [node name="Knife" parent="." unique_id=1870239151 instance=ExtResource("1_w1yrc")]
 transform = Transform3D(-0.2, 1.7484556e-08, -7.6427423e-16, 0, -8.742278e-09, -0.2, -1.7484556e-08, -0.2, 8.742278e-09, 0, 0, 0)
-
-[node name="LineStart" type="Node3D" parent="Knife" unique_id=1968843766]
-unique_name_in_owner = true
 
 [node name="ThrowTimer" type="Timer" parent="." unique_id=643802416]
 one_shot = true

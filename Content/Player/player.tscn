@@ -220,7 +220,7 @@ script/source = "extends HSlider
 
 @onready var dash_cooldown: EnhancedTimer = $\"../../../../DashCooldown\"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	value = 1-dash_cooldown.time_left/dash_cooldown.wait_time
 "
 
