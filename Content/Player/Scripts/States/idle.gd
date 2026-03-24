@@ -26,3 +26,7 @@ func process(_delta: float):
 	if Input.is_action_just_pressed("attack"):
 		state_controller.set_state(attack)
 		return
+		
+	if Input.is_action_just_pressed("throw_knife"):
+		state_controller.set_state(%ThrowKnife)
+		return

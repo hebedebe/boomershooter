@@ -153,6 +153,9 @@ func _physics_process(delta):
 
 func local_replicate(node: Node):
 	add_child(node)
+	
+func replicate(node: Node):
+	network_manager.replicate(node)
 
 func hit_remote(source_path: NodePath):
 	rpc_id(get_multiplayer_authority(), "hit", source_path)

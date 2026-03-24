@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0e27tj4j2n7w"]
+
+[ext_resource type="Script" uid="uid://tddrlxpvqm02" path="res://Content/Knife/Scripts/render_cable.gd" id="1_ej1k1"]
+[ext_resource type="Script" uid="uid://c2gwo0hdjdg0g" path="res://Content/Knife/Scripts/knife.gd" id="1_tk7gy"]
+[ext_resource type="PackedScene" uid="uid://boabkekxf6307" path="res://Art/Blender/Knife.blend" id="1_w1yrc"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_ej1k1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tk7gy"]
+margin = 0.2
+size = Vector3(0.125, 0.18, 0.7866592)
+
+[node name="Knife" type="Node3D" unique_id=1901047244]
+script = ExtResource("1_tk7gy")
+speed = 30.0
+
+[node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=1592012054]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 0, -0.12537602)
+mesh = SubResource("ImmediateMesh_ej1k1")
+script = ExtResource("1_ej1k1")
+points = Array[Vector3]([])
+metadata/_custom_type_script = "uid://d17qocky3nl27"
+
+[node name="Knife" parent="." unique_id=1870239151 instance=ExtResource("1_w1yrc")]
+transform = Transform3D(-0.2, 1.7484556e-08, -7.6427423e-16, 0, -8.742278e-09, -0.2, -1.7484556e-08, -0.2, 8.742278e-09, 0, 0, 0)
+
+[node name="LineStart" type="Node3D" parent="Knife" unique_id=1968843766]
+unique_name_in_owner = true
+
+[node name="ThrowTimer" type="Timer" parent="." unique_id=643802416]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=53809735]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1989245531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.21159717)
+shape = SubResource("BoxShape3D_tk7gy")
+
+[connection signal="body_entered" from="Area3D" to="." method="knife_collided"]
