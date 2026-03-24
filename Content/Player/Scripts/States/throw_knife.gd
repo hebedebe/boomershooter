@@ -7,12 +7,7 @@ func _ready() -> void:
 	player = owner
 
 func on_enter():
-	knife = preload("res://Content/Knife/knife.tscn").instantiate()
-	knife.set_multiplayer_authority(get_multiplayer_authority())
-	knife.player = player
-	knife.global_transform = %Camera.global_transform
-	knife.retrieved.connect(knife_retrieved)
-	player.replicate(knife)
+	rpc_id(1, "spawn_knife", get_multiplayer_authority())
 	
 func on_exit():
 	pass
@@ -20,6 +15,14 @@ func on_exit():
 func process(_delta: float):
 	pass
 
+
+@rpc("call_local", "any_peer")
+func spawn_knife(source):
+	knife = preload("res://Content/Knife/knife.tscn").instantiate()
+	knife.player = player
+	knife.global_transform = %Camera.global_transform
+	knife.retrieved.connect(knife_retrieved)
+	player.replicate(knife)
 
 func knife_retrieved():
 	if not active: return
